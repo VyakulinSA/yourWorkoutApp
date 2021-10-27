@@ -99,11 +99,8 @@
 		3C876B332729D63300FA6C6C /* yourWorkoutApp */ = {
 			isa = PBXGroup;
 			children = (
-				3C876B342729D63300FA6C6C /* AppDelegate.swift */,
-				3C876B362729D63300FA6C6C /* SceneDelegate.swift */,
 				3C876B382729D63300FA6C6C /* ViewController.swift */,
-				3C876B402729D63400FA6C6C /* Assets.xcassets */,
-				3C876B422729D63400FA6C6C /* LaunchScreen.storyboard */,
+				3C876B672729DDF000FA6C6C /* SystemFolder */,
 				3C876B452729D63400FA6C6C /* Info.plist */,
 				3C876B3D2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld */,
 			);
@@ -125,6 +122,17 @@
 				3C876B5A2729D63400FA6C6C /* yourWorkoutAppUITestsLaunchTests.swift */,
 			);
 			path = yourWorkoutAppUITests;
+			sourceTree = "<group>";
+		};
+		3C876B672729DDF000FA6C6C /* SystemFolder */ = {
+			isa = PBXGroup;
+			children = (
+				3C876B342729D63300FA6C6C /* AppDelegate.swift */,
+				3C876B362729D63300FA6C6C /* SceneDelegate.swift */,
+				3C876B402729D63400FA6C6C /* Assets.xcassets */,
+				3C876B422729D63400FA6C6C /* LaunchScreen.storyboard */,
+			);
+			path = SystemFolder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +442,7 @@
 				DEVELOPMENT_TEAM = P8VCS3U2KK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = yourWorkoutApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YourWorkout;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -462,6 +471,7 @@
 				DEVELOPMENT_TEAM = P8VCS3U2KK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = yourWorkoutApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YourWorkout;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
