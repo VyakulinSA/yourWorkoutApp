@@ -3,7 +3,7 @@
 
 My home project and Final Task for RSSchool IOS 2021
 
-- Дизайн [figma](https://www.figma.com/file/smjp90zz9f6TJqLjB9tnpB/Game-counter-%E2%80%94-RS.School?node-id=0%3A1)
+- Дизайн [figma](https://www.figma.com/file/My8xyxrZgyKbGWAmz5ebjb/yourWorkout-App?node-id=1%3A348)
 
 ### Описание: 
 
