@@ -12,7 +12,7 @@ protocol RouterConfiguratorProtocol {
     func initialViewController()
 }
 
-
+ 
 class RouterConfigurator: RouterConfiguratorProtocol {
     var navigationController: UINavigationController?
     var assemblyConfigurator: AssembliConfiguratorProtocol?

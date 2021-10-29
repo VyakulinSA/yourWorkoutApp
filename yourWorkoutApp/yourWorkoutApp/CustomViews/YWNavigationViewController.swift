@@ -8,7 +8,7 @@
 import UIKit
 
 class YWNavigationViewController: UINavigationController {
-    
+     
     private let navBarView = setupObject(UIView()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .red

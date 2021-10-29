@@ -8,7 +8,7 @@
 import UIKit
 
 class StartMenuViewController: UIViewController, StartMenuViewInput {
-    
+     
     private let screenImageView = setupObject(UIImageView()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = UIImage(named: "startMenuImage")

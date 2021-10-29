@@ -8,7 +8,7 @@
 import UIKit
 
 class YWIconButton: UIButton {
-
+ 
     private var systemNameImage: String = "xmark"
     private var normalColor: UIColor = .iconNormalColor
     private var highLightedColor: UIColor = .iconHighlightColor

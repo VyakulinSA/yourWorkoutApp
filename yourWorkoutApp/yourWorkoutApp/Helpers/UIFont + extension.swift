@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+ 
 enum CustomFont: String {
     case myFontBold = "Montserrat-Bold"
     case myFontRegular = "Montserrat-Regular"

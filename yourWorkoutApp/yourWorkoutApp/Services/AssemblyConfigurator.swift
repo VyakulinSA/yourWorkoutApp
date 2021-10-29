@@ -11,7 +11,7 @@ import UIKit
 protocol AssembliConfiguratorProtocol: AnyObject {
     func createStartMenuModule(router: RouterConfiguratorProtocol) -> UIViewController
 }
-
+ 
 class AssemblyConfigurator: AssembliConfiguratorProtocol {
     func createStartMenuModule(router: RouterConfiguratorProtocol) -> UIViewController {
         let presenter = StartMenuPresenter()

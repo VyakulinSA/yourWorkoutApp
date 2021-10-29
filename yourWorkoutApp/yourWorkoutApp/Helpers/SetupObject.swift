@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+ 
 func setupObject<Object: AnyObject>(_ object: Object, _ closure: (Object) -> Void) -> Object {
     closure(object)
     return object
