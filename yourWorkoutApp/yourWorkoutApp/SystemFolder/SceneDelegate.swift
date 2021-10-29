@@ -18,17 +18,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
 
-//        let navViewController = UINavigationController()
-//        let assemblyConfigurator = AssemblyConfigurator()
-//
-//        navViewController.navigationBar.isHidden = true
-//
-//        let router = RouterConfigurator(navController: navViewController, assemblyConfigurator: assemblyConfigurator)
-//
-//        router.initialViewController()
-//
-//        window?.rootViewController = navViewController
-        window?.rootViewController = YWNavigationViewController()
+        let navViewController = UINavigationController()
+        let assemblyConfigurator = AssemblyConfigurator()
+
+        navViewController.navigationBar.isHidden = true
+
+        let router = RouterConfigurator(navController: navViewController, assemblyConfigurator: assemblyConfigurator)
+
+        router.initialViewController()
+
+        window?.rootViewController = navViewController
+//        let navVC = YWNavigationViewController()
+//        navVC.setupNavBarItems(leftBarButtonName: .burger, rightBarButtonName: .plus, titleBarText: "WORKOUTS")
+//        window?.rootViewController = navVC
         window?.makeKeyAndVisible()
         
     }

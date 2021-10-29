@@ -10,6 +10,10 @@ import UIKit
 
 protocol RouterConfiguratorProtocol {
     func initialViewController()
+    
+    func showWorkoutsViewController()
+    
+    
 }
 
  
@@ -26,6 +30,13 @@ class RouterConfigurator: RouterConfiguratorProtocol {
         if let navigationController = navigationController {
             guard let startMenuViewController = assemblyConfigurator?.createStartMenuModule(router: self) else {return}
             navigationController.viewControllers = [startMenuViewController]
+        }
+    }
+    
+    func showWorkoutsViewController() {
+        if let navigationController = navigationController {
+            guard let workoutsViewController = assemblyConfigurator?.createWorkoutModule(router: self) else {return}
+            navigationController.viewControllers = [workoutsViewController]
         }
     }
     

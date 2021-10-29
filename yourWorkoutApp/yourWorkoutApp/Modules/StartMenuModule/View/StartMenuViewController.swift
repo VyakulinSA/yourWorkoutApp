@@ -18,7 +18,7 @@ class StartMenuViewController: UIViewController, StartMenuViewInput {
     
     private let workoutButton = setupObject(UIButton(type: .system)) {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setTitle("Workout", for: .normal)
+        $0.setTitle("Workouts", for: .normal)
         $0.setTitleColor(.lightTextColor, for: .normal)
         $0.titleLabel?.font = UIFont.myFont(.myFontBold, size: 28)
     }
@@ -89,7 +89,7 @@ extension StartMenuViewController {
     }
     
     @objc func workoutButtonTapped(){
-        print(#function)
+        presenter.router.showWorkoutsViewController()
     }
     
     @objc func exerciseButtonTapped(){
