@@ -17,6 +17,7 @@ protocol WorkoutsViewOutput: AnyObject {
     var router: RouterConfiguratorProtocol {get set}
     
     func setupView(view: WorkoutsViewInput)
+    func startMenuButtonTapped()
 }
 
 class WorkoutsPresenter: WorkoutsViewOutput {
@@ -32,5 +33,9 @@ class WorkoutsPresenter: WorkoutsViewOutput {
 extension WorkoutsPresenter {
     func setupView(view: WorkoutsViewInput) {
         self.view = view
+    }
+    
+    func startMenuButtonTapped() {
+        router.initialViewController()
     }
 }

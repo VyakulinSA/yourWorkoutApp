@@ -21,13 +21,13 @@ class YWContainerViewController: UIViewController {
         $0.layer.shadowOffset = CGSize(width: 0, height: 2)
     }
     
-    private let leftBarButton = setupObject(YWIconButton()) {
+    let leftBarButton = setupObject(YWIconButton()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
         $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
-    private let rightBarButton = setupObject(YWIconButton()) {
+    let rightBarButton = setupObject(YWIconButton()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
         $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
@@ -41,7 +41,7 @@ class YWContainerViewController: UIViewController {
         $0.textAlignment = .center
     }
     
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -87,6 +87,7 @@ extension YWContainerViewController {
         view.backgroundColor = .mainBackgroundColor
         
         view.addSubview(navBarView)
+        view.addSubview(collectionView)
         
         navBarView.addSubview(leftBarButton)
         navBarView.addSubview(rightBarButton)
@@ -121,7 +122,14 @@ extension YWContainerViewController {
             leading: leftBarButton.trailingAnchor,
             bottom: navBarView.bottomAnchor,
             trailing: rightBarButton.leadingAnchor,
-            padding: UIEdgeInsets(top: 0, left: 10, bottom: 11, right: 10))
+            padding: UIEdgeInsets(top: 0, left: 10, bottom: 11, right: 10)
+        )
+        
+        collectionView.anchor(
+            top: navBarView.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor)
         
     }
     

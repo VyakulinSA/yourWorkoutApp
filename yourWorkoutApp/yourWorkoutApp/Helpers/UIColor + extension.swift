@@ -53,4 +53,8 @@ extension UIColor {
     static var iconNormalColor: UIColor {
         return UIColor(named: "iconNormalColor") ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
+    
+    static var workoutCellShadowColor: UIColor {
+        return UIColor(named: "workoutCellShadowColor") ?? #colorLiteral(red: 0.1647058824, green: 0.2823529412, blue: 0.2, alpha: 0.25)
+    }
 }

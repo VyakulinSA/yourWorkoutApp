@@ -44,6 +44,8 @@
 		3C876B97272ADFB500FA6C6C /* UIColor + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B96272ADFB500FA6C6C /* UIColor + extension.swift */; };
 		3C876B9C272C23C800FA6C6C /* WorkoutsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B9B272C23C800FA6C6C /* WorkoutsPresenter.swift */; };
 		3C876B9E272C280500FA6C6C /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B9D272C280500FA6C6C /* WorkoutsViewController.swift */; };
+		3C876BA0272D655200FA6C6C /* WorkoutsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */; };
+		3C876BA2272D665700FA6C6C /* UIView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BA1272D665700FA6C6C /* UIView + extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		3C876B96272ADFB500FA6C6C /* UIColor + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
 		3C876B9B272C23C800FA6C6C /* WorkoutsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsPresenter.swift; sourceTree = "<group>"; };
 		3C876B9D272C280500FA6C6C /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
+		3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsCollectionViewCell.swift; sourceTree = "<group>"; };
+		3C876BA1272D665700FA6C6C /* UIView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,7 @@
 				3C876B73272AB4DF00FA6C6C /* Constraints.swift */,
 				3C876B82272AB99300FA6C6C /* UIFont + extension.swift */,
 				3C876B96272ADFB500FA6C6C /* UIColor + extension.swift */,
+				3C876BA1272D665700FA6C6C /* UIView + extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				3C876B9D272C280500FA6C6C /* WorkoutsViewController.swift */,
+				3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C876BA0272D655200FA6C6C /* WorkoutsCollectionViewCell.swift in Sources */,
 				3C876B83272AB99300FA6C6C /* UIFont + extension.swift in Sources */,
 				3C876B91272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */,
 				3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */,
@@ -428,6 +435,7 @@
 				3C876B95272ADF7B00FA6C6C /* YWIconButton.swift in Sources */,
 				3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */,
 				3C876B6F272AAEAE00FA6C6C /* StartMenuPresenter.swift in Sources */,
+				3C876BA2272D665700FA6C6C /* UIView + extension.swift in Sources */,
 				3C876B88272AC02A00FA6C6C /* AssemblyConfigurator.swift in Sources */,
 				3C876B9E272C280500FA6C6C /* WorkoutsViewController.swift in Sources */,
 				3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */,
