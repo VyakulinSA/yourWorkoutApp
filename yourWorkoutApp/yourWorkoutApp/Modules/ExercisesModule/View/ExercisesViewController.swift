@@ -1,49 +1,47 @@
 //
-//  WorkoutsViewController.swift
+//  ExercisesViewController.swift
 //  yourWorkoutApp
 //
-//  Created by Вякулин Сергей on 29.10.2021.
+//  Created by Вякулин Сергей on 01.11.2021.
 //
 
 import UIKit
 
-class WorkoutsViewController: YWContainerViewController, WorkoutsViewInput {
+class ExercisesViewController: YWContainerViewController {
+
+    var presenter: ExercisesViewOutput
     
-    private var presenter: WorkoutsViewOutput
-    
-    init(presenter: WorkoutsViewOutput){
+    init(presenter: ExercisesViewOutput){
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        setupAppearance()
+        
         configViews()
+        
     }
-    
+
 
 }
 
-extension WorkoutsViewController {
+extension ExercisesViewController {
     
     private func configViews() {
-        collectionView.register(WorkoutsCollectionViewCell.self, forCellWithReuseIdentifier: WorkoutsCollectionViewCell.reuseIdentifier)
+        collectionView.register(ExerciseCollectionViewCell.self, forCellWithReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        setupNavBarItems(leftBarButtonName: .burger, firstRightBarButtonName: nil, secondRightBarButtonName: .plus, titleBarText: "WORKOUTS")
+        setupNavBarItems(leftBarButtonName: .burger, firstRightBarButtonName: .filter, secondRightBarButtonName: .plus, titleBarText: "EXERCISES")
         
         leftBarButton.addTarget(self, action: #selector(leftBarButtonTapped), for: .touchUpInside)
+        firstRightBarButton.addTarget(self, action: #selector(firstRightBarButtonTapped), for: .touchUpInside)
         secondRightBarButton.addTarget(self, action: #selector(secondRightBarButtonTapped), for: .touchUpInside)
-    }
-    
-    private func setupAppearance() {
         
     }
     
@@ -51,31 +49,32 @@ extension WorkoutsViewController {
         presenter.startMenuButtonTapped()
     }
     
-    @objc func secondRightBarButtonTapped() {
+    @objc func firstRightBarButtonTapped() {
         print(#function)
     }
     
-    
+    @objc func secondRightBarButtonTapped() {
+        print(#function)
+    }
 }
 
-extension WorkoutsViewController: UICollectionViewDataSource, UICollectionViewDelegate{
-    
+extension ExercisesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkoutsCollectionViewCell.reuseIdentifier, for: indexPath) as? WorkoutsCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell
         guard let cell = cell else {return UICollectionViewCell()}
-        cell.setupCellItems(workoutTitle: "Legs", exercisesCount: 5, muscleGroups: "Legs, Chest", systemTagIsHidden: false)
+        cell.setupCellItems(exerciseImage: nil, exerciseTitle: "Title", muscleGroup: "Muscle")
         return cell
     }
 }
 
-extension WorkoutsViewController: UICollectionViewDelegateFlowLayout{
+extension ExercisesViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - 40, height: 145)
+        return CGSize(width: collectionView.frame.width - 40, height: 80)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -86,3 +85,6 @@ extension WorkoutsViewController: UICollectionViewDelegateFlowLayout{
         return 20
     }
 }
+
+
+

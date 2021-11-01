@@ -46,6 +46,9 @@
 		3C876B9E272C280500FA6C6C /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B9D272C280500FA6C6C /* WorkoutsViewController.swift */; };
 		3C876BA0272D655200FA6C6C /* WorkoutsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */; };
 		3C876BA2272D665700FA6C6C /* UIView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BA1272D665700FA6C6C /* UIView + extension.swift */; };
+		3C876BA4272FBABB00FA6C6C /* ExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BA3272FBABA00FA6C6C /* ExercisesViewController.swift */; };
+		3C876BA9272FBAF600FA6C6C /* ExercisesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BA8272FBAF600FA6C6C /* ExercisesPresenter.swift */; };
+		3C876BAB272FC51600FA6C6C /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BAA272FC51600FA6C6C /* ExerciseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		3C876B9D272C280500FA6C6C /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C876BA1272D665700FA6C6C /* UIView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + extension.swift"; sourceTree = "<group>"; };
+		3C876BA3272FBABA00FA6C6C /* ExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesViewController.swift; sourceTree = "<group>"; };
+		3C876BA8272FBAF600FA6C6C /* ExercisesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesPresenter.swift; sourceTree = "<group>"; };
+		3C876BAA272FC51600FA6C6C /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +194,7 @@
 		3C876B68272AAB1000FA6C6C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3C876BA5272FBABF00FA6C6C /* ExercisesModule */,
 				3C876B98272C233700FA6C6C /* WorkoutsModule */,
 				3C876B69272AAB1F00FA6C6C /* StartMenuModule */,
 			);
@@ -283,6 +290,32 @@
 				3C876B9B272C23C800FA6C6C /* WorkoutsPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3C876BA5272FBABF00FA6C6C /* ExercisesModule */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BA7272FBAD400FA6C6C /* Presenter */,
+				3C876BA6272FBAD000FA6C6C /* View */,
+			);
+			path = ExercisesModule;
+			sourceTree = "<group>";
+		};
+		3C876BA6272FBAD000FA6C6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BA3272FBABA00FA6C6C /* ExercisesViewController.swift */,
+				3C876BAA272FC51600FA6C6C /* ExerciseCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C876BA7272FBAD400FA6C6C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BA8272FBAF600FA6C6C /* ExercisesPresenter.swift */,
+			);
+			name = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +462,7 @@
 				3C876B91272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */,
 				3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */,
 				3C876B74272AB4DF00FA6C6C /* Constraints.swift in Sources */,
+				3C876BA9272FBAF600FA6C6C /* ExercisesPresenter.swift in Sources */,
 				3C876B8C272AC14F00FA6C6C /* RouterConfigurator.swift in Sources */,
 				3C876B9C272C23C800FA6C6C /* WorkoutsPresenter.swift in Sources */,
 				3C876B72272AB18B00FA6C6C /* SetupObject.swift in Sources */,
@@ -438,6 +472,8 @@
 				3C876BA2272D665700FA6C6C /* UIView + extension.swift in Sources */,
 				3C876B88272AC02A00FA6C6C /* AssemblyConfigurator.swift in Sources */,
 				3C876B9E272C280500FA6C6C /* WorkoutsViewController.swift in Sources */,
+				3C876BA4272FBABB00FA6C6C /* ExercisesViewController.swift in Sources */,
+				3C876BAB272FC51600FA6C6C /* ExerciseCollectionViewCell.swift in Sources */,
 				3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */,
 				3C876B6D272AAE3C00FA6C6C /* StartMenuViewController.swift in Sources */,
 				3C876B97272ADFB500FA6C6C /* UIColor + extension.swift in Sources */,

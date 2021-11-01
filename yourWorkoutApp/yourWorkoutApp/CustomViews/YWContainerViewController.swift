@@ -10,7 +10,8 @@ import UIKit
 class YWContainerViewController: UIViewController {
     
     private var leftBarButtonName: IconButtonNames?
-    private var rightBarButtonName: IconButtonNames?
+    private var firstRightBarButtonName: IconButtonNames?
+    private var secondRightBarButtonName: IconButtonNames?
     private var titleBarText: String?
      
     private let navBarView = setupObject(UIView()) {
@@ -27,7 +28,13 @@ class YWContainerViewController: UIViewController {
         $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
-    let rightBarButton = setupObject(YWIconButton()) {
+    let firstRightBarButton = setupObject(YWIconButton()) {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+    
+    let secondRightBarButton = setupObject(YWIconButton()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
         $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
@@ -65,16 +72,21 @@ class YWContainerViewController: UIViewController {
 //MARK: - configViews
 extension YWContainerViewController {
     
-    func setupNavBarItems(leftBarButtonName: IconButtonNames, rightBarButtonName: IconButtonNames, titleBarText: String) {
+    func setupNavBarItems(leftBarButtonName: IconButtonNames, firstRightBarButtonName: IconButtonNames?,
+                        secondRightBarButtonName: IconButtonNames, titleBarText: String) {
         self.leftBarButtonName = leftBarButtonName
-        self.rightBarButtonName = rightBarButtonName
+        if let firstRightBarButtonName = firstRightBarButtonName {
+            self.firstRightBarButtonName = firstRightBarButtonName
+        }
+        self.secondRightBarButtonName = secondRightBarButtonName
         self.titleBarText = titleBarText
         configViews()
     }
     
     private func configViews() {
         leftBarButton.setupAppearance(systemNameImage: leftBarButtonName)
-        rightBarButton.setupAppearance(systemNameImage: rightBarButtonName)
+        firstRightBarButton.setupAppearance(systemNameImage: firstRightBarButtonName)
+        secondRightBarButton.setupAppearance(systemNameImage: secondRightBarButtonName)
         titleView.text = titleBarText
     }
     
@@ -90,7 +102,8 @@ extension YWContainerViewController {
         view.addSubview(collectionView)
         
         navBarView.addSubview(leftBarButton)
-        navBarView.addSubview(rightBarButton)
+        navBarView.addSubview(firstRightBarButton)
+        navBarView.addSubview(secondRightBarButton)
         navBarView.addSubview(titleView)
         
         navBarView.anchor(
@@ -109,7 +122,15 @@ extension YWContainerViewController {
             padding: UIEdgeInsets(top: 0, left: 28, bottom: 11, right: 0)
         )
         
-        rightBarButton.anchor(
+        firstRightBarButton.anchor(
+            top: nil,
+            leading: nil,
+            bottom: navBarView.bottomAnchor,
+            trailing: secondRightBarButton.leadingAnchor,
+            padding: UIEdgeInsets(top: 0, left: 0, bottom: 11, right: 8)
+        )
+        
+        secondRightBarButton.anchor(
             top: nil,
             leading: nil,
             bottom: navBarView.bottomAnchor,
@@ -121,7 +142,7 @@ extension YWContainerViewController {
             top: nil,
             leading: leftBarButton.trailingAnchor,
             bottom: navBarView.bottomAnchor,
-            trailing: rightBarButton.leadingAnchor,
+            trailing: secondRightBarButton.leadingAnchor,
             padding: UIEdgeInsets(top: 0, left: 10, bottom: 11, right: 10)
         )
         

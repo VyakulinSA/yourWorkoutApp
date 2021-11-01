@@ -13,6 +13,8 @@ protocol RouterConfiguratorProtocol {
     
     func showWorkoutsViewController()
     
+    func showExercisesViewController()
+    
     
 }
 
@@ -37,6 +39,13 @@ class RouterConfigurator: RouterConfiguratorProtocol {
         if let navigationController = navigationController {
             guard let workoutsViewController = assemblyConfigurator?.createWorkoutModule(router: self) else {return}
             navigationController.viewControllers = [workoutsViewController]
+        }
+    }
+    
+    func showExercisesViewController() {
+        if let navigationController = navigationController {
+            guard let exercisesViewController = assemblyConfigurator?.createExercisesModule(router: self) else {return}
+            navigationController.viewControllers = [exercisesViewController]
         }
     }
     

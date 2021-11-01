@@ -13,7 +13,7 @@ enum IconButtonNames: String{
     case burger = "text.justifyleft"
     case backArrow = "arrow.left"
     case gear = "gear"
-    case filter = "line.3.horizontal.decrease"
+    case filter = "slider.horizontal.3"
     case error = "xmark.app"
 }
 

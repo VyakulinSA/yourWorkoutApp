@@ -89,10 +89,10 @@ extension StartMenuViewController {
     }
     
     @objc func workoutButtonTapped(){
-        presenter.router.showWorkoutsViewController()
+        presenter.workoutsButtonTapped()
     }
     
     @objc func exerciseButtonTapped(){
-        print(#function)
+        presenter.exercisesButtonTapped()
     }
 }

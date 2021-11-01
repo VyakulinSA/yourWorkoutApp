@@ -14,15 +14,15 @@ protocol WorkoutsViewInput: AnyObject {
 
 protocol WorkoutsViewOutput: AnyObject {
     
-    var router: RouterConfiguratorProtocol {get set}
+//    var router: RouterConfiguratorProtocol {get set}
     
-    func setupView(view: WorkoutsViewInput)
+//    func setupView(view: WorkoutsViewInput)
     func startMenuButtonTapped()
 }
 
 class WorkoutsPresenter: WorkoutsViewOutput {
     
-    weak var view: WorkoutsViewInput?
+//    private weak var view: WorkoutsViewInput?
     var router: RouterConfiguratorProtocol
     
     init(router: RouterConfiguratorProtocol){
@@ -31,9 +31,9 @@ class WorkoutsPresenter: WorkoutsViewOutput {
 }
 
 extension WorkoutsPresenter {
-    func setupView(view: WorkoutsViewInput) {
-        self.view = view
-    }
+//    func setupView(view: WorkoutsViewInput) {
+//        self.view = view
+//    }
     
     func startMenuButtonTapped() {
         router.initialViewController()
