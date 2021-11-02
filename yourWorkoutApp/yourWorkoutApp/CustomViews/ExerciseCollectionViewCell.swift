@@ -32,6 +32,13 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
         $0.textColor = .darkTextColor
     }
     
+    let addButton = setupObject(YWIconButton(systemNameImage: .circlePlus)) {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.contentMode = .center
+        let config = UIImage.SymbolConfiguration(pointSize: 50)
+        $0.setPreferredSymbolConfiguration(config, forImageIn: .normal)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupAppearance()
@@ -55,11 +62,21 @@ extension ExerciseCollectionViewCell {
         self.muscleGroupLabel.text = muscleGroup
     }
     
+    func setupAddButton(){
+        exerciseImage.isHidden = true
+        exerciseTitleLabel.isHidden = true
+        muscleGroupLabel.isHidden = true
+        addButton.isHidden = false
+    }
+    
     private func setupAppearance() {
         
         contentView.addSubview(exerciseImage)
         contentView.addSubview(exerciseTitleLabel)
         contentView.addSubview(muscleGroupLabel)
+        contentView.addSubview(addButton)
+        
+        addButton.isHidden = true
         
         exerciseImage.anchor(
             top: contentView.topAnchor,
@@ -83,6 +100,13 @@ extension ExerciseCollectionViewCell {
             bottom: nil,
             trailing: exerciseTitleLabel.trailingAnchor,
             padding: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
+        )
+        
+        addButton.anchor(
+            top: contentView.topAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: contentView.bottomAnchor,
+            trailing: contentView.trailingAnchor
         )
         
     }

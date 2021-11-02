@@ -15,6 +15,7 @@ enum IconButtonNames: String{
     case gear = "gear"
     case filter = "slider.horizontal.3"
     case error = "xmark.app"
+    case circlePlus = "plus.circle"
 }
 
 class YWIconButton: UIButton {

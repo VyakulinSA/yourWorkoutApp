@@ -272,6 +272,8 @@
 			children = (
 				3C876B90272ADBEF00FA6C6C /* YWContainerViewController.swift */,
 				3C876B94272ADF7B00FA6C6C /* YWIconButton.swift */,
+				3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */,
+				3C876BAA272FC51600FA6C6C /* ExerciseCollectionViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -289,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				3C876B9D272C280500FA6C6C /* WorkoutsViewController.swift */,
-				3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,7 +316,6 @@
 			isa = PBXGroup;
 			children = (
 				3C876BA3272FBABA00FA6C6C /* ExercisesViewController.swift */,
-				3C876BAA272FC51600FA6C6C /* ExerciseCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

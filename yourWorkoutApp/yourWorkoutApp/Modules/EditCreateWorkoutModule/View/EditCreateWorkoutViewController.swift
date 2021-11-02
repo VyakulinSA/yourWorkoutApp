@@ -23,8 +23,6 @@ class EditCreateWorkoutViewController: YWContainerViewController, ExercisesViewI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupAppearance()
         configViews()
         
     }
@@ -44,27 +42,40 @@ extension EditCreateWorkoutViewController {
         leftBarButton.addTarget(self, action: #selector(leftBarButtonTapped), for: .touchUpInside)
     }
     
-    private func setupAppearance() {
-        
-    }
-    
     @objc func leftBarButtonTapped() {
         presenter.leftBarButtonTapped()
+    }
+    
+    @objc func addButtonTapped() {
+        print(#function)
     }
 }
 
 extension EditCreateWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        return (presenter.exercisesData?.count ?? 0) + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell
+        
+        guard let cell = cell else {return UICollectionViewCell()}
+        
+        //setup last cell with addButton
+        if indexPath.item >= (presenter.exercisesData?.count ?? 0) {
+            cell.setupAddButton()
+            cell.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+            return cell
+        }
+        
+        //setup cell items for exercise
+        if let exercise = presenter.exercisesData?[indexPath.item] {
+            cell.setupCellItems(exerciseImage: exercise.startImage, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
+        }
+        
         return cell
     }
-    
-    
-    
 }
 
 extension EditCreateWorkoutViewController: UICollectionViewDelegateFlowLayout {

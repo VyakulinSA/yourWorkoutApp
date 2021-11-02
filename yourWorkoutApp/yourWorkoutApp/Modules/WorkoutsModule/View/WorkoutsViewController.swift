@@ -23,7 +23,6 @@ class WorkoutsViewController: YWContainerViewController, WorkoutsViewInput {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        setupAppearance()
         configViews()
     }
     
@@ -41,10 +40,6 @@ extension WorkoutsViewController {
         
         leftBarButton.addTarget(self, action: #selector(startMenuButtonTapped), for: .touchUpInside)
         secondRightBarButton.addTarget(self, action: #selector(addBarButtonTapped), for: .touchUpInside)
-    }
-    
-    private func setupAppearance() {
-        
     }
     
     @objc func startMenuButtonTapped() {
