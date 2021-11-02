@@ -17,6 +17,8 @@ protocol RouterConfiguratorProtocol {
     
     func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType)
     
+    func showAddExerciseViewController()
+    
     func popToRoot()
     
     func popVC()
@@ -57,6 +59,13 @@ class RouterConfigurator: RouterConfiguratorProtocol {
         if let navigationController = navigationController {
             guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType) else {return}
             navigationController.pushViewController(editCreateWorkoutViewController, animated: true)
+        }
+    }
+    
+    func showAddExerciseViewController() {
+        if let navigationController = navigationController {
+            guard let addExerciseViewCOntroller = assemblyConfigurator?.createAddExerciseModule(router: self) else {return}
+            navigationController.pushViewController(addExerciseViewCOntroller, animated: true)
         }
     }
     

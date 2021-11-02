@@ -53,6 +53,8 @@
 		3C876BB4273004AB00FA6C6C /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BB3273004AB00FA6C6C /* Exercise.swift */; };
 		3C876BB9273013E200FA6C6C /* EditCreateWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BB8273013E200FA6C6C /* EditCreateWorkoutViewController.swift */; };
 		3C876BBB273013F900FA6C6C /* EditCreateWorkoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BBA273013F900FA6C6C /* EditCreateWorkoutPresenter.swift */; };
+		3C876BC027312CD700FA6C6C /* AddExercisePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BBF27312CD700FA6C6C /* AddExercisePresenter.swift */; };
+		3C876BC227313ACC00FA6C6C /* AddExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BC127313ACC00FA6C6C /* AddExerciseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		3C876BB3273004AB00FA6C6C /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		3C876BB8273013E200FA6C6C /* EditCreateWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateWorkoutViewController.swift; sourceTree = "<group>"; };
 		3C876BBA273013F900FA6C6C /* EditCreateWorkoutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateWorkoutPresenter.swift; sourceTree = "<group>"; };
+		3C876BBF27312CD700FA6C6C /* AddExercisePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercisePresenter.swift; sourceTree = "<group>"; };
+		3C876BC127313ACC00FA6C6C /* AddExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,7 @@
 		3C876B68272AAB1000FA6C6C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3C876BBC27312C3700FA6C6C /* AddExerciseModule */,
 				3C876BB52730135200FA6C6C /* EditCreateWorkoutModule */,
 				3C876BA5272FBABF00FA6C6C /* ExercisesModule */,
 				3C876B98272C233700FA6C6C /* WorkoutsModule */,
@@ -362,6 +367,31 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		3C876BBC27312C3700FA6C6C /* AddExerciseModule */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BBE27312CAF00FA6C6C /* Presenter */,
+				3C876BBD27312CAA00FA6C6C /* View */,
+			);
+			path = AddExerciseModule;
+			sourceTree = "<group>";
+		};
+		3C876BBD27312CAA00FA6C6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BC127313ACC00FA6C6C /* AddExerciseViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C876BBE27312CAF00FA6C6C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BBF27312CD700FA6C6C /* AddExercisePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -508,6 +538,7 @@
 				3C876B91272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */,
 				3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */,
 				3C876B74272AB4DF00FA6C6C /* Constraints.swift in Sources */,
+				3C876BC027312CD700FA6C6C /* AddExercisePresenter.swift in Sources */,
 				3C876BA9272FBAF600FA6C6C /* ExercisesPresenter.swift in Sources */,
 				3C876B8C272AC14F00FA6C6C /* RouterConfigurator.swift in Sources */,
 				3C876B9C272C23C800FA6C6C /* WorkoutsPresenter.swift in Sources */,
@@ -524,6 +555,7 @@
 				3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */,
 				3C876B6D272AAE3C00FA6C6C /* StartMenuViewController.swift in Sources */,
 				3C876BB9273013E200FA6C6C /* EditCreateWorkoutViewController.swift in Sources */,
+				3C876BC227313ACC00FA6C6C /* AddExerciseViewController.swift in Sources */,
 				3C876B97272ADFB500FA6C6C /* UIColor + extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

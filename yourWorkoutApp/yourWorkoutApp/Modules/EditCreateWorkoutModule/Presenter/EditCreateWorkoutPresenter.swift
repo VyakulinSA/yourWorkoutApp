@@ -20,7 +20,8 @@ protocol EditCreateWorkoutViewOutput: AnyObject {
     var exercisesData: [Exercise]? {get set}
     var editCreateType: EditCreateWorkoutType {get set}
     
-    func leftBarButtonTapped()
+    func backBarButtonTapped()
+    func addButtonTapped()
     
 }
 
@@ -39,8 +40,12 @@ class EditCreateWorkoutPresenter: EditCreateWorkoutViewOutput {
 
 extension EditCreateWorkoutPresenter {
     
-    func leftBarButtonTapped() {
+    func backBarButtonTapped() {
         router.popVC()
+    }
+    
+    func addButtonTapped() {
+        router.showAddExerciseViewController()
     }
     
     private func getExercisesData() {

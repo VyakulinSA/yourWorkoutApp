@@ -1,18 +1,17 @@
 //
-//  EditCreateWorkoutViewController.swift
+//  AddExerciseViewController.swift
 //  yourWorkoutApp
 //
-//  Created by Вякулин Сергей on 01.11.2021.
+//  Created by Вякулин Сергей on 02.11.2021.
 //
 
 import UIKit
-import SwiftUI
 
-class EditCreateWorkoutViewController: YWContainerViewController, ExercisesViewInput {
+class AddExerciseViewController: YWContainerViewController, AddExerciseViewInput {
     
-    private var presenter: EditCreateWorkoutViewOutput
+    var presenter: AddExerciseViewOutput
     
-    init(presenter: EditCreateWorkoutViewOutput){
+    init(presenter: AddExerciseViewOutput){
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -23,63 +22,55 @@ class EditCreateWorkoutViewController: YWContainerViewController, ExercisesViewI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configViews()
         
+        configViews()
     }
 
 }
 
-extension EditCreateWorkoutViewController {
+extension AddExerciseViewController {
     
     private func configViews() {
         collectionView.register(ExerciseCollectionViewCell.self, forCellWithReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        let title = presenter.editCreateType == .create ? "CREATE WORKOUT" : "EDIT WORKOUT"
-        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: nil, titleBarText: title)
+
+        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: .filter, titleBarText: "ADD TO WORKOUT")
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
+        secondRightBarButton.addTarget(self, action: #selector(filterBarButtonTapped), for: .touchUpInside)
     }
+    
     
     @objc func backBarButtonTapped() {
         presenter.backBarButtonTapped()
     }
     
-    @objc func addButtonTapped() {
-        presenter.addButtonTapped()
+    @objc func filterBarButtonTapped() {
+        print(#function)
     }
 }
 
-extension EditCreateWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AddExerciseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (presenter.exercisesData?.count ?? 0) + 1
+        return presenter.exercisesData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell
-        
         guard let cell = cell else {return UICollectionViewCell()}
-        
-        //setup last cell with addButton
-        if indexPath.item >= (presenter.exercisesData?.count ?? 0) {
-            cell.setupAddButton()
-            cell.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
-            return cell
-        }
-        
-        //setup cell items for exercise
         if let exercise = presenter.exercisesData?[indexPath.item] {
             cell.setupCellItems(exerciseImage: exercise.startImage, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
         }
-        
         return cell
     }
+    
+    
+    
 }
 
-extension EditCreateWorkoutViewController: UICollectionViewDelegateFlowLayout {
-    
+extension AddExerciseViewController: UICollectionViewDelegateFlowLayout {
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - 40, height: 80)
     }
@@ -91,5 +82,4 @@ extension EditCreateWorkoutViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
     }
-    
 }

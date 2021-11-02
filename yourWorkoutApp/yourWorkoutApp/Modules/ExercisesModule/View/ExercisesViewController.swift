@@ -39,13 +39,13 @@ extension ExercisesViewController {
         
         setupNavBarItems(leftBarButtonName: .burger, firstRightBarButtonName: .filter, secondRightBarButtonName: .plus, titleBarText: "EXERCISES")
         
-        leftBarButton.addTarget(self, action: #selector(leftBarButtonTapped), for: .touchUpInside)
+        leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
         firstRightBarButton.addTarget(self, action: #selector(firstRightBarButtonTapped), for: .touchUpInside)
         secondRightBarButton.addTarget(self, action: #selector(secondRightBarButtonTapped), for: .touchUpInside)
         
     }
     
-    @objc func leftBarButtonTapped() {
+    @objc func backBarButtonTapped() {
         presenter.startMenuButtonTapped()
     }
     
