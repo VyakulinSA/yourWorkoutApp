@@ -72,12 +72,10 @@ class YWContainerViewController: UIViewController {
 //MARK: - configViews
 extension YWContainerViewController {
     
-    func setupNavBarItems(leftBarButtonName: IconButtonNames, firstRightBarButtonName: IconButtonNames?,
-                        secondRightBarButtonName: IconButtonNames, titleBarText: String) {
+    func setupNavBarItems(leftBarButtonName: IconButtonNames?, firstRightBarButtonName: IconButtonNames?,
+                        secondRightBarButtonName: IconButtonNames?, titleBarText: String) {
         self.leftBarButtonName = leftBarButtonName
-        if let firstRightBarButtonName = firstRightBarButtonName {
-            self.firstRightBarButtonName = firstRightBarButtonName
-        }
+        self.firstRightBarButtonName = firstRightBarButtonName
         self.secondRightBarButtonName = secondRightBarButtonName
         self.titleBarText = titleBarText
         configViews()

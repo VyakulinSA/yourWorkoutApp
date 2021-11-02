@@ -14,28 +14,40 @@ protocol WorkoutsViewInput: AnyObject {
 
 protocol WorkoutsViewOutput: AnyObject {
     
-//    var router: RouterConfiguratorProtocol {get set}
+    var workoutsData: [Workout]? {get set}
     
-//    func setupView(view: WorkoutsViewInput)
     func startMenuButtonTapped()
+    func addBarButtonTapped()
+    
 }
 
 class WorkoutsPresenter: WorkoutsViewOutput {
-    
-//    private weak var view: WorkoutsViewInput?
+    var workoutsData: [Workout]?
     var router: RouterConfiguratorProtocol
     
     init(router: RouterConfiguratorProtocol){
         self.router = router
+        
+        getWorkoutsData()
     }
 }
 
 extension WorkoutsPresenter {
-//    func setupView(view: WorkoutsViewInput) {
-//        self.view = view
-//    }
     
     func startMenuButtonTapped() {
         router.initialViewController()
+    }
+    
+    func addBarButtonTapped() {
+        router.showEditCreateWorkoutViewController(editCreateType: .create)
+    }
+    
+    private func getWorkoutsData() {
+        workoutsData = [
+            Workout(title: "Home workout", countExercise: 5, muscleGroup: [.back, .biceps, .legs, .chest, .shoulders], system: true, exercises: nil),
+            Workout(title: "Gyme workout", countExercise: 8, muscleGroup: [.back, .biceps, .legs, .chest, .shoulders, .abs, .back, .wholeBody], system: true, exercises: nil),
+            Workout(title: "Standart", countExercise: 3, muscleGroup: [.back, .biceps, .legs], system: false, exercises: nil),
+            Workout(title: "Gold train", countExercise: 4, muscleGroup: [.back, .biceps, .legs, .chest], system: false, exercises: nil)
+        ]
     }
 }

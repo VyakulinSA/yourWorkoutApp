@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExercisesViewController: YWContainerViewController {
+class ExercisesViewController: YWContainerViewController, ExercisesViewInput {
 
     var presenter: ExercisesViewOutput
     
@@ -60,13 +60,15 @@ extension ExercisesViewController {
 
 extension ExercisesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return presenter.exercisesData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell
         guard let cell = cell else {return UICollectionViewCell()}
-        cell.setupCellItems(exerciseImage: nil, exerciseTitle: "Title", muscleGroup: "Muscle")
+        if let exercise = presenter.exercisesData?[indexPath.item] {
+            cell.setupCellItems(exerciseImage: exercise.startImage, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
+        }
         return cell
     }
 }

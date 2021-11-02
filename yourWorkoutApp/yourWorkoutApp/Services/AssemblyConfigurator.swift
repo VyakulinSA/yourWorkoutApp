@@ -14,20 +14,20 @@ protocol AssembliConfiguratorProtocol: AnyObject {
     func createWorkoutModule(router: RouterConfiguratorProtocol) -> UIViewController
     
     func createExercisesModule(router: RouterConfiguratorProtocol) -> UIViewController
+    
+    func createEditCreateWorkoutModule(router: RouterConfiguratorProtocol, editCreateType: EditCreateWorkoutType) -> UIViewController
 }
  
 class AssemblyConfigurator: AssembliConfiguratorProtocol {
     func createWorkoutModule(router: RouterConfiguratorProtocol) -> UIViewController{
         let presenter = WorkoutsPresenter(router: router)
         let view = WorkoutsViewController(presenter: presenter)
-//        presenter.setupView(view: view)
         return view
     }
     
     func createStartMenuModule(router: RouterConfiguratorProtocol) -> UIViewController {
         let presenter = StartMenuPresenter(router: router)
         let view = StartMenuViewController(presenter: presenter)
-//        presenter.setupView(view: view)
         return view
     }
     
@@ -35,6 +35,11 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         let presenter = ExercisesPresenter(router: router)
         let view = ExercisesViewController(presenter: presenter)
         return view
-        
+    }
+    
+    func createEditCreateWorkoutModule(router: RouterConfiguratorProtocol, editCreateType: EditCreateWorkoutType) -> UIViewController {
+        let presenter = EditCreateWorkoutPresenter(router: router, editCreateType: editCreateType)
+        let view = EditCreateWorkoutViewController(presenter: presenter)
+        return view
     }
 }

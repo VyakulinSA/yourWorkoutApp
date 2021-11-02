@@ -80,10 +80,11 @@ class WorkoutsCollectionViewCell: UICollectionViewCell {
 
 extension WorkoutsCollectionViewCell {
     
-    func setupCellItems(workoutTitle: String, exercisesCount: Int, muscleGroups: String, systemTagIsHidden: Bool) {
+    func setupCellItems(workoutTitle: String, exercisesCount: Int, muscleGroups: [MuscleGroup], systemTagIsHidden: Bool) {
+        let muscleGroupString = createMuscleGroupString(muscleGroups: muscleGroups)
         self.workoutTitleLabel.text = workoutTitle
         self.exercisesCountLabel.text = "Exercises: \(exercisesCount)"
-        self.muscleGroupsLabel.text = muscleGroups
+        self.muscleGroupsLabel.text = muscleGroupString
         self.systemTagLabel.isHidden = systemTagIsHidden
     }
     
@@ -150,5 +151,15 @@ extension WorkoutsCollectionViewCell {
         layer.shadowOpacity = 1.0
         layer.shadowRadius = 2
         layer.shadowOffset = CGSize(width: 1, height: 2)
+    }
+    
+    private func createMuscleGroupString(muscleGroups: [MuscleGroup]) -> String {
+        var muscleGroupString = ""
+        muscleGroups.forEach { gr in
+            muscleGroupString += "\(gr.rawValue), "
+        }
+        muscleGroupString.removeLast()
+        muscleGroupString.removeLast()
+        return muscleGroupString
     }
 }

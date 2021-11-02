@@ -39,20 +39,20 @@ extension WorkoutsViewController {
         
         setupNavBarItems(leftBarButtonName: .burger, firstRightBarButtonName: nil, secondRightBarButtonName: .plus, titleBarText: "WORKOUTS")
         
-        leftBarButton.addTarget(self, action: #selector(leftBarButtonTapped), for: .touchUpInside)
-        secondRightBarButton.addTarget(self, action: #selector(secondRightBarButtonTapped), for: .touchUpInside)
+        leftBarButton.addTarget(self, action: #selector(startMenuButtonTapped), for: .touchUpInside)
+        secondRightBarButton.addTarget(self, action: #selector(addBarButtonTapped), for: .touchUpInside)
     }
     
     private func setupAppearance() {
         
     }
     
-    @objc func leftBarButtonTapped() {
+    @objc func startMenuButtonTapped() {
         presenter.startMenuButtonTapped()
     }
     
-    @objc func secondRightBarButtonTapped() {
-        print(#function)
+    @objc func addBarButtonTapped() {
+        presenter.addBarButtonTapped()
     }
     
     
@@ -61,13 +61,22 @@ extension WorkoutsViewController {
 extension WorkoutsViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return presenter.workoutsData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkoutsCollectionViewCell.reuseIdentifier, for: indexPath) as? WorkoutsCollectionViewCell
+        
         guard let cell = cell else {return UICollectionViewCell()}
-        cell.setupCellItems(workoutTitle: "Legs", exercisesCount: 5, muscleGroups: "Legs, Chest", systemTagIsHidden: false)
+        
+        if let workout = presenter.workoutsData?[indexPath.item] {
+            cell.setupCellItems(
+                workoutTitle: workout.title,
+                exercisesCount: workout.countExercise,
+                muscleGroups: workout.muscleGroup,
+                systemTagIsHidden: !workout.system
+            )
+        }
         return cell
     }
 }
