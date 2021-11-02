@@ -21,6 +21,7 @@ protocol EditCreateWorkoutViewOutput: AnyObject {
     var editCreateType: EditCreateWorkoutType {get set}
     
     func backBarButtonTapped()
+    func saveBarButtonTapped()
     func addButtonTapped()
     
 }
@@ -43,6 +44,10 @@ extension EditCreateWorkoutPresenter {
     
     func backBarButtonTapped() {
         router.popVC()
+    }
+    
+    func saveBarButtonTapped(){
+        router.popVC(false)
     }
     
     func addButtonTapped() {

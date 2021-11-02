@@ -32,15 +32,24 @@ class EditCreateWorkoutViewController: YWContainerViewController, ExercisesViewI
 extension EditCreateWorkoutViewController {
     
     private func configViews() {
-        let title = presenter.editCreateType == .create ? "CREATE WORKOUT" : "EDIT WORKOUT"
-        
-        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: nil, titleBarText: title)
+        if presenter.editCreateType == .create {
+            setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil,
+                             secondRightBarButtonName: nil, titleBarText: "CREATE WORKOUT")
+        } else {
+            setupNavBarItems(leftBarButtonName: nil, firstRightBarButtonName: nil,
+                             secondRightBarButtonName: .checkmarkSeal, titleBarText: "EDIT WORKOUT")
+        }
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
+        secondRightBarButton.addTarget(self, action: #selector(saveBarButtonTapped), for: .touchUpInside)
     }
     
     @objc func backBarButtonTapped() {
         presenter.backBarButtonTapped()
+    }
+    
+    @objc func saveBarButtonTapped() {
+        presenter.saveBarButtonTapped()
     }
     
     @objc func addButtonTapped() {

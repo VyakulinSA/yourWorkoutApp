@@ -19,9 +19,13 @@ protocol RouterConfiguratorProtocol {
     
     func showAddExerciseViewController()
     
+    func showWorkoutDetailViewController(exercisesData: [Exercise]?, workout: Workout)
+    
     func popToRoot()
     
     func popVC()
+    
+    func popVC(_ animated: Bool)
 }
 
  
@@ -58,20 +62,34 @@ class RouterConfigurator: RouterConfiguratorProtocol {
     func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?) {
         if let navigationController = navigationController {
             guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType, exercisesData: exercisesData) else {return}
-            navigationController.pushViewController(editCreateWorkoutViewController, animated: true)
+            let animated = editCreateType == .create ? true : false
+            navigationController.pushViewController(editCreateWorkoutViewController, animated: animated)
         }
     }
     
     func showAddExerciseViewController() {
         if let navigationController = navigationController {
-            guard let addExerciseViewCOntroller = assemblyConfigurator?.createAddExerciseModule(router: self) else {return}
-            navigationController.pushViewController(addExerciseViewCOntroller, animated: true)
+            guard let addExerciseViewController = assemblyConfigurator?.createAddExerciseModule(router: self) else {return}
+            navigationController.pushViewController(addExerciseViewController, animated: true)
+        }
+    }
+    
+    func showWorkoutDetailViewController(exercisesData: [Exercise]?, workout: Workout) {
+        if let navigationController = navigationController {
+            guard let workoutDetailViewController = assemblyConfigurator?.createWorkoutDetailModule(router: self, exercisesData: exercisesData, workout: workout) else {return}
+            navigationController.pushViewController(workoutDetailViewController, animated: true)
         }
     }
     
     func popToRoot() {
         if let navigationController = navigationController {
             navigationController.popToRootViewController(animated: true)
+        }
+    }
+    
+    func popVC(_ animated: Bool) {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: animated)
         }
     }
     

@@ -25,7 +25,7 @@ class StartMenuViewController: UIViewController, StartMenuViewInput {
     
     private let exerciseButton = setupObject(UIButton(type: .system)) {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setTitle("Exercise", for: .normal)
+        $0.setTitle("Exercises", for: .normal)
         $0.setTitleColor(.lightTextColor, for: .normal)
         $0.titleLabel?.font = UIFont.myFont(.myFontBold, size: 28)
     }

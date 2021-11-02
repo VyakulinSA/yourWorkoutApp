@@ -55,6 +55,8 @@
 		3C876BBB273013F900FA6C6C /* EditCreateWorkoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BBA273013F900FA6C6C /* EditCreateWorkoutPresenter.swift */; };
 		3C876BC027312CD700FA6C6C /* AddExercisePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BBF27312CD700FA6C6C /* AddExercisePresenter.swift */; };
 		3C876BC227313ACC00FA6C6C /* AddExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BC127313ACC00FA6C6C /* AddExerciseViewController.swift */; };
+		3C876BC72731666F00FA6C6C /* WorkoutDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BC62731666F00FA6C6C /* WorkoutDetailPresenter.swift */; };
+		3C876BC9273166D100FA6C6C /* WorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BC8273166D100FA6C6C /* WorkoutDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		3C876BBA273013F900FA6C6C /* EditCreateWorkoutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateWorkoutPresenter.swift; sourceTree = "<group>"; };
 		3C876BBF27312CD700FA6C6C /* AddExercisePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercisePresenter.swift; sourceTree = "<group>"; };
 		3C876BC127313ACC00FA6C6C /* AddExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewController.swift; sourceTree = "<group>"; };
+		3C876BC62731666F00FA6C6C /* WorkoutDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailPresenter.swift; sourceTree = "<group>"; };
+		3C876BC8273166D100FA6C6C /* WorkoutDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,7 @@
 		3C876B68272AAB1000FA6C6C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3C876BC32731663B00FA6C6C /* WorkoutDetailModule */,
 				3C876BBC27312C3700FA6C6C /* AddExerciseModule */,
 				3C876BB52730135200FA6C6C /* EditCreateWorkoutModule */,
 				3C876BA5272FBABF00FA6C6C /* ExercisesModule */,
@@ -392,6 +397,31 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		3C876BC32731663B00FA6C6C /* WorkoutDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BC52731665C00FA6C6C /* Presenter */,
+				3C876BC42731665500FA6C6C /* View */,
+			);
+			path = WorkoutDetailModule;
+			sourceTree = "<group>";
+		};
+		3C876BC42731665500FA6C6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BC8273166D100FA6C6C /* WorkoutDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C876BC52731665C00FA6C6C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BC62731666F00FA6C6C /* WorkoutDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -546,12 +576,14 @@
 				3C876B95272ADF7B00FA6C6C /* YWIconButton.swift in Sources */,
 				3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */,
 				3C876B6F272AAEAE00FA6C6C /* StartMenuPresenter.swift in Sources */,
+				3C876BC9273166D100FA6C6C /* WorkoutDetailViewController.swift in Sources */,
 				3C876BA2272D665700FA6C6C /* UIView + extension.swift in Sources */,
 				3C876B88272AC02A00FA6C6C /* AssemblyConfigurator.swift in Sources */,
 				3C876B9E272C280500FA6C6C /* WorkoutsViewController.swift in Sources */,
 				3C876BA4272FBABB00FA6C6C /* ExercisesViewController.swift in Sources */,
 				3C876BB4273004AB00FA6C6C /* Exercise.swift in Sources */,
 				3C876BAB272FC51600FA6C6C /* ExerciseCollectionViewCell.swift in Sources */,
+				3C876BC72731666F00FA6C6C /* WorkoutDetailPresenter.swift in Sources */,
 				3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */,
 				3C876B6D272AAE3C00FA6C6C /* StartMenuViewController.swift in Sources */,
 				3C876BB9273013E200FA6C6C /* EditCreateWorkoutViewController.swift in Sources */,

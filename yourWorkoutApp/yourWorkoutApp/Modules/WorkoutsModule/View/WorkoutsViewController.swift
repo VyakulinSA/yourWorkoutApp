@@ -75,4 +75,8 @@ extension WorkoutsViewController {
         return CGSize(width: collectionView.frame.width - 40, height: 145)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectItem(item: indexPath.item)
+    }
+    
 }

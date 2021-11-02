@@ -1,5 +1,5 @@
 //
-//  AddExerciseViewController.swift
+//  WorkoutDetailViewController.swift
 //  yourWorkoutApp
 //
 //  Created by Вякулин Сергей on 02.11.2021.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class AddExerciseViewController: YWContainerViewController, AddExerciseViewInput {
+class WorkoutDetailViewController: YWContainerViewController, WorkoutDetailViewInput {
     
-    var presenter: AddExerciseViewOutput
+    var presenter: WorkoutDetailViewOutput
     
-    init(presenter: AddExerciseViewOutput){
+    init(presenter: WorkoutDetailViewOutput){
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -25,18 +25,20 @@ class AddExerciseViewController: YWContainerViewController, AddExerciseViewInput
         
         configViews()
     }
-
+    
 }
 
-extension AddExerciseViewController {
+extension WorkoutDetailViewController {
     
     private func configViews() {
         dataModel = presenter.exercisesData
         
-        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: .filter, titleBarText: "ADD TO WORKOUT")
+        let title = presenter.workout.title.uppercased()
+        
+        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: .gear, titleBarText: title)
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
-        secondRightBarButton.addTarget(self, action: #selector(filterBarButtonTapped), for: .touchUpInside)
+        secondRightBarButton.addTarget(self, action: #selector(gearBarButtonTapped), for: .touchUpInside)
     }
     
     
@@ -44,7 +46,7 @@ extension AddExerciseViewController {
         presenter.backBarButtonTapped()
     }
     
-    @objc func filterBarButtonTapped() {
-        presenter.filterBarButtonTapped()
+    @objc func gearBarButtonTapped() {
+        presenter.gearBarButtonTapped()
     }
 }

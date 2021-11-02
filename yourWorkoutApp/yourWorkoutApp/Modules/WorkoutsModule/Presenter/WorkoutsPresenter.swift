@@ -18,6 +18,7 @@ protocol WorkoutsViewOutput: AnyObject {
     
     func startMenuButtonTapped()
     func addBarButtonTapped()
+    func didSelectItem(item: Int)
     
 }
 
@@ -40,6 +41,11 @@ extension WorkoutsPresenter {
     
     func addBarButtonTapped() {
         router.showEditCreateWorkoutViewController(editCreateType: .create, exercisesData: nil)
+    }
+    
+    func didSelectItem(item: Int) {
+        guard let workoutsData = workoutsData else {return}
+        router.showWorkoutDetailViewController(exercisesData: nil, workout: workoutsData[item])
     }
     
     private func getWorkoutsData() {
