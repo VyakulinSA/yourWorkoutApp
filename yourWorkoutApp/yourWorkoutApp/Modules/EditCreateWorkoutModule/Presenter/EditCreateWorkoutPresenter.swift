@@ -30,9 +30,10 @@ class EditCreateWorkoutPresenter: EditCreateWorkoutViewOutput {
     var exercisesData: [Exercise]?
     private var router: RouterConfiguratorProtocol
     
-    init(router: RouterConfiguratorProtocol, editCreateType: EditCreateWorkoutType) {
+    init(router: RouterConfiguratorProtocol, editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?) {
         self.router = router
         self.editCreateType = editCreateType
+        self.exercisesData = exercisesData
         getExercisesData()
     }
     

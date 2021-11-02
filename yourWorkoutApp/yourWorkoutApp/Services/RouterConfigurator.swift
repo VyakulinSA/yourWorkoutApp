@@ -15,7 +15,7 @@ protocol RouterConfiguratorProtocol {
     
     func showExercisesViewController()
     
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType)
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?)
     
     func showAddExerciseViewController()
     
@@ -55,9 +55,9 @@ class RouterConfigurator: RouterConfiguratorProtocol {
         }
     }
     
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType) {
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?) {
         if let navigationController = navigationController {
-            guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType) else {return}
+            guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType, exercisesData: exercisesData) else {return}
             navigationController.pushViewController(editCreateWorkoutViewController, animated: true)
         }
     }

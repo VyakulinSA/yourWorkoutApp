@@ -39,7 +39,7 @@ extension WorkoutsPresenter {
     }
     
     func addBarButtonTapped() {
-        router.showEditCreateWorkoutViewController(editCreateType: .create)
+        router.showEditCreateWorkoutViewController(editCreateType: .create, exercisesData: nil)
     }
     
     private func getWorkoutsData() {

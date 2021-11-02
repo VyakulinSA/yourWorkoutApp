@@ -25,7 +25,6 @@ class WorkoutsViewController: YWContainerViewController, WorkoutsViewInput {
        
         configViews()
     }
-    
 
 }
 
@@ -33,8 +32,6 @@ extension WorkoutsViewController {
     
     private func configViews() {
         collectionView.register(WorkoutsCollectionViewCell.self, forCellWithReuseIdentifier: WorkoutsCollectionViewCell.reuseIdentifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
         
         setupNavBarItems(leftBarButtonName: .burger, firstRightBarButtonName: nil, secondRightBarButtonName: .plus, titleBarText: "WORKOUTS")
         
@@ -49,17 +46,16 @@ extension WorkoutsViewController {
     @objc func addBarButtonTapped() {
         presenter.addBarButtonTapped()
     }
-    
-    
 }
 
-extension WorkoutsViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+//MARK: Configure Collection
+extension WorkoutsViewController {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.workoutsData?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkoutsCollectionViewCell.reuseIdentifier, for: indexPath) as? WorkoutsCollectionViewCell
         
         guard let cell = cell else {return UICollectionViewCell()}
@@ -74,19 +70,9 @@ extension WorkoutsViewController: UICollectionViewDataSource, UICollectionViewDe
         }
         return cell
     }
-}
-
-extension WorkoutsViewController: UICollectionViewDelegateFlowLayout{
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - 40, height: 145)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
 }

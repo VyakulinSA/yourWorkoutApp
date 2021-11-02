@@ -9,6 +9,8 @@ import UIKit
 
 class YWContainerViewController: UIViewController {
     
+    var dataModel: [Exercise]?
+    
     private var leftBarButtonName: IconButtonNames?
     private var firstRightBarButtonName: IconButtonNames?
     private var secondRightBarButtonName: IconButtonNames?
@@ -48,16 +50,16 @@ class YWContainerViewController: UIViewController {
         $0.textAlignment = .center
     }
     
-    let collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.backgroundColor = .clear
         collection.showsVerticalScrollIndicator = false
         collection.alwaysBounceVertical = false
-        //register
-        //delegate
-        //dataSource
+        collection.register(ExerciseCollectionViewCell.self, forCellWithReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier)
+        collection.delegate = self
+        collection.dataSource = self
         return collection
     }()
     
@@ -153,3 +155,34 @@ extension YWContainerViewController {
     }
     
 }
+
+extension YWContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataModel?.count ?? 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell
+        guard let cell = cell else {return UICollectionViewCell()}
+        if let exercise = dataModel?[indexPath.item] {
+            cell.setupCellItems(exerciseImage: exercise.startImage, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
+        }
+        return cell
+    }
+}
+
+extension YWContainerViewController: UICollectionViewDelegateFlowLayout{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width - 40, height: 80)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+}
+
