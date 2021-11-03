@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExercisesViewController: YWContainerViewController, ExercisesViewInput {
+class ExercisesViewController: YWMainContainerViewController, ExercisesViewInput {
 
     var presenter: ExercisesViewOutput
     
@@ -38,8 +38,8 @@ extension ExercisesViewController {
         setupNavBarItems(leftBarButtonName: .burger, firstRightBarButtonName: .filter, secondRightBarButtonName: .plus, titleBarText: "EXERCISES")
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
-        firstRightBarButton.addTarget(self, action: #selector(firstRightBarButtonTapped), for: .touchUpInside)
-        secondRightBarButton.addTarget(self, action: #selector(secondRightBarButtonTapped), for: .touchUpInside)
+        firstRightBarButton.addTarget(self, action: #selector(filterBarButtonTapped), for: .touchUpInside)
+        secondRightBarButton.addTarget(self, action: #selector(createBarButtonTapped), for: .touchUpInside)
         
     }
     
@@ -47,11 +47,11 @@ extension ExercisesViewController {
         presenter.startMenuButtonTapped()
     }
     
-    @objc func firstRightBarButtonTapped() {
-        print(#function)
+    @objc func filterBarButtonTapped() {
+        presenter.filterBarButtonTapped()
     }
     
-    @objc func secondRightBarButtonTapped() {
-        print(#function)
+    @objc func createBarButtonTapped() {
+        presenter.createBarButtonTapped()
     }
 }

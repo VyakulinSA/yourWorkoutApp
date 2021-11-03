@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class EditCreateWorkoutViewController: YWContainerViewController, ExercisesViewInput {
+class EditCreateWorkoutViewController: YWMainContainerViewController, ExercisesViewInput {
     
     private var presenter: EditCreateWorkoutViewOutput
     

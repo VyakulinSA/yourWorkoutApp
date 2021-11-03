@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddExerciseViewController: YWContainerViewController, AddExerciseViewInput {
+class AddExerciseViewController: YWMainContainerViewController, AddExerciseViewInput {
     
     var presenter: AddExerciseViewOutput
     

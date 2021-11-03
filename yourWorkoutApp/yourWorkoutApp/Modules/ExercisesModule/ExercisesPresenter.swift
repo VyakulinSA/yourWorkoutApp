@@ -16,6 +16,8 @@ protocol ExercisesViewOutput: AnyObject {
     var exercisesData: [Exercise]? {get set}
 
     func startMenuButtonTapped()
+    func filterBarButtonTapped()
+    func createBarButtonTapped()
     
 }
 
@@ -36,6 +38,13 @@ extension ExercisesPresenter {
 
     func startMenuButtonTapped() {
         router.initialViewController()
+    }
+    
+    func filterBarButtonTapped() {
+        print(#function)
+    }
+    func createBarButtonTapped(){
+        router.showEditCreateExerciseViewController(editCreateType: .create, exercise: nil)
     }
     
     private func getExercisesData() {

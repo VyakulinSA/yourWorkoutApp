@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MuscleGroup: String{
+enum MuscleGroup: String, CaseIterable{
     case wholeBody = "Whole Body"
     case shoulders = "Shoulders"
     case biceps = "Biceps"

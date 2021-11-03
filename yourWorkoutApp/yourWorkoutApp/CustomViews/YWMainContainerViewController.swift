@@ -1,5 +1,5 @@
 //
-//  YWContainerViewController.swift
+//  YWMainContainerViewController.swift
 //  yourWorkoutApp
 //
 //  Created by Вякулин Сергей on 28.10.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YWContainerViewController: UIViewController {
+class YWMainContainerViewController: UIViewController {
     
     var dataModel: [Exercise]?
     
@@ -72,7 +72,7 @@ class YWContainerViewController: UIViewController {
 }
 
 //MARK: - configViews
-extension YWContainerViewController {
+extension YWMainContainerViewController {
     
     func setupNavBarItems(leftBarButtonName: IconButtonNames?, firstRightBarButtonName: IconButtonNames?,
                         secondRightBarButtonName: IconButtonNames?, titleBarText: String) {
@@ -93,7 +93,7 @@ extension YWContainerViewController {
 }
 
 //MARK: - setupAppearance
-extension YWContainerViewController {
+extension YWMainContainerViewController {
     
     private func setupAppearance() {
         view.backgroundColor = .mainBackgroundColor
@@ -156,7 +156,7 @@ extension YWContainerViewController {
     
 }
 
-extension YWContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension YWMainContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataModel?.count ?? 0
     }
@@ -171,7 +171,7 @@ extension YWContainerViewController: UICollectionViewDelegate, UICollectionViewD
     }
 }
 
-extension YWContainerViewController: UICollectionViewDelegateFlowLayout{
+extension YWMainContainerViewController: UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - 40, height: 80)

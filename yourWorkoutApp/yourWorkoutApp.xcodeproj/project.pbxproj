@@ -37,9 +37,9 @@
 		3C876B8C272AC14F00FA6C6C /* RouterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B8B272AC14F00FA6C6C /* RouterConfigurator.swift */; };
 		3C876B8D272AC14F00FA6C6C /* RouterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B8B272AC14F00FA6C6C /* RouterConfigurator.swift */; };
 		3C876B8E272AC14F00FA6C6C /* RouterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B8B272AC14F00FA6C6C /* RouterConfigurator.swift */; };
-		3C876B91272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B90272ADBEF00FA6C6C /* YWContainerViewController.swift */; };
-		3C876B92272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B90272ADBEF00FA6C6C /* YWContainerViewController.swift */; };
-		3C876B93272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B90272ADBEF00FA6C6C /* YWContainerViewController.swift */; };
+		3C876B91272ADBEF00FA6C6C /* YWMainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B90272ADBEF00FA6C6C /* YWMainContainerViewController.swift */; };
+		3C876B92272ADBEF00FA6C6C /* YWMainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B90272ADBEF00FA6C6C /* YWMainContainerViewController.swift */; };
+		3C876B93272ADBEF00FA6C6C /* YWMainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B90272ADBEF00FA6C6C /* YWMainContainerViewController.swift */; };
 		3C876B95272ADF7B00FA6C6C /* YWIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B94272ADF7B00FA6C6C /* YWIconButton.swift */; };
 		3C876B97272ADFB500FA6C6C /* UIColor + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B96272ADFB500FA6C6C /* UIColor + extension.swift */; };
 		3C876B9C272C23C800FA6C6C /* WorkoutsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B9B272C23C800FA6C6C /* WorkoutsPresenter.swift */; };
@@ -57,6 +57,15 @@
 		3C876BC227313ACC00FA6C6C /* AddExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BC127313ACC00FA6C6C /* AddExerciseViewController.swift */; };
 		3C876BC72731666F00FA6C6C /* WorkoutDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BC62731666F00FA6C6C /* WorkoutDetailPresenter.swift */; };
 		3C876BC9273166D100FA6C6C /* WorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BC8273166D100FA6C6C /* WorkoutDetailViewController.swift */; };
+		3C876BCC2732A87C00FA6C6C /* YWExerciseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BCB2732A87C00FA6C6C /* YWExerciseContainerViewController.swift */; };
+		3C876BCE2732BB9500FA6C6C /* ExerciseImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BCD2732BB9500FA6C6C /* ExerciseImagesCollectionViewCell.swift */; };
+		3C876BD02732CB0300FA6C6C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BCF2732CB0300FA6C6C /* ImageCollectionViewCell.swift */; };
+		3C876BD32733053800FA6C6C /* ExerciseTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BD22733053800FA6C6C /* ExerciseTitleCollectionViewCell.swift */; };
+		3C876BD5273309FF00FA6C6C /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BD4273309FF00FA6C6C /* UITextField + extension.swift */; };
+		3C876BD727330CD300FA6C6C /* ExerciseMuscleGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BD627330CD300FA6C6C /* ExerciseMuscleGroupCollectionViewCell.swift */; };
+		3C876BDB2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BDA2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift */; };
+		3C876BE12733280A00FA6C6C /* EditCreateExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BE02733280A00FA6C6C /* EditCreateExerciseViewController.swift */; };
+		3C876BE32733285800FA6C6C /* EditCreateExercisePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BE22733285800FA6C6C /* EditCreateExercisePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +108,7 @@
 		3C876B82272AB99300FA6C6C /* UIFont + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + extension.swift"; sourceTree = "<group>"; };
 		3C876B87272AC02A00FA6C6C /* AssemblyConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyConfigurator.swift; sourceTree = "<group>"; };
 		3C876B8B272AC14F00FA6C6C /* RouterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterConfigurator.swift; sourceTree = "<group>"; };
-		3C876B90272ADBEF00FA6C6C /* YWContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWContainerViewController.swift; sourceTree = "<group>"; };
+		3C876B90272ADBEF00FA6C6C /* YWMainContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWMainContainerViewController.swift; sourceTree = "<group>"; };
 		3C876B94272ADF7B00FA6C6C /* YWIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWIconButton.swift; sourceTree = "<group>"; };
 		3C876B96272ADFB500FA6C6C /* UIColor + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
 		3C876B9B272C23C800FA6C6C /* WorkoutsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsPresenter.swift; sourceTree = "<group>"; };
@@ -117,6 +126,15 @@
 		3C876BC127313ACC00FA6C6C /* AddExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewController.swift; sourceTree = "<group>"; };
 		3C876BC62731666F00FA6C6C /* WorkoutDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailPresenter.swift; sourceTree = "<group>"; };
 		3C876BC8273166D100FA6C6C /* WorkoutDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailViewController.swift; sourceTree = "<group>"; };
+		3C876BCB2732A87C00FA6C6C /* YWExerciseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWExerciseContainerViewController.swift; sourceTree = "<group>"; };
+		3C876BCD2732BB9500FA6C6C /* ExerciseImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		3C876BCF2732CB0300FA6C6C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		3C876BD22733053800FA6C6C /* ExerciseTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		3C876BD4273309FF00FA6C6C /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
+		3C876BD627330CD300FA6C6C /* ExerciseMuscleGroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseMuscleGroupCollectionViewCell.swift; sourceTree = "<group>"; };
+		3C876BDA2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		3C876BE02733280A00FA6C6C /* EditCreateExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateExerciseViewController.swift; sourceTree = "<group>"; };
+		3C876BE22733285800FA6C6C /* EditCreateExercisePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateExercisePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +229,7 @@
 		3C876B68272AAB1000FA6C6C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3C876BDD273327CF00FA6C6C /* EditCreateExerciseModule */,
 				3C876BC32731663B00FA6C6C /* WorkoutDetailModule */,
 				3C876BBC27312C3700FA6C6C /* AddExerciseModule */,
 				3C876BB52730135200FA6C6C /* EditCreateWorkoutModule */,
@@ -254,6 +273,7 @@
 				3C876B82272AB99300FA6C6C /* UIFont + extension.swift */,
 				3C876B96272ADFB500FA6C6C /* UIColor + extension.swift */,
 				3C876BA1272D665700FA6C6C /* UIView + extension.swift */,
+				3C876BD4273309FF00FA6C6C /* UITextField + extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -280,10 +300,10 @@
 		3C876B8F272ADBA400FA6C6C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				3C876B90272ADBEF00FA6C6C /* YWContainerViewController.swift */,
+				3C876B90272ADBEF00FA6C6C /* YWMainContainerViewController.swift */,
+				3C876BCB2732A87C00FA6C6C /* YWExerciseContainerViewController.swift */,
 				3C876B94272ADF7B00FA6C6C /* YWIconButton.swift */,
-				3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */,
-				3C876BAA272FC51600FA6C6C /* ExerciseCollectionViewCell.swift */,
+				3C876BCA2732A81E00FA6C6C /* CollectionViewCell */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -418,6 +438,61 @@
 			isa = PBXGroup;
 			children = (
 				3C876BC62731666F00FA6C6C /* WorkoutDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3C876BCA2732A81E00FA6C6C /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C876B9F272D655200FA6C6C /* WorkoutsCollectionViewCell.swift */,
+				3C876BAA272FC51600FA6C6C /* ExerciseCollectionViewCell.swift */,
+				3C876BD12732CB0600FA6C6C /* ExerciseContainerViewCell */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		3C876BD12732CB0600FA6C6C /* ExerciseContainerViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BDC273327B400FA6C6C /* ExerciseImagesCollectionViewCell */,
+				3C876BD22733053800FA6C6C /* ExerciseTitleCollectionViewCell.swift */,
+				3C876BD627330CD300FA6C6C /* ExerciseMuscleGroupCollectionViewCell.swift */,
+				3C876BDA2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift */,
+			);
+			path = ExerciseContainerViewCell;
+			sourceTree = "<group>";
+		};
+		3C876BDC273327B400FA6C6C /* ExerciseImagesCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BCD2732BB9500FA6C6C /* ExerciseImagesCollectionViewCell.swift */,
+				3C876BCF2732CB0300FA6C6C /* ImageCollectionViewCell.swift */,
+			);
+			path = ExerciseImagesCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		3C876BDD273327CF00FA6C6C /* EditCreateExerciseModule */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BDF273327EB00FA6C6C /* Presenter */,
+				3C876BDE273327E700FA6C6C /* View */,
+			);
+			path = EditCreateExerciseModule;
+			sourceTree = "<group>";
+		};
+		3C876BDE273327E700FA6C6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BE02733280A00FA6C6C /* EditCreateExerciseViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C876BDF273327EB00FA6C6C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BE22733285800FA6C6C /* EditCreateExercisePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -562,10 +637,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C876BBB273013F900FA6C6C /* EditCreateWorkoutPresenter.swift in Sources */,
+				3C876BD32733053800FA6C6C /* ExerciseTitleCollectionViewCell.swift in Sources */,
 				3C876BA0272D655200FA6C6C /* WorkoutsCollectionViewCell.swift in Sources */,
 				3C876B83272AB99300FA6C6C /* UIFont + extension.swift in Sources */,
 				3C876BB22730009300FA6C6C /* Workout.swift in Sources */,
-				3C876B91272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */,
+				3C876BD727330CD300FA6C6C /* ExerciseMuscleGroupCollectionViewCell.swift in Sources */,
+				3C876B91272ADBEF00FA6C6C /* YWMainContainerViewController.swift in Sources */,
 				3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */,
 				3C876B74272AB4DF00FA6C6C /* Constraints.swift in Sources */,
 				3C876BC027312CD700FA6C6C /* AddExercisePresenter.swift in Sources */,
@@ -576,16 +653,23 @@
 				3C876B95272ADF7B00FA6C6C /* YWIconButton.swift in Sources */,
 				3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */,
 				3C876B6F272AAEAE00FA6C6C /* StartMenuPresenter.swift in Sources */,
+				3C876BDB2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift in Sources */,
 				3C876BC9273166D100FA6C6C /* WorkoutDetailViewController.swift in Sources */,
 				3C876BA2272D665700FA6C6C /* UIView + extension.swift in Sources */,
 				3C876B88272AC02A00FA6C6C /* AssemblyConfigurator.swift in Sources */,
 				3C876B9E272C280500FA6C6C /* WorkoutsViewController.swift in Sources */,
 				3C876BA4272FBABB00FA6C6C /* ExercisesViewController.swift in Sources */,
+				3C876BCC2732A87C00FA6C6C /* YWExerciseContainerViewController.swift in Sources */,
 				3C876BB4273004AB00FA6C6C /* Exercise.swift in Sources */,
+				3C876BD02732CB0300FA6C6C /* ImageCollectionViewCell.swift in Sources */,
 				3C876BAB272FC51600FA6C6C /* ExerciseCollectionViewCell.swift in Sources */,
+				3C876BD5273309FF00FA6C6C /* UITextField + extension.swift in Sources */,
+				3C876BE12733280A00FA6C6C /* EditCreateExerciseViewController.swift in Sources */,
 				3C876BC72731666F00FA6C6C /* WorkoutDetailPresenter.swift in Sources */,
 				3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */,
 				3C876B6D272AAE3C00FA6C6C /* StartMenuViewController.swift in Sources */,
+				3C876BCE2732BB9500FA6C6C /* ExerciseImagesCollectionViewCell.swift in Sources */,
+				3C876BE32733285800FA6C6C /* EditCreateExercisePresenter.swift in Sources */,
 				3C876BB9273013E200FA6C6C /* EditCreateWorkoutViewController.swift in Sources */,
 				3C876BC227313ACC00FA6C6C /* AddExerciseViewController.swift in Sources */,
 				3C876B97272ADFB500FA6C6C /* UIColor + extension.swift in Sources */,
@@ -599,7 +683,7 @@
 				3C876B89272AC02A00FA6C6C /* AssemblyConfigurator.swift in Sources */,
 				3C876B84272AB99300FA6C6C /* UIFont + extension.swift in Sources */,
 				3C876B4F2729D63400FA6C6C /* yourWorkoutAppTests.swift in Sources */,
-				3C876B92272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */,
+				3C876B92272ADBEF00FA6C6C /* YWMainContainerViewController.swift in Sources */,
 				3C876B8D272AC14F00FA6C6C /* RouterConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,7 +692,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C876B93272ADBEF00FA6C6C /* YWContainerViewController.swift in Sources */,
+				3C876B93272ADBEF00FA6C6C /* YWMainContainerViewController.swift in Sources */,
 				3C876B8A272AC02A00FA6C6C /* AssemblyConfigurator.swift in Sources */,
 				3C876B85272AB99300FA6C6C /* UIFont + extension.swift in Sources */,
 				3C876B592729D63400FA6C6C /* yourWorkoutAppUITests.swift in Sources */,

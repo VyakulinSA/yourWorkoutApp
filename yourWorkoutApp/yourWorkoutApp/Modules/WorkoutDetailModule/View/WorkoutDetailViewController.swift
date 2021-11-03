@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WorkoutDetailViewController: YWContainerViewController, WorkoutDetailViewInput {
+class WorkoutDetailViewController: YWMainContainerViewController, WorkoutDetailViewInput {
     
     var presenter: WorkoutDetailViewOutput
     
