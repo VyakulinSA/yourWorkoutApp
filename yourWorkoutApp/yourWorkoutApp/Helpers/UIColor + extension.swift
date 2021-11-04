@@ -27,7 +27,7 @@ extension UIColor {
     }
     
     static var selectedBadgeColor: UIColor {
-        return UIColor(named: "inputViewsColor") ?? #colorLiteral(red: 0.3607843137, green: 0.5921568627, blue: 0.5764705882, alpha: 1)
+        return UIColor(named: "selectedBadgeColor") ?? #colorLiteral(red: 0.3607843137, green: 0.5921568627, blue: 0.5764705882, alpha: 1)
     }
     
     static var unselectedBadgeColor: UIColor {

@@ -24,6 +24,8 @@ protocol AssembliConfiguratorProtocol: AnyObject {
     func createEditCreateExerciseModule(router: RouterConfiguratorProtocol, editCreateType: EditCreateExerciseType, exercise: Exercise?) -> UIViewController
     
     func createExerciseDetailModule(router: RouterConfiguratorProtocol, exercise: Exercise) -> UIViewController
+    
+    func createFilterExerciseModule(router: RouterConfiguratorProtocol) -> UIViewController
 }
  
 class AssemblyConfigurator: AssembliConfiguratorProtocol {
@@ -72,6 +74,12 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
     func createExerciseDetailModule(router: RouterConfiguratorProtocol, exercise: Exercise) -> UIViewController {
         let presenter = ExerciseDetailPresenter(router: router, exercise: exercise)
         let view = ExerciseDetailViewController(presenter: presenter)
+        return view
+    }
+    
+    func createFilterExerciseModule(router: RouterConfiguratorProtocol) -> UIViewController {
+        let presenter = FilterExercisePresenter(router: router)
+        let view = FilterExerciseViewController(presenter: presenter)
         return view
     }
 }

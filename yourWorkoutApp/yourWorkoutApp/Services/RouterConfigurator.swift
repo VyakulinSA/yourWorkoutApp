@@ -25,6 +25,8 @@ protocol RouterConfiguratorProtocol {
     
     func showExerciseDetailViewController(exercise: Exercise)
     
+    func showFilterExerciseViewConteroller()
+    
     func popToRoot()
     
     func popVC()
@@ -97,6 +99,15 @@ class RouterConfigurator: RouterConfiguratorProtocol {
             guard let exerciseDetailViewController = assemblyConfigurator?.createExerciseDetailModule(router: self, exercise: exercise) else {return}
             navigationController.pushViewController(exerciseDetailViewController, animated: true)
         }
+    }
+    
+    func showFilterExerciseViewConteroller() {
+        if let navigationController = navigationController {
+        guard let filterExerciseViewController = assemblyConfigurator?.createFilterExerciseModule(router: self) else {return}
+            navigationController.present(filterExerciseViewController, animated: true, completion: nil)
+        }
+        
+    
     }
     
     func popToRoot() {

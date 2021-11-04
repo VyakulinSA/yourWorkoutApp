@@ -43,7 +43,7 @@ extension ExercisesPresenter {
     }
     
     func filterBarButtonTapped() {
-        print(#function)
+        router.showFilterExerciseViewConteroller()
     }
     func createBarButtonTapped(){
         router.showEditCreateExerciseViewController(editCreateType: .create, exercise: nil)
