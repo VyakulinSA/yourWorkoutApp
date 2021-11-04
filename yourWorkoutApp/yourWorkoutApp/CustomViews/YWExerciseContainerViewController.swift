@@ -7,7 +7,7 @@
 
 import UIKit
 
-private enum CellSettings: CaseIterable{
+enum CellSettings: CaseIterable{
     case imagesCell
     case titleCell
     case muscleGroupCell
@@ -38,6 +38,20 @@ private enum CellSettings: CaseIterable{
             return 150
         }
     }
+    
+    var detailHeightCell: CGFloat {
+        switch self {
+        case .imagesCell:
+            return 250
+        case .titleCell:
+            return 30
+        case .muscleGroupCell:
+            return 65
+        case .descriptionCell:
+            return 150
+        }
+    }
+
 }
 
 class YWExerciseContainerViewController: YWMainContainerViewController {
@@ -61,10 +75,8 @@ extension YWExerciseContainerViewController {
     }
     
     private func getCellSettings(item: Int) -> (identifierCell: String, heightCell: CGFloat) {
-        
         return (identifierCell: CellSettings.allCases[item].identifierCell,
                 heightCell: CellSettings.allCases[item].heightCell)
-        
     }
 }
 
@@ -75,21 +87,25 @@ extension YWExerciseContainerViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //FIXME: сделать через switch и тип ячейки
-        if indexPath.item == 0{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellSettings.imagesCell.identifierCell, for: indexPath) as? ExerciseImagesCollectionViewCell
-            return cell!
-        } else if indexPath.item == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellSettings.titleCell.identifierCell, for: indexPath) as? ExerciseTitleCollectionViewCell
-            return cell!
-        } else if indexPath.item == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellSettings.muscleGroupCell.identifierCell, for: indexPath) as? ExerciseMuscleGroupCollectionViewCell
-            return cell!
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellSettings.descriptionCell.identifierCell, for: indexPath) as? ExerciseDescriptionCollectionViewCell
-            return cell!
+        let identifier = CellSettings.allCases[indexPath.item].identifierCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        
+        switch cell {
+        case let cell as ExerciseImagesCollectionViewCell:
+            //config cell
+            return cell
+        case let cell as ExerciseTitleCollectionViewCell:
+            //config cell
+            return cell
+        case let cell as ExerciseMuscleGroupCollectionViewCell:
+            //config cell
+            return cell
+        case let cell as ExerciseDescriptionCollectionViewCell:
+            //config cell
+            return cell
+        default:
+            return cell
         }
-
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

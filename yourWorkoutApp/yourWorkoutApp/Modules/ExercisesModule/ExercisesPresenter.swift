@@ -19,13 +19,15 @@ protocol ExercisesViewOutput: AnyObject {
     func filterBarButtonTapped()
     func createBarButtonTapped()
     
+    func didSelectCell(item: Int)
+    
 }
 
 
 class ExercisesPresenter: ExercisesViewOutput {
     
     var exercisesData: [Exercise]?
-    var router: RouterConfiguratorProtocol
+    private var router: RouterConfiguratorProtocol
     
     init(router: RouterConfiguratorProtocol){
         self.router = router
@@ -45,6 +47,11 @@ extension ExercisesPresenter {
     }
     func createBarButtonTapped(){
         router.showEditCreateExerciseViewController(editCreateType: .create, exercise: nil)
+    }
+    
+    func didSelectCell(item: Int) {
+        guard let exercise = exercisesData?[item] else {return}
+        router.showExerciseDetailViewController(exercise: exercise)
     }
     
     private func getExercisesData() {

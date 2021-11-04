@@ -48,8 +48,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
 
 extension ImageCollectionViewCell {
     
-    func setupCellItems(title: String){
+    func setupCellItems(title: String, imageData: Data?){
         titleLabel.text = title
+        guard let imageData = imageData else { return }
+        exerciseImageView.image = UIImage(data: imageData)
+
     }
     
     private func setupAppearance() {

@@ -55,3 +55,11 @@ extension ExercisesViewController {
         presenter.createBarButtonTapped()
     }
 }
+
+//config collectionView
+extension ExercisesViewController {
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectCell(item: indexPath.item)
+    }
+}

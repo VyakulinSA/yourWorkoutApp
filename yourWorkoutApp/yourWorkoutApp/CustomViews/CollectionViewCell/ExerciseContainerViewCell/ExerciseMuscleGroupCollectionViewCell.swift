@@ -12,7 +12,7 @@ class ExerciseMuscleGroupCollectionViewCell: ExerciseTitleCollectionViewCell {
     private var elements = MuscleGroup.allCases.map{$0.rawValue}
     private var selectedElement: String?
     
-    private let chevronImage: UIImageView = {
+    let chevronImage: UIImageView = {
         let image = UIImageView(image: UIImage(systemName: "chevron.down"))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -20,6 +20,11 @@ class ExerciseMuscleGroupCollectionViewCell: ExerciseTitleCollectionViewCell {
         image.tintColor = .iconNormalColor
         return image
     }()
+    
+    let detailMuscleGroupView = setupObject(YWMuscleGroupBageView()) {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isHidden = true
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,18 +45,27 @@ extension ExerciseMuscleGroupCollectionViewCell {
         
         titleLabel.text = "Muscle group"
         titleTextField.placeholder = "Muscle group"
-        chevronImage.isUserInteractionEnabled = false
         
         choiceElement()
     }
     
     private func setupAppearance() {
         addSubview(chevronImage)
+        addSubview(detailMuscleGroupView)
+        
         
         NSLayoutConstraint.activate([
             chevronImage.centerYAnchor.constraint(equalTo: titleTextField.centerYAnchor),
             chevronImage.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor, constant: -18)
         ])
+        
+        detailMuscleGroupView.anchor(
+            top: titleLabel.bottomAnchor,
+            leading: leadingAnchor,
+            bottom: nil,
+            trailing: nil,
+            padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 0),
+            size: CGSize(width: 100, height: 30))
     }
 }
 

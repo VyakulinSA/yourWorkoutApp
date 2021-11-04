@@ -27,6 +27,9 @@ private enum ImagesCellSettings: CaseIterable {
 
 class ExerciseImagesCollectionViewCell: UICollectionViewCell {
     
+    private var startImageData: Data?
+    private var endImageData: Data?
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -50,6 +53,11 @@ class ExerciseImagesCollectionViewCell: UICollectionViewCell {
 }
 
 extension ExerciseImagesCollectionViewCell {
+    
+    func setupImagesData(startImageData: Data?, endImageData: Data?) {
+        self.startImageData = startImageData
+        self.endImageData = endImageData
+    }
     
     private func configViews() {
         collectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
@@ -80,7 +88,9 @@ extension ExerciseImagesCollectionViewCell: UICollectionViewDelegate, UICollecti
         
         guard let cell = cell else {return UICollectionViewCell()}
         
-        cell.setupCellItems(title: ImagesCellSettings.allCases[indexPath.item].title)
+        let imageData = ImagesCellSettings.allCases[indexPath.item] == .startImage ? startImageData : endImageData
+        
+        cell.setupCellItems(title: ImagesCellSettings.allCases[indexPath.item].title, imageData: imageData)
         
         return cell
     }

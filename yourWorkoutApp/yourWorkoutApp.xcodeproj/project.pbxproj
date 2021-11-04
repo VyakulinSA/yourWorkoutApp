@@ -66,6 +66,9 @@
 		3C876BDB2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BDA2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift */; };
 		3C876BE12733280A00FA6C6C /* EditCreateExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BE02733280A00FA6C6C /* EditCreateExerciseViewController.swift */; };
 		3C876BE32733285800FA6C6C /* EditCreateExercisePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BE22733285800FA6C6C /* EditCreateExercisePresenter.swift */; };
+		3C876BE9273405E700FA6C6C /* YWMuscleGroupBageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BE8273405E700FA6C6C /* YWMuscleGroupBageView.swift */; };
+		3C876BEB273409BC00FA6C6C /* ExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BEA273409BC00FA6C6C /* ExerciseDetailViewController.swift */; };
+		3C876BED27340A4E00FA6C6C /* ExerciseDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BEC27340A4E00FA6C6C /* ExerciseDetailPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,9 @@
 		3C876BDA2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C876BE02733280A00FA6C6C /* EditCreateExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateExerciseViewController.swift; sourceTree = "<group>"; };
 		3C876BE22733285800FA6C6C /* EditCreateExercisePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateExercisePresenter.swift; sourceTree = "<group>"; };
+		3C876BE8273405E700FA6C6C /* YWMuscleGroupBageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWMuscleGroupBageView.swift; sourceTree = "<group>"; };
+		3C876BEA273409BC00FA6C6C /* ExerciseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewController.swift; sourceTree = "<group>"; };
+		3C876BEC27340A4E00FA6C6C /* ExerciseDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,10 +236,11 @@
 			isa = PBXGroup;
 			children = (
 				3C876BDD273327CF00FA6C6C /* EditCreateExerciseModule */,
-				3C876BC32731663B00FA6C6C /* WorkoutDetailModule */,
+				3C876BE5273400EB00FA6C6C /* ExerciseDetailModule */,
+				3C876BA5272FBABF00FA6C6C /* ExercisesModule */,
 				3C876BBC27312C3700FA6C6C /* AddExerciseModule */,
 				3C876BB52730135200FA6C6C /* EditCreateWorkoutModule */,
-				3C876BA5272FBABF00FA6C6C /* ExercisesModule */,
+				3C876BC32731663B00FA6C6C /* WorkoutDetailModule */,
 				3C876B98272C233700FA6C6C /* WorkoutsModule */,
 				3C876B69272AAB1F00FA6C6C /* StartMenuModule */,
 			);
@@ -303,6 +310,7 @@
 				3C876B90272ADBEF00FA6C6C /* YWMainContainerViewController.swift */,
 				3C876BCB2732A87C00FA6C6C /* YWExerciseContainerViewController.swift */,
 				3C876B94272ADF7B00FA6C6C /* YWIconButton.swift */,
+				3C876BE8273405E700FA6C6C /* YWMuscleGroupBageView.swift */,
 				3C876BCA2732A81E00FA6C6C /* CollectionViewCell */,
 			);
 			path = CustomViews;
@@ -497,6 +505,31 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		3C876BE5273400EB00FA6C6C /* ExerciseDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BE72734013E00FA6C6C /* Presenter */,
+				3C876BE62734013800FA6C6C /* View */,
+			);
+			path = ExerciseDetailModule;
+			sourceTree = "<group>";
+		};
+		3C876BE62734013800FA6C6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BEA273409BC00FA6C6C /* ExerciseDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C876BE72734013E00FA6C6C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3C876BEC27340A4E00FA6C6C /* ExerciseDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -636,6 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C876BE9273405E700FA6C6C /* YWMuscleGroupBageView.swift in Sources */,
 				3C876BBB273013F900FA6C6C /* EditCreateWorkoutPresenter.swift in Sources */,
 				3C876BD32733053800FA6C6C /* ExerciseTitleCollectionViewCell.swift in Sources */,
 				3C876BA0272D655200FA6C6C /* WorkoutsCollectionViewCell.swift in Sources */,
@@ -662,6 +696,7 @@
 				3C876BCC2732A87C00FA6C6C /* YWExerciseContainerViewController.swift in Sources */,
 				3C876BB4273004AB00FA6C6C /* Exercise.swift in Sources */,
 				3C876BD02732CB0300FA6C6C /* ImageCollectionViewCell.swift in Sources */,
+				3C876BED27340A4E00FA6C6C /* ExerciseDetailPresenter.swift in Sources */,
 				3C876BAB272FC51600FA6C6C /* ExerciseCollectionViewCell.swift in Sources */,
 				3C876BD5273309FF00FA6C6C /* UITextField + extension.swift in Sources */,
 				3C876BE12733280A00FA6C6C /* EditCreateExerciseViewController.swift in Sources */,
@@ -670,6 +705,7 @@
 				3C876B6D272AAE3C00FA6C6C /* StartMenuViewController.swift in Sources */,
 				3C876BCE2732BB9500FA6C6C /* ExerciseImagesCollectionViewCell.swift in Sources */,
 				3C876BE32733285800FA6C6C /* EditCreateExercisePresenter.swift in Sources */,
+				3C876BEB273409BC00FA6C6C /* ExerciseDetailViewController.swift in Sources */,
 				3C876BB9273013E200FA6C6C /* EditCreateWorkoutViewController.swift in Sources */,
 				3C876BC227313ACC00FA6C6C /* AddExerciseViewController.swift in Sources */,
 				3C876B97272ADFB500FA6C6C /* UIColor + extension.swift in Sources */,

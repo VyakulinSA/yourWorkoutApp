@@ -9,7 +9,7 @@ import UIKit
 
 class ExerciseDescriptionCollectionViewCell: ExerciseTitleCollectionViewCell {
     
-    private let descriptionTextView = setupObject(UITextView()) {
+    let descriptionTextView = setupObject(UITextView()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .inputViewsColor
         $0.text = "Start here..."

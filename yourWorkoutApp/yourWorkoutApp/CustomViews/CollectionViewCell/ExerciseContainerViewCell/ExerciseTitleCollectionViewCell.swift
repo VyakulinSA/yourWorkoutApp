@@ -29,6 +29,14 @@ class ExerciseTitleCollectionViewCell: UICollectionViewCell {
         $0.attributedPlaceholder = NSAttributedString(string: "Title", attributes: attributes as [NSAttributedString.Key : Any])
     }
     
+    let detailTitleLabel = setupObject(UILabel()) {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.font = UIFont.myFont(.myFontSemiBold, size: 24)
+        $0.textColor = .darkTextColor
+        $0.text = "Detail Title"
+        $0.isHidden = true
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupAppearance()
@@ -47,6 +55,7 @@ extension ExerciseTitleCollectionViewCell {
         
         addSubview(titleLabel)
         addSubview(titleTextField)
+        addSubview(detailTitleLabel)
         
         titleTextField.setPaddingPoints(20)
         
@@ -64,6 +73,14 @@ extension ExerciseTitleCollectionViewCell {
             bottom: bottomAnchor,
             trailing: trailingAnchor,
             padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20)
+        )
+        
+        detailTitleLabel.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            bottom: nil,
+            trailing: trailingAnchor,
+            padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         )
     }
 }
