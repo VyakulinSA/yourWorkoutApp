@@ -29,7 +29,9 @@ protocol EditCreateWorkoutViewOutput: AnyObject {
 class EditCreateWorkoutPresenter: EditCreateWorkoutViewOutput {
     var editCreateType: EditCreateWorkoutType
     var exercisesData: [Exercise]?
+    
     private var router: RouterForEditCreateWorkoutModule
+    
     
     init(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?) {
         self.router = router

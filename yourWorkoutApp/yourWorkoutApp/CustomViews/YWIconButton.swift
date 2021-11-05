@@ -18,6 +18,8 @@ enum IconButtonNames: String{
     case circlePlus = "plus.circle"
     case checkmarkSeal = "checkmark.seal"
     case chevronDown = "chevron.down"
+    case trash = "trash"
+    
 }
 
 class YWIconButton: UIButton {

@@ -22,7 +22,11 @@ class ExercisesPresenter: ExercisesViewOutput {
     private var router: RouterForExerciseModule
     weak var view: ExercisesViewInput?
     
-    var exercisesData: [Exercise]?
+    var exercisesData: [Exercise]? {
+        didSet {
+            view?.reloadCollection()
+        }
+    }
     
     var selectedFilterMuscleGroups: [MuscleGroup]? {
         didSet {
@@ -72,14 +76,14 @@ extension ExercisesPresenter {
     
     private func getExercisesData() {
         exercisesData = [
-            Exercise(title: "Whole Body", muscleGroup: .wholeBody, description: "Whole Body description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Back", muscleGroup: .back, description: "Back description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Biceps", muscleGroup: .biceps, description: "Biceps description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Chest", muscleGroup: .chest, description: "Chest description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Triceps", muscleGroup: .triceps, description: "Triceps description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Shoulders", muscleGroup: .shoulders, description: "Shoulders description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Abs", muscleGroup: .abs, description: "Abs description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Legs", muscleGroup: .legs, description: "Legs description", startImage: nil, endImage: nil, workout: nil),
+            Exercise(title: "Whole Body ex", muscleGroup: .wholeBody, description: "Whole Body description", startImage: nil, endImage: nil, workout: nil),
+            Exercise(title: "Back ex ", muscleGroup: .back, description: "", startImage: nil, endImage: nil, workout: nil),
+            Exercise(title: "Biceps ex", muscleGroup: .biceps, description: "Biceps description", startImage: nil, endImage: nil, workout: nil),
+            Exercise(title: "Chest ex", muscleGroup: .chest, description: "Chest description", startImage: nil, endImage: nil, workout: nil),
+            Exercise(title: "Triceps ex", muscleGroup: .triceps, description: "Triceps description", startImage: nil, endImage: nil, workout: nil),
+            Exercise(title: "Shoulders ex", muscleGroup: .shoulders, description: "", startImage: nil, endImage: nil, workout: nil),
+            Exercise(title: "Abs ex", muscleGroup: .abs, description: "Abs description", startImage: nil, endImage: nil, workout: nil),
+            Exercise(title: "Legs ex", muscleGroup: .legs, description: "Legs description", startImage: nil, endImage: nil, workout: nil),
         ]
     }
 }

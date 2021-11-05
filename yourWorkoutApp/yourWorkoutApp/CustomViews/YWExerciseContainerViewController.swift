@@ -94,13 +94,13 @@ extension YWExerciseContainerViewController {
         case let cell as ExerciseImagesCollectionViewCell:
             //config cell
             return cell
-        case let cell as ExerciseTitleCollectionViewCell:
-            //config cell
-            return cell
         case let cell as ExerciseMuscleGroupCollectionViewCell:
             //config cell
             return cell
         case let cell as ExerciseDescriptionCollectionViewCell:
+            //config cell
+            return cell
+        case let cell as ExerciseTitleCollectionViewCell:
             //config cell
             return cell
         default:

@@ -19,7 +19,7 @@ protocol AssembliConfiguratorProtocol: AnyObject {
     
     func createAddExerciseModule(router: RouterForAddExerciseModule) -> UIViewController
     
-    func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, exercisesData: [Exercise]?, workout: Workout) -> UIViewController
+    func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, workout: Workout) -> UIViewController
     
     func createEditCreateExerciseModule(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: Exercise?) -> UIViewController
     
@@ -61,8 +61,8 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         return view
     }
     
-    func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, exercisesData: [Exercise]?, workout: Workout) -> UIViewController {
-        let presenter = WorkoutDetailPresenter(router: router, exercisesData: exercisesData, workout: workout)
+    func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, workout: Workout) -> UIViewController {
+        let presenter = WorkoutDetailPresenter(router: router, workout: workout)
         let view = WorkoutDetailViewController(presenter: presenter)
         return view
     }

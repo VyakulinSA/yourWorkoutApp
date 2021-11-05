@@ -16,6 +16,7 @@ protocol ExerciseDetailViewOutput: AnyObject {
     var exercise: Exercise {get set}
     
     func backBarButtonTapped()
+    func editButtonTapped()
     
 }
 
@@ -36,6 +37,10 @@ extension ExerciseDetailPresenter {
     
     func backBarButtonTapped() {
         router.popVC()
+    }
+    
+    func editButtonTapped() {
+        router.showEditCreateExerciseViewController(editCreateType: .edit, exercise: exercise)
     }
     
     func createExercise() {

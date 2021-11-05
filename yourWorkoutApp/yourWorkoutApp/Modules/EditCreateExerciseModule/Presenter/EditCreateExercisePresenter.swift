@@ -20,6 +20,7 @@ protocol EditCreateExerciseViewOutput: AnyObject {
     var editCreateType: EditCreateExerciseType {get set}
     
     func backBarButtonTapped()
+    func trashBarButtonTapped()
     
 }
 
@@ -43,7 +44,12 @@ extension EditCreateExercisePresenter {
         router.popVC()
     }
     
+    func trashBarButtonTapped() {
+        //Удалить прям из базы упражнение, чтобы на главном контроллере получить все заново и перезагрузить коллекцию
+        router.popToRoot()
+    }
+    
     private func getExercise() {
-//        exercise = Exercise(title: "TestExercise", muscleGroup: .biceps, description: "Biceps description", startImage: nil, endImage: nil, workout: nil)
+        
     }
 }

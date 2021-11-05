@@ -31,10 +31,15 @@ extension ExerciseDetailViewController {
         setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: .gear, titleBarText: "EXERCISE DETAIL")
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
+        secondRightBarButton.addTarget(self, action: #selector(editBarButtonTapped), for: .touchUpInside)
     }
     
     @objc func backBarButtonTapped() {
         presenter.backBarButtonTapped()
+    }
+    
+    @objc func editBarButtonTapped() {
+        presenter.editButtonTapped()
     }
 }
 
