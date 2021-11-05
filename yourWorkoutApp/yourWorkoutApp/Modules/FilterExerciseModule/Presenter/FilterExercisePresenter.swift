@@ -25,12 +25,12 @@ protocol FilterExerciseViewOutput: AnyObject {
 }
 
 class FilterExercisePresenter: FilterExerciseViewOutput {
-    private var router: RouterConfiguratorProtocol
+    private var router: RouterForFilterExerciseModule
     
     var selectedFilterMuscleGroups: [MuscleGroup]
     weak var delegate: FilterExerciseProtocol?
     
-    init(router: RouterConfiguratorProtocol, delegate: FilterExerciseProtocol) {
+    init(router: RouterForFilterExerciseModule, delegate: FilterExerciseProtocol) {
         self.router = router
         self.delegate = delegate
         selectedFilterMuscleGroups = delegate.selectedFilterMuscleGroups ?? [MuscleGroup]()

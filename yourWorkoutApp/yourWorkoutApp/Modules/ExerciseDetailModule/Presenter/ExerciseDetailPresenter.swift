@@ -21,9 +21,9 @@ protocol ExerciseDetailViewOutput: AnyObject {
 
 class ExerciseDetailPresenter: ExerciseDetailViewOutput {
     var exercise: Exercise
-    private var router: RouterConfiguratorProtocol
+    private var router: RouterForExerciseDetailModule
     
-    init(router: RouterConfiguratorProtocol, exercise: Exercise) {
+    init(router: RouterForExerciseDetailModule, exercise: Exercise) {
         self.router = router
         self.exercise = exercise
         

@@ -18,7 +18,7 @@ protocol AddExerciseViewOutput: FilterExerciseProtocol {
 
 class AddExercisePresenter: AddExerciseViewOutput {
     
-    private var router: RouterConfiguratorProtocol
+    private var router: RouterForAddExerciseModule
     weak var view: AddExerciseViewInput?
     
     var exercisesData: [Exercise]?
@@ -44,7 +44,7 @@ class AddExercisePresenter: AddExerciseViewOutput {
         }
     }
     
-    init(router: RouterConfiguratorProtocol){
+    init(router: RouterForAddExerciseModule){
         self.router = router
         getExercisesData()
     }

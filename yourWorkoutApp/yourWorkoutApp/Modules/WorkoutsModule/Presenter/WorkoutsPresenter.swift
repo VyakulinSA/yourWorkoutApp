@@ -24,9 +24,9 @@ protocol WorkoutsViewOutput: AnyObject {
 
 class WorkoutsPresenter: WorkoutsViewOutput {
     var workoutsData: [Workout]?
-    private var router: RouterConfiguratorProtocol
+    private var router: RouterForWorkoutsModule
     
-    init(router: RouterConfiguratorProtocol){
+    init(router: RouterForWorkoutsModule){
         self.router = router
         
         getWorkoutsData()

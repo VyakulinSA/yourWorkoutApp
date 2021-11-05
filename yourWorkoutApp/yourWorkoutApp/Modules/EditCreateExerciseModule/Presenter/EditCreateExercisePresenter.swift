@@ -26,9 +26,9 @@ protocol EditCreateExerciseViewOutput: AnyObject {
 class EditCreateExercisePresenter: EditCreateExerciseViewOutput {
     var editCreateType: EditCreateExerciseType
     var exercise: Exercise?
-    private var router: RouterConfiguratorProtocol
+    private var router: RouterForEditCreateExerciseModule
     
-    init(router: RouterConfiguratorProtocol, editCreateType: EditCreateExerciseType, exercise: Exercise?) {
+    init(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: Exercise?) {
         self.router = router
         self.editCreateType = editCreateType
         self.exercise = exercise

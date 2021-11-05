@@ -21,11 +21,11 @@ protocol WorkoutDetailViewOutput: AnyObject {
 }
 
 class WorkoutDetailPresenter: WorkoutDetailViewOutput {
-    private var router: RouterConfiguratorProtocol
+    private var router: RouterForWorkoutDetailModule
     var exercisesData: [Exercise]?
     var workout: Workout
     
-    init(router: RouterConfiguratorProtocol, exercisesData: [Exercise]?, workout: Workout){
+    init(router: RouterForWorkoutDetailModule, exercisesData: [Exercise]?, workout: Workout){
         self.router = router
         self.exercisesData = exercisesData
         self.workout = workout

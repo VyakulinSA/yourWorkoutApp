@@ -10,32 +10,54 @@ import UIKit
 
 protocol RouterConfiguratorProtocol {
     func initialViewController()
-    
-    func showWorkoutsViewController()
-    
-    func showExercisesViewController()
-    
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?)
-    
-    func showAddExerciseViewController()
-    
-    func showWorkoutDetailViewController(exercisesData: [Exercise]?, workout: Workout)
-    
-    func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: Exercise?)
-    
-    func showExerciseDetailViewController(exercise: Exercise)
-    
-    func showFilterExerciseViewConteroller(delegate: FilterExerciseProtocol)
-    
     func popToRoot()
-    
     func popVC()
-    
     func popVC(_ animated: Bool)
 }
 
+protocol RouterForStartMenuModule: RouterConfiguratorProtocol {
+    func showWorkoutsViewController()
+    func showExercisesViewController()
+}
+
+protocol RouterForWorkoutsModule: RouterConfiguratorProtocol {
+    
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?)
+    func showWorkoutDetailViewController(exercisesData: [Exercise]?, workout: Workout)
+}
+
+protocol RouterForExerciseModule: RouterConfiguratorProtocol {
+    func showFilterExerciseViewConteroller(delegate: FilterExerciseProtocol)
+    func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: Exercise?)
+    func showExerciseDetailViewController(exercise: Exercise)
+}
+
+protocol RouterForAddExerciseModule: RouterConfiguratorProtocol {
+    func showFilterExerciseViewConteroller(delegate: FilterExerciseProtocol)
+}
+
+protocol RouterForEditCreateWorkoutModule: RouterConfiguratorProtocol {
+    func showAddExerciseViewController()
+}
+
+protocol RouterForWorkoutDetailModule: RouterConfiguratorProtocol {
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?)
+}
+
+protocol RouterForEditCreateExerciseModule: RouterConfiguratorProtocol {
+    
+}
+
+protocol RouterForExerciseDetailModule: RouterConfiguratorProtocol {
+    
+}
+
+protocol RouterForFilterExerciseModule: RouterConfiguratorProtocol {
+    
+}
+
  
-class RouterConfigurator: RouterConfiguratorProtocol {
+class RouterConfigurator: RouterForStartMenuModule, RouterForWorkoutsModule, RouterForExerciseModule, RouterForAddExerciseModule, RouterForEditCreateWorkoutModule,RouterForWorkoutDetailModule, RouterForEditCreateExerciseModule, RouterForExerciseDetailModule, RouterForFilterExerciseModule {
     var navigationController: UINavigationController?
     var assemblyConfigurator: AssembliConfiguratorProtocol?
     

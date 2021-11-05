@@ -21,9 +21,9 @@ protocol StartMenuViewOutput: AnyObject {
 
 class StartMenuPresenter: StartMenuViewOutput {
 
-    private var router: RouterConfiguratorProtocol
+    private var router: RouterForStartMenuModule
     
-    init(router: RouterConfiguratorProtocol){
+    init(router: RouterForStartMenuModule){
         self.router = router
     }
 }
