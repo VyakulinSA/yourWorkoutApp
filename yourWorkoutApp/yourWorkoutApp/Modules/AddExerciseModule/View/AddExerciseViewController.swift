@@ -47,4 +47,9 @@ extension AddExerciseViewController {
     @objc func filterBarButtonTapped() {
         presenter.filterBarButtonTapped()
     }
+    
+    func reloadCollection() {
+        dataModel = presenter.exercisesData
+        collectionView.reloadData()
+    }
 }

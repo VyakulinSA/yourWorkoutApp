@@ -541,7 +541,6 @@
 			isa = PBXGroup;
 			children = (
 				3C876BF0273452A100FA6C6C /* Presenter */,
-				3C876BEF2734529C00FA6C6C /* View */,
 			);
 			path = FilterExerciseModule;
 			sourceTree = "<group>";
@@ -559,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				3C876BF1273452BA00FA6C6C /* FilterExercisePresenter.swift */,
+				3C876BEF2734529C00FA6C6C /* View */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";

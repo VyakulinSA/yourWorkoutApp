@@ -56,6 +56,13 @@ extension ExercisesViewController {
     }
 }
 
+extension ExercisesViewController {
+    func reloadCollection() {
+        dataModel = presenter.exercisesData
+        collectionView.reloadData()
+    }
+}
+
 //config collectionView
 extension ExercisesViewController {
     

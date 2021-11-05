@@ -8,26 +8,42 @@
 import Foundation
 
 protocol ExercisesViewInput: AnyObject {
-    
+    func reloadCollection()
     
 }
 
-protocol ExercisesViewOutput: AnyObject {
-    var exercisesData: [Exercise]? {get set}
-
+protocol ExercisesViewOutput: FilterExerciseProtocol {
     func startMenuButtonTapped()
-    func filterBarButtonTapped()
     func createBarButtonTapped()
-    
     func didSelectCell(item: Int)
-    
 }
-
 
 class ExercisesPresenter: ExercisesViewOutput {
+    private var router: RouterConfiguratorProtocol
+    weak var view: ExercisesViewInput?
     
     var exercisesData: [Exercise]?
-    private var router: RouterConfiguratorProtocol
+    
+    var selectedFilterMuscleGroups: [MuscleGroup]? {
+        didSet {
+            getExercisesData() //FIXME: Нужно ли каждый раз получать все упражнения? может хранить где то в константе, после первого получения, а тут просто восстанавливать.
+            if selectedFilterMuscleGroups?.count ?? 0 > 0 {
+                exercisesData = exercisesData?.filter({ exercise in
+                    var filterResult = false
+                    for muscle in selectedFilterMuscleGroups! {
+                        if exercise.muscleGroup == muscle {
+                            filterResult = true
+                            break
+                        } else {
+                            filterResult = false
+                        }
+                    }
+                    return filterResult
+                })
+            }
+            view?.reloadCollection()
+        }
+    }
     
     init(router: RouterConfiguratorProtocol){
         self.router = router
@@ -43,7 +59,7 @@ extension ExercisesPresenter {
     }
     
     func filterBarButtonTapped() {
-        router.showFilterExerciseViewConteroller()
+        router.showFilterExerciseViewConteroller(delegate: self)
     }
     func createBarButtonTapped(){
         router.showEditCreateExerciseViewController(editCreateType: .create, exercise: nil)

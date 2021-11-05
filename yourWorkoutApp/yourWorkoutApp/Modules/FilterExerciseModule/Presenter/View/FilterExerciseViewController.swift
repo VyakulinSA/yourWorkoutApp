@@ -7,11 +7,14 @@
 
 import UIKit
 
+private enum ConfigureCell {
+    case forCreate
+    case forSelect
+}
+
 class FilterExerciseViewController: UIViewController {
     
     private var presenter: FilterExerciseViewOutput
-    
-    private var selectedMuscleGroups: [String] = [String]()
     
     private let titleLabel = setupObject(UILabel()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -72,11 +75,16 @@ class FilterExerciseViewController: UIViewController {
         super.viewDidLoad()
 
         setupAppearance()
+        configViews()
     }
 
 }
 
 extension FilterExerciseViewController {
+    
+    private func configViews() {
+        applyButton.addTarget(self, action: #selector(applyButtonTapped), for: .touchUpInside)
+    }
     
     private func setupAppearance() {
         
@@ -86,8 +94,6 @@ extension FilterExerciseViewController {
         view.addSubview(muscleGroupLabel)
         view.addSubview(applyButton)
         view.addSubview(muscleCollectionView)
-        
-        
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -115,6 +121,11 @@ extension FilterExerciseViewController {
             padding: UIEdgeInsets(top: 30, left: 0, bottom: 20, right: 0)
         )
     }
+    
+    @objc func applyButtonTapped() {
+        presenter.applyButtonTapped()
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension FilterExerciseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -125,26 +136,17 @@ extension FilterExerciseViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? FilterExerciseCollectionViewCell
         
-        guard let cell = cell else {return UICollectionViewCell()}
+        guard var cell = cell else {return UICollectionViewCell()}
         
         cell.cellLabel.text = MuscleGroup.allCases[indexPath.item].rawValue
+        cell = configure(cell: cell, indexPath: indexPath, for: .forCreate)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let muscle = MuscleGroup.allCases[indexPath.item].rawValue
         guard let cell = collectionView.cellForItem(at: indexPath) as? FilterExerciseCollectionViewCell else {return}
-        if selectedMuscleGroups.contains(muscle) {
-            cell.backgroundColor = .unselectedBadgeColor
-            cell.cellLabel.textColor = .darkTextColor
-            selectedMuscleGroups.removeAll { $0 == muscle }
-        } else {
-            cell.backgroundColor = .selectedBadgeColor
-            cell.cellLabel.textColor = .lightTextColor
-            selectedMuscleGroups.append(MuscleGroup.allCases[indexPath.item].rawValue)
-        }
-        
+        let _ = configure(cell: cell, indexPath: indexPath, for: .forSelect)
     }
 }
 
@@ -152,10 +154,9 @@ extension FilterExerciseViewController: UICollectionViewDelegate, UICollectionVi
 extension FilterExerciseViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        30
+        return 30
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width / 2) - 45
         return CGSize(width: width, height: 50)
@@ -170,5 +171,24 @@ extension FilterExerciseViewController: UICollectionViewDelegateFlowLayout {
 //MARK: configureCollectionCell
 extension FilterExerciseViewController {
     
-    
+    private func configure(cell: FilterExerciseCollectionViewCell, indexPath: IndexPath, for config: ConfigureCell) -> FilterExerciseCollectionViewCell {
+        let muscle = MuscleGroup.allCases[indexPath.item]
+        let contain = presenter.selectedFilterMuscleGroups.contains(muscle)
+
+        switch config {
+        case .forCreate:
+            cell.backgroundColor = contain ? .selectedBadgeColor : .unselectedBadgeColor
+            cell.cellLabel.textColor = contain ? .lightTextColor : .darkTextColor
+        case .forSelect:
+            cell.backgroundColor = contain ? .unselectedBadgeColor : .selectedBadgeColor
+            cell.cellLabel.textColor = contain ? .darkTextColor : .lightTextColor
+            
+            if contain {
+                presenter.selectedFilterMuscleGroups.removeAll { $0 == muscle }
+            } else {
+                presenter.selectedFilterMuscleGroups.append(MuscleGroup.allCases[indexPath.item])
+            }
+        }
+        return cell
+    }
 }

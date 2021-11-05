@@ -25,7 +25,7 @@ protocol RouterConfiguratorProtocol {
     
     func showExerciseDetailViewController(exercise: Exercise)
     
-    func showFilterExerciseViewConteroller()
+    func showFilterExerciseViewConteroller(delegate: FilterExerciseProtocol)
     
     func popToRoot()
     
@@ -101,9 +101,9 @@ class RouterConfigurator: RouterConfiguratorProtocol {
         }
     }
     
-    func showFilterExerciseViewConteroller() {
+    func showFilterExerciseViewConteroller(delegate: FilterExerciseProtocol) {
         if let navigationController = navigationController {
-        guard let filterExerciseViewController = assemblyConfigurator?.createFilterExerciseModule(router: self) else {return}
+        guard let filterExerciseViewController = assemblyConfigurator?.createFilterExerciseModule(router: self, delegate: delegate) else {return}
             navigationController.present(filterExerciseViewController, animated: true, completion: nil)
         }
         

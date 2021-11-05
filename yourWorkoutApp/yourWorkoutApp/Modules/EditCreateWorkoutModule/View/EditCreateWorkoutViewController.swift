@@ -55,6 +55,10 @@ extension EditCreateWorkoutViewController {
     @objc func addButtonTapped() {
         presenter.addButtonTapped()
     }
+    
+    func reloadCollection() {
+        collectionView.reloadData()
+    }
 }
 
 //MARK: configure collection

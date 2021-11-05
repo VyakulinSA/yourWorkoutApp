@@ -7,19 +7,40 @@
 
 import Foundation
 
+protocol FilterExerciseProtocol: AnyObject {
+    var exercisesData: [Exercise]? {get set}
+    var selectedFilterMuscleGroups: [MuscleGroup]? {get set}
+    
+    func filterBarButtonTapped()
+}
+
 protocol FilterExerciseViewInput: AnyObject {
     
 }
 
 protocol FilterExerciseViewOutput: AnyObject {
+    var selectedFilterMuscleGroups: [MuscleGroup] {get set}
     
+    func applyButtonTapped()
 }
 
 class FilterExercisePresenter: FilterExerciseViewOutput {
     private var router: RouterConfiguratorProtocol
     
-    init(router: RouterConfiguratorProtocol) {
+    var selectedFilterMuscleGroups: [MuscleGroup]
+    weak var delegate: FilterExerciseProtocol?
+    
+    init(router: RouterConfiguratorProtocol, delegate: FilterExerciseProtocol) {
         self.router = router
+        self.delegate = delegate
+        selectedFilterMuscleGroups = delegate.selectedFilterMuscleGroups ?? [MuscleGroup]()
     }
     
+}
+
+extension FilterExercisePresenter {
+    
+    func applyButtonTapped() {
+        delegate?.selectedFilterMuscleGroups = selectedFilterMuscleGroups
+    }
 }
