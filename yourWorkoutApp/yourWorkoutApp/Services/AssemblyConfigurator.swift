@@ -51,6 +51,7 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
     func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?) -> UIViewController {
         let presenter = EditCreateWorkoutPresenter(router: router, editCreateType: editCreateType, exercisesData: exercisesData)
         let view = EditCreateWorkoutViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
     

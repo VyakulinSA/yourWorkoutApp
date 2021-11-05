@@ -19,13 +19,14 @@ enum IconButtonNames: String{
     case checkmarkSeal = "checkmark.seal"
     case chevronDown = "chevron.down"
     case trash = "trash"
+    case xmarSeal = "xmark.seal"
     
 }
 
 class YWIconButton: UIButton {
  
-    private var normalColor: UIColor = .iconNormalColor
-    private var highLightedColor: UIColor = .iconHighlightColor
+    var normalColor: UIColor = .iconNormalColor
+    var highLightedColor: UIColor = .iconHighlightColor
     
     override var isHighlighted: Bool {
         didSet {
@@ -47,8 +48,6 @@ class YWIconButton: UIButton {
         imageView?.tintColor = isHighlighted ?  highLightedColor: normalColor
         setupAppearance(systemNameImage: systemNameImage)
     }
-
-    
 }
 
 extension YWIconButton {

@@ -48,6 +48,16 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        addButton.isHidden = true
+        exerciseImage.isHidden = false
+        exerciseTitleLabel.isHidden = false
+        muscleGroupLabel.isHidden = false
+        
+        layer.borderWidth = 0
+        layer.borderColor = UIColor.clear.cgColor
+    }
 }
 
 
@@ -80,6 +90,8 @@ extension ExerciseCollectionViewCell {
     }
     
     private func setupAppearance() {
+        
+        layer.cornerRadius = 20
         
         contentView.addSubview(exerciseImage)
         contentView.addSubview(exerciseTitleLabel)

@@ -38,8 +38,6 @@ class ExercisesPresenter: ExercisesViewOutput {
                         if exercise.muscleGroup == muscle {
                             filterResult = true
                             break
-                        } else {
-                            filterResult = false
                         }
                     }
                     return filterResult

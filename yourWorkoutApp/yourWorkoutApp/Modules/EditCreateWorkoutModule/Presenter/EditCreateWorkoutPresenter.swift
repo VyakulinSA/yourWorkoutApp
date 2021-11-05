@@ -13,22 +13,31 @@ enum EditCreateWorkoutType {
 }
 
 protocol EditCreateWorkoutViewInput: AnyObject {
-    
+    func reloadCollection()
 }
 
 protocol EditCreateWorkoutViewOutput: AnyObject {
     var exercisesData: [Exercise]? {get set}
+    var exercisesToDelete: [Exercise] {get set}
     var editCreateType: EditCreateWorkoutType {get set}
     
     func backBarButtonTapped()
     func saveBarButtonTapped()
-    func addButtonTapped()
+    func addBarButtonTapped()
+    func trashBarButtonTapped()
     
 }
 
 class EditCreateWorkoutPresenter: EditCreateWorkoutViewOutput {
     var editCreateType: EditCreateWorkoutType
-    var exercisesData: [Exercise]?
+    var exercisesToDelete: [Exercise] = [Exercise]()
+    var exercisesData: [Exercise]? {
+        didSet {
+            view?.reloadCollection()
+        }
+    }
+    
+    weak var view: EditCreateWorkoutViewInput?
     
     private var router: RouterForEditCreateWorkoutModule
     
@@ -52,8 +61,23 @@ extension EditCreateWorkoutPresenter {
         router.popVC(false)
     }
     
-    func addButtonTapped() {
+    func addBarButtonTapped() {
         router.showAddExerciseViewController()
+    }
+    
+    func trashBarButtonTapped() {
+        //удаляем только из коллекции, потом при сохранении перебираем и корректируем тренировку
+        exercisesData?.removeAll(where: { exercise in
+            var result = false
+            for delEx in exercisesToDelete {
+                if exercise.title == delEx.title{
+                    result = true
+                    break
+                }
+            }
+            return result
+        })
+        exercisesToDelete.removeAll()
     }
     
     private func getExercisesData() {

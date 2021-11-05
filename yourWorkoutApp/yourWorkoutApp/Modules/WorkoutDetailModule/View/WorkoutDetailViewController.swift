@@ -35,7 +35,10 @@ extension WorkoutDetailViewController {
         
         let title = presenter.workout.title.uppercased()
         
-        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: .trash, secondRightBarButtonName: .gear, titleBarText: title)
+        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: .xmarSeal, secondRightBarButtonName: .gear, titleBarText: title)
+        
+        firstRightBarButton.normalColor = .red
+        firstRightBarButton.setupAppearance(systemNameImage: .xmarSeal)
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
         firstRightBarButton.addTarget(self, action: #selector(trashBarButtonTapped), for: .touchUpInside)

@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class EditCreateWorkoutViewController: YWMainContainerViewController, ExercisesViewInput {
+class EditCreateWorkoutViewController: YWMainContainerViewController, EditCreateWorkoutViewInput {
     
     private var presenter: EditCreateWorkoutViewOutput
     
@@ -33,14 +33,19 @@ extension EditCreateWorkoutViewController {
     
     private func configViews() {
         if presenter.editCreateType == .create {
-            setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil,
-                             secondRightBarButtonName: nil, titleBarText: "CREATE WORKOUT")
+            setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: .trash,
+                             secondRightBarButtonName: .checkmarkSeal, titleBarText: "CREATE WORKOUT")
         } else {
-            setupNavBarItems(leftBarButtonName: nil, firstRightBarButtonName: nil,
+            setupNavBarItems(leftBarButtonName: nil, firstRightBarButtonName: .trash,
                              secondRightBarButtonName: .checkmarkSeal, titleBarText: "EDIT WORKOUT")
         }
         
+        firstRightBarButton.isHidden = true
+        firstRightBarButton.normalColor = .red
+        firstRightBarButton.setupAppearance(systemNameImage: .trash)
+        
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
+        firstRightBarButton.addTarget(self, action: #selector(trashBarButtonTapped), for: .touchUpInside)
         secondRightBarButton.addTarget(self, action: #selector(saveBarButtonTapped), for: .touchUpInside)
     }
     
@@ -48,12 +53,17 @@ extension EditCreateWorkoutViewController {
         presenter.backBarButtonTapped()
     }
     
+    @objc func trashBarButtonTapped() {
+        presenter.trashBarButtonTapped()
+        firstRightBarButton.isHidden = true
+    }
+    
     @objc func saveBarButtonTapped() {
         presenter.saveBarButtonTapped()
     }
     
     @objc func addButtonTapped() {
-        presenter.addButtonTapped()
+        presenter.addBarButtonTapped()
     }
     
     func reloadCollection() {
@@ -86,6 +96,31 @@ extension EditCreateWorkoutViewController {
         }
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ExerciseCollectionViewCell else {return}
+        configure(cell: cell, indexPath: indexPath)
+    }
+}
+
+
+//MARK: configureCollectionCell
+extension EditCreateWorkoutViewController {
+
+    private func configure(cell: ExerciseCollectionViewCell, indexPath: IndexPath) {
+        guard let selectedExercise = presenter.exercisesData?[indexPath.item] else {return}
+        let contain = presenter.exercisesToDelete.contains { $0.title == selectedExercise.title }
+        if contain {
+            presenter.exercisesToDelete.removeAll { $0.title == selectedExercise.title }
+            cell.layer.borderWidth = 0
+            cell.layer.borderColor = UIColor.clear.cgColor
+        } else {
+            presenter.exercisesToDelete.append(selectedExercise)
+            cell.layer.borderWidth = 2
+            cell.layer.borderColor = UIColor.red.cgColor
+        }
+        firstRightBarButton.isHidden = presenter.exercisesToDelete.count > 0 ? false : true
     }
 }
 

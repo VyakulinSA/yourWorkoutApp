@@ -31,7 +31,11 @@ extension EditCreateExerciseViewController {
     
     private func configViews() {
         let secondRightBarButtonName = presenter.editCreateType == .edit ? IconButtonNames.trash : nil
-        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: secondRightBarButtonName, titleBarText: "CREATE EXERCISE")
+        let title = presenter.editCreateType == .edit ? "EDIT EXERCISE" : "CREATE EXERCISE"
+        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: secondRightBarButtonName, titleBarText: title)
+        
+        secondRightBarButton.normalColor = .red
+        secondRightBarButton.setupAppearance(systemNameImage: secondRightBarButtonName)
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
         secondRightBarButton.addTarget(self, action: #selector(trashBarButtonTapped), for: .touchUpInside)
