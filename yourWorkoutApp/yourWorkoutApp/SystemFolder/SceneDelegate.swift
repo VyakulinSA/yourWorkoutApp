@@ -28,11 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         router.initialViewController()
 
         window?.rootViewController = navViewController
-        
-//        let navVC = YWExerciseContainerViewController()
-//        navVC.setupNavBarItems(leftBarButtonName: nil, firstRightBarButtonName: nil, secondRightBarButtonName: nil, titleBarText: "Test")
-//        window?.rootViewController = navVC
-        
         window?.makeKeyAndVisible()
         
     }
