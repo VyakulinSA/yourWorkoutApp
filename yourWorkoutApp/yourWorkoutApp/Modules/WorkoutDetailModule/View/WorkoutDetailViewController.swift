@@ -35,15 +35,25 @@ extension WorkoutDetailViewController {
         
         let title = presenter.workout.title.uppercased()
         
-        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: .gear, titleBarText: title)
+        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: .trash, secondRightBarButtonName: .gear, titleBarText: title)
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
+        firstRightBarButton.addTarget(self, action: #selector(trashBarButtonTapped), for: .touchUpInside)
         secondRightBarButton.addTarget(self, action: #selector(gearBarButtonTapped), for: .touchUpInside)
     }
     
     
     @objc func backBarButtonTapped() {
         presenter.backBarButtonTapped()
+    }
+    
+    @objc func trashBarButtonTapped(){
+        //FIXME: удаление будет происходить из presentera, напрямую из базы, данный функционал для теста, если буду дальше использовать, то сделать проверку по всем полям, а не только по названию
+        guard let rootVC = navigationController?.viewControllers[0] as? WorkoutsViewController else {return}
+        rootVC.presenter.workoutsData?.removeAll(where: { workout in
+                workout.title == presenter.workout.title
+        })
+        presenter.trashBarButtonTapped()
     }
     
     @objc func gearBarButtonTapped() {

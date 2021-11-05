@@ -9,7 +9,7 @@ import UIKit
 
 class WorkoutsViewController: YWMainContainerViewController, WorkoutsViewInput {
     
-    private var presenter: WorkoutsViewOutput
+    var presenter: WorkoutsViewOutput
     
     init(presenter: WorkoutsViewOutput){
         self.presenter = presenter
@@ -24,6 +24,11 @@ class WorkoutsViewController: YWMainContainerViewController, WorkoutsViewInput {
         super.viewDidLoad()
        
         configViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
 
 }
