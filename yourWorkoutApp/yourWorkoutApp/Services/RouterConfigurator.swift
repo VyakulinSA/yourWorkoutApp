@@ -22,14 +22,14 @@ protocol RouterForStartMenuModule: RouterConfiguratorProtocol {
 
 protocol RouterForWorkoutsModule: RouterConfiguratorProtocol {
     
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?)
-    func showWorkoutDetailViewController(workout: Workout)
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?)
+    func showWorkoutDetailViewController(workout: WorkoutModelProtocol)
 }
 
 protocol RouterForExerciseModule: RouterConfiguratorProtocol {
     func showFilterExerciseViewConteroller(delegate: FilterExerciseProtocol)
-    func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: Exercise?)
-    func showExerciseDetailViewController(exercise: Exercise)
+    func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?)
+    func showExerciseDetailViewController(exercise: ExerciseModelProtocol)
 }
 
 protocol RouterForAddExerciseModule: RouterConfiguratorProtocol {
@@ -41,7 +41,7 @@ protocol RouterForEditCreateWorkoutModule: RouterConfiguratorProtocol {
 }
 
 protocol RouterForWorkoutDetailModule: RouterConfiguratorProtocol {
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?)
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?)
 }
 
 protocol RouterForEditCreateExerciseModule: RouterConfiguratorProtocol {
@@ -49,7 +49,7 @@ protocol RouterForEditCreateExerciseModule: RouterConfiguratorProtocol {
 }
 
 protocol RouterForExerciseDetailModule: RouterConfiguratorProtocol {
-    func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: Exercise?)
+    func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?)
 }
 
 protocol RouterForFilterExerciseModule: RouterConfiguratorProtocol {
@@ -109,7 +109,7 @@ extension RouterConfigurator: RouterForStartMenuModule {
 }
 
 extension RouterConfigurator: RouterForWorkoutsModule, RouterForWorkoutDetailModule {
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?) {
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?) {
         if let navigationController = navigationController {
             guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType, exercisesData: exercisesData) else {return}
             let animated = editCreateType == .create ? true : false
@@ -117,7 +117,7 @@ extension RouterConfigurator: RouterForWorkoutsModule, RouterForWorkoutDetailMod
         }
     }
     
-    func showWorkoutDetailViewController(workout: Workout) {
+    func showWorkoutDetailViewController(workout: WorkoutModelProtocol) {
         if let navigationController = navigationController {
             guard let workoutDetailViewController = assemblyConfigurator?.createWorkoutDetailModule(router: self, workout: workout) else {return}
             navigationController.pushViewController(workoutDetailViewController, animated: true)
@@ -126,14 +126,14 @@ extension RouterConfigurator: RouterForWorkoutsModule, RouterForWorkoutDetailMod
 }
 
 extension RouterConfigurator: RouterForExerciseModule, RouterForAddExerciseModule,RouterForExerciseDetailModule {
-    func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: Exercise?) {
+    func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) {
         if let navigationController = navigationController {
             guard let editCreateExerciseViewController = assemblyConfigurator?.createEditCreateExerciseModule(router: self, editCreateType: editCreateType, exercise: exercise) else {return}
             navigationController.pushViewController(editCreateExerciseViewController, animated: true)
         }
     }
     
-    func showExerciseDetailViewController(exercise: Exercise) {
+    func showExerciseDetailViewController(exercise: ExerciseModelProtocol) {
         if let navigationController = navigationController {
             guard let exerciseDetailViewController = assemblyConfigurator?.createExerciseDetailModule(router: self, exercise: exercise) else {return}
             navigationController.pushViewController(exerciseDetailViewController, animated: true)

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FilterExerciseProtocol: AnyObject {
-    var exercisesData: [Exercise]? {get set}
+    var exercisesData: [ExerciseModelProtocol]? {get set}
     var selectedFilterMuscleGroups: [MuscleGroup]? {get set}
     
     func filterBarButtonTapped()

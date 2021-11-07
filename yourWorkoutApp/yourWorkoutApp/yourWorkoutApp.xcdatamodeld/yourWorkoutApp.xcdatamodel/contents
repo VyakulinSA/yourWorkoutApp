@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
+    <entity name="ExerciseCD" representedClassName="ExerciseCD" syncable="YES">
+        <attribute name="descriptionText" attributeType="String"/>
+        <attribute name="endImagePath" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="muscleGroup" attributeType="String"/>
+        <attribute name="startImagePath" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="workoutCD" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkoutCD" inverseName="exerciseCD" inverseEntity="WorkoutCD"/>
+    </entity>
+    <entity name="WorkoutCD" representedClassName="WorkoutCD" syncable="YES">
+        <attribute name="exercisesCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="muscleGroups" attributeType="String"/>
+        <attribute name="system" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="exerciseCD" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseCD" inverseName="workoutCD" inverseEntity="ExerciseCD"/>
+    </entity>
     <elements>
-        <element name="Entity" positionX="-63" positionY="-18" width="128" height="29"/>
+        <element name="WorkoutCD" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="ExerciseCD" positionX="-54" positionY="18" width="128" height="134"/>
     </elements>
 </model>

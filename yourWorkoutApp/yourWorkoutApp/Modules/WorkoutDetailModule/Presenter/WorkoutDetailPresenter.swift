@@ -13,8 +13,8 @@ protocol WorkoutDetailViewInput: AnyObject {
 }
 
 protocol WorkoutDetailViewOutput: AnyObject {
-    var exercisesData: [Exercise]? {get set}
-    var workout: Workout {get set}
+    var exercisesData: [ExerciseModelProtocol]? {get set}
+    var workout: WorkoutModelProtocol {get set}
     
     func backBarButtonTapped()
     func gearBarButtonTapped()
@@ -23,10 +23,10 @@ protocol WorkoutDetailViewOutput: AnyObject {
 
 class WorkoutDetailPresenter: WorkoutDetailViewOutput {
     private var router: RouterForWorkoutDetailModule
-    var exercisesData: [Exercise]?
-    var workout: Workout
+    var exercisesData: [ExerciseModelProtocol]?
+    var workout: WorkoutModelProtocol
     
-    init(router: RouterForWorkoutDetailModule, workout: Workout){
+    init(router: RouterForWorkoutDetailModule, workout: WorkoutModelProtocol){
         self.router = router
         self.exercisesData = workout.exercises
         self.workout = workout
@@ -51,17 +51,6 @@ extension WorkoutDetailPresenter {
     }
     
     private func getExercisesData() {
-//        workout = Workout(title: "Test Workout", countExercise: 10, muscleGroup: [.legs], system: false, exercises: nil)
-//        exercisesData = [
-//            Exercise(title: "Whole Body", muscleGroup: .wholeBody, description: "Whole Body description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Back", muscleGroup: .back, description: "Back description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Biceps", muscleGroup: .biceps, description: "Biceps description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Chest", muscleGroup: .chest, description: "Chest description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Triceps", muscleGroup: .triceps, description: "Triceps description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Shoulders", muscleGroup: .shoulders, description: "Shoulders description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Abs", muscleGroup: .abs, description: "Abs description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Legs", muscleGroup: .legs, description: "Legs description", startImage: nil, endImage: nil, workout: nil),
-//        ]
     }
     
 }

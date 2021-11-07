@@ -21,7 +21,7 @@ class AddExercisePresenter: AddExerciseViewOutput {
     private var router: RouterForAddExerciseModule
     weak var view: AddExerciseViewInput?
     
-    var exercisesData: [Exercise]?
+    var exercisesData: [ExerciseModelProtocol]?
     
     var selectedFilterMuscleGroups: [MuscleGroup]? {
         didSet {
@@ -61,13 +61,7 @@ extension AddExercisePresenter {
     }
     
     private func getExercisesData() {
-        exercisesData = [
-            Exercise(title: "Chest", muscleGroup: .chest, description: "Chest description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Triceps", muscleGroup: .triceps, description: "Triceps description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Shoulders", muscleGroup: .shoulders, description: "Shoulders description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Abs", muscleGroup: .abs, description: "Abs description", startImage: nil, endImage: nil, workout: nil),
-            Exercise(title: "Legs", muscleGroup: .legs, description: "Legs description", startImage: nil, endImage: nil, workout: nil),
-        ]
+
     }
     
 }

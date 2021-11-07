@@ -24,6 +24,28 @@ class WorkoutsViewController: YWMainContainerViewController, WorkoutsViewInput {
         super.viewDidLoad()
        
         configViews()
+        
+        
+//        let dataStack = CoreDataStack()
+//        var coreDataStorageManager: DataStorageWorkoutManagerProtocol {
+//            let storage = CoreDataStorageManager(managedObjectContext: dataStack.mainContext, coreDataStack: dataStack)
+//            return storage
+//        }
+//
+//        coreDataStorageManager.create(workout: WorkoutModel(title: "Test 1", muscleGroups: [.wholeBody,.abs], system: false, exercises: nil, id: UUID()))
+//        coreDataStorageManager.create(workout: WorkoutModel(title: "Test 2", muscleGroups: [.chest,], system: true, exercises: nil, id: UUID()))
+//
+//        var allWallets = coreDataStorageManager.readAllWorkouts()
+//
+//        print(allWallets)
+//
+//        coreDataStorageManager.deleteAllWorkouts()
+//
+//        allWallets = coreDataStorageManager.readAllWorkouts()
+//
+//        print("after delete \(allWallets)")
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,8 +90,8 @@ extension WorkoutsViewController {
         if let workout = presenter.workoutsData?[indexPath.item] {
             cell.setupCellItems(
                 workoutTitle: workout.title,
-                exercisesCount: workout.countExercise,
-                muscleGroups: workout.muscleGroup,
+                exercisesCount: workout.exercises?.count ?? 0,
+                muscleGroups: workout.muscleGroups,
                 systemTagIsHidden: !workout.system
             )
         }

@@ -16,7 +16,7 @@ protocol EditCreateExerciseViewInput: AnyObject {
 }
 
 protocol EditCreateExerciseViewOutput: AnyObject {
-    var exercise: Exercise? {get set}
+    var exercise: ExerciseModelProtocol? {get set}
     var editCreateType: EditCreateExerciseType {get set}
     
     func backBarButtonTapped()
@@ -26,10 +26,10 @@ protocol EditCreateExerciseViewOutput: AnyObject {
 
 class EditCreateExercisePresenter: EditCreateExerciseViewOutput {
     var editCreateType: EditCreateExerciseType
-    var exercise: Exercise?
+    var exercise: ExerciseModelProtocol?
     private var router: RouterForEditCreateExerciseModule
     
-    init(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: Exercise?) {
+    init(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) {
         self.router = router
         self.editCreateType = editCreateType
         self.exercise = exercise

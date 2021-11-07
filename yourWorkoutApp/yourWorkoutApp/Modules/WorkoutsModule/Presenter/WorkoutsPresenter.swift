@@ -14,7 +14,7 @@ protocol WorkoutsViewInput: AnyObject {
 
 protocol WorkoutsViewOutput: AnyObject {
     
-    var workoutsData: [Workout]? {get set}
+    var workoutsData: [WorkoutModelProtocol]? {get set}
     
     func startMenuButtonTapped()
     func addBarButtonTapped()
@@ -23,7 +23,7 @@ protocol WorkoutsViewOutput: AnyObject {
 }
 
 class WorkoutsPresenter: WorkoutsViewOutput {
-    var workoutsData: [Workout]?
+    var workoutsData: [WorkoutModelProtocol]?
     private var router: RouterForWorkoutsModule
     
     init(router: RouterForWorkoutsModule){
@@ -49,16 +49,6 @@ extension WorkoutsPresenter {
     }
     
     private func getWorkoutsData() {
-        workoutsData = [
-            Workout(title: "Home workout", countExercise: 5, muscleGroup: [.back, .biceps, .legs, .chest, .shoulders], system: true, exercises: [
-                    Exercise(title: "Whole Body", muscleGroup: .wholeBody, description: "Whole Body description", startImage: nil, endImage: nil, workout: nil),
-                    Exercise(title: "Back", muscleGroup: .back, description: "Back description", startImage: nil, endImage: nil, workout: nil),
-                    Exercise(title: "Biceps", muscleGroup: .biceps, description: "Biceps description", startImage: nil, endImage: nil, workout: nil),
-            ]),
-            
-            Workout(title: "Gyme workout", countExercise: 8, muscleGroup: [.back, .biceps, .legs, .chest, .shoulders, .abs, .back, .wholeBody], system: true, exercises: nil),
-            Workout(title: "Standart", countExercise: 3, muscleGroup: [.back, .biceps, .legs], system: false, exercises: nil),
-            Workout(title: "Gold train", countExercise: 4, muscleGroup: [.back, .biceps, .legs, .chest], system: false, exercises: nil)
-        ]
+
     }
 }

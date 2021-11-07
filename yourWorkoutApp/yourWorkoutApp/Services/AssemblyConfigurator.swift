@@ -15,15 +15,15 @@ protocol AssembliConfiguratorProtocol: AnyObject {
     
     func createExercisesModule(router: RouterForExerciseModule) -> UIViewController
     
-    func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?) -> UIViewController
+    func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?) -> UIViewController
     
     func createAddExerciseModule(router: RouterForAddExerciseModule) -> UIViewController
     
-    func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, workout: Workout) -> UIViewController
+    func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, workout: WorkoutModelProtocol) -> UIViewController
     
-    func createEditCreateExerciseModule(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: Exercise?) -> UIViewController
+    func createEditCreateExerciseModule(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) -> UIViewController
     
-    func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: Exercise) -> UIViewController
+    func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) -> UIViewController
     
     func createFilterExerciseModule(router: RouterForFilterExerciseModule, delegate: FilterExerciseProtocol) -> UIViewController
 }
@@ -48,7 +48,7 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         return view
     }
     
-    func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [Exercise]?) -> UIViewController {
+    func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?) -> UIViewController {
         let presenter = EditCreateWorkoutPresenter(router: router, editCreateType: editCreateType, exercisesData: exercisesData)
         let view = EditCreateWorkoutViewController(presenter: presenter)
         presenter.view = view
@@ -62,19 +62,19 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         return view
     }
     
-    func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, workout: Workout) -> UIViewController {
+    func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, workout: WorkoutModelProtocol) -> UIViewController {
         let presenter = WorkoutDetailPresenter(router: router, workout: workout)
         let view = WorkoutDetailViewController(presenter: presenter)
         return view
     }
     
-    func createEditCreateExerciseModule(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: Exercise?) -> UIViewController {
+    func createEditCreateExerciseModule(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) -> UIViewController {
         let presenter = EditCreateExercisePresenter(router: router, editCreateType: editCreateType, exercise: exercise)
         let view = EditCreateExerciseViewController(presenter: presenter)
         return view
     }
     
-    func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: Exercise) -> UIViewController {
+    func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) -> UIViewController {
         let presenter = ExerciseDetailPresenter(router: router, exercise: exercise)
         let view = ExerciseDetailViewController(presenter: presenter)
         return view

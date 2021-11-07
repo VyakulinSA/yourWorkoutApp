@@ -13,7 +13,7 @@ protocol ExerciseDetailViewInput: AnyObject {
 }
 
 protocol ExerciseDetailViewOutput: AnyObject {
-    var exercise: Exercise {get set}
+    var exercise: ExerciseModelProtocol {get set}
     
     func backBarButtonTapped()
     func editButtonTapped()
@@ -21,10 +21,10 @@ protocol ExerciseDetailViewOutput: AnyObject {
 }
 
 class ExerciseDetailPresenter: ExerciseDetailViewOutput {
-    var exercise: Exercise
+    var exercise: ExerciseModelProtocol
     private var router: RouterForExerciseDetailModule
     
-    init(router: RouterForExerciseDetailModule, exercise: Exercise) {
+    init(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) {
         self.router = router
         self.exercise = exercise
         
@@ -44,8 +44,6 @@ extension ExerciseDetailPresenter {
     }
     
     func createExercise() {
-//        let startImageData = UIImage(named: "exTestImage")?.pngData()
-//        let endImageData = UIImage(named: "exTestImage2")?.pngData()
-//        exercise = Exercise(title: "Create Biceps", muscleGroup: .biceps, description: "Up and down gantel", startImage: startImageData, endImage: endImageData, workout: nil)
+
     }
 }

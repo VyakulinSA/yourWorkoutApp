@@ -9,7 +9,7 @@ import UIKit
 
 class YWMainContainerViewController: UIViewController {
     
-    var dataModel: [Exercise]?
+    var dataModel: [ExerciseModelProtocol]?
     
     private var leftBarButtonName: IconButtonNames?
     private var firstRightBarButtonName: IconButtonNames?
@@ -96,6 +96,7 @@ extension YWMainContainerViewController {
 extension YWMainContainerViewController {
     
     private func setupAppearance() {
+        
         view.backgroundColor = .mainBackgroundColor
         
         view.addSubview(navBarView)
@@ -150,7 +151,9 @@ extension YWMainContainerViewController {
             top: navBarView.bottomAnchor,
             leading: view.leadingAnchor,
             bottom: view.bottomAnchor,
-            trailing: view.trailingAnchor)
+            trailing: view.trailingAnchor,
+            padding: UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
+        )
         
     }
     

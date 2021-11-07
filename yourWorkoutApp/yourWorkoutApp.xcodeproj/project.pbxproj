@@ -72,6 +72,12 @@
 		3C876BF2273452BA00FA6C6C /* FilterExercisePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BF1273452BA00FA6C6C /* FilterExercisePresenter.swift */; };
 		3C876BF4273454B900FA6C6C /* FilterExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BF3273454B900FA6C6C /* FilterExerciseViewController.swift */; };
 		3C876BF627346D6400FA6C6C /* FilterExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BF527346D6400FA6C6C /* FilterExerciseCollectionViewCell.swift */; };
+		3C876BF82738441600FA6C6C /* CodeDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BF72738441600FA6C6C /* CodeDataStack.swift */; };
+		3C876BFA2738450400FA6C6C /* CoreDataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BF92738450400FA6C6C /* CoreDataStorageManager.swift */; };
+		3C876BFF2738604E00FA6C6C /* WorkoutCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BFB2738604E00FA6C6C /* WorkoutCD+CoreDataClass.swift */; };
+		3C876C002738604E00FA6C6C /* WorkoutCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BFC2738604E00FA6C6C /* WorkoutCD+CoreDataProperties.swift */; };
+		3C876C012738604E00FA6C6C /* ExerciseCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BFD2738604E00FA6C6C /* ExerciseCD+CoreDataClass.swift */; };
+		3C876C022738604E00FA6C6C /* ExerciseCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BFE2738604E00FA6C6C /* ExerciseCD+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +153,12 @@
 		3C876BF1273452BA00FA6C6C /* FilterExercisePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExercisePresenter.swift; sourceTree = "<group>"; };
 		3C876BF3273454B900FA6C6C /* FilterExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExerciseViewController.swift; sourceTree = "<group>"; };
 		3C876BF527346D6400FA6C6C /* FilterExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
+		3C876BF72738441600FA6C6C /* CodeDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDataStack.swift; sourceTree = "<group>"; };
+		3C876BF92738450400FA6C6C /* CoreDataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorageManager.swift; sourceTree = "<group>"; };
+		3C876BFB2738604E00FA6C6C /* WorkoutCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3C876BFC2738604E00FA6C6C /* WorkoutCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3C876BFD2738604E00FA6C6C /* ExerciseCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3C876BFE2738604E00FA6C6C /* ExerciseCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +319,8 @@
 			children = (
 				3C876B87272AC02A00FA6C6C /* AssemblyConfigurator.swift */,
 				3C876B8B272AC14F00FA6C6C /* RouterConfigurator.swift */,
+				3C876BF72738441600FA6C6C /* CodeDataStack.swift */,
+				3C876BF92738450400FA6C6C /* CoreDataStorageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -376,6 +390,10 @@
 		3C876BB02730008000FA6C6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3C876BFB2738604E00FA6C6C /* WorkoutCD+CoreDataClass.swift */,
+				3C876BFC2738604E00FA6C6C /* WorkoutCD+CoreDataProperties.swift */,
+				3C876BFD2738604E00FA6C6C /* ExerciseCD+CoreDataClass.swift */,
+				3C876BFE2738604E00FA6C6C /* ExerciseCD+CoreDataProperties.swift */,
 				3C876BB12730009300FA6C6C /* Workout.swift */,
 				3C876BB3273004AB00FA6C6C /* Exercise.swift */,
 			);
@@ -720,18 +738,24 @@
 				3C876B72272AB18B00FA6C6C /* SetupObject.swift in Sources */,
 				3C876B95272ADF7B00FA6C6C /* YWIconButton.swift in Sources */,
 				3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */,
+				3C876C022738604E00FA6C6C /* ExerciseCD+CoreDataProperties.swift in Sources */,
 				3C876BF4273454B900FA6C6C /* FilterExerciseViewController.swift in Sources */,
 				3C876B6F272AAEAE00FA6C6C /* StartMenuPresenter.swift in Sources */,
 				3C876BDB2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift in Sources */,
 				3C876BC9273166D100FA6C6C /* WorkoutDetailViewController.swift in Sources */,
+				3C876C002738604E00FA6C6C /* WorkoutCD+CoreDataProperties.swift in Sources */,
 				3C876BA2272D665700FA6C6C /* UIView + extension.swift in Sources */,
 				3C876B88272AC02A00FA6C6C /* AssemblyConfigurator.swift in Sources */,
 				3C876B9E272C280500FA6C6C /* WorkoutsViewController.swift in Sources */,
 				3C876BA4272FBABB00FA6C6C /* ExercisesViewController.swift in Sources */,
 				3C876BCC2732A87C00FA6C6C /* YWExerciseContainerViewController.swift in Sources */,
+				3C876C012738604E00FA6C6C /* ExerciseCD+CoreDataClass.swift in Sources */,
 				3C876BB4273004AB00FA6C6C /* Exercise.swift in Sources */,
 				3C876BD02732CB0300FA6C6C /* ImageCollectionViewCell.swift in Sources */,
+				3C876BF82738441600FA6C6C /* CodeDataStack.swift in Sources */,
 				3C876BED27340A4E00FA6C6C /* ExerciseDetailPresenter.swift in Sources */,
+				3C876BFA2738450400FA6C6C /* CoreDataStorageManager.swift in Sources */,
+				3C876BFF2738604E00FA6C6C /* WorkoutCD+CoreDataClass.swift in Sources */,
 				3C876BAB272FC51600FA6C6C /* ExerciseCollectionViewCell.swift in Sources */,
 				3C876BD5273309FF00FA6C6C /* UITextField + extension.swift in Sources */,
 				3C876BE12733280A00FA6C6C /* EditCreateExerciseViewController.swift in Sources */,

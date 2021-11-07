@@ -7,10 +7,18 @@
 
 import Foundation
 
-struct Workout {
+protocol WorkoutModelProtocol {
+    var title: String { get }
+    var muscleGroups: [MuscleGroup] { get }
+    var system: Bool { get }
+    var exercises: [ExerciseModelProtocol]? { get }
+    var id: UUID { get }
+}
+
+struct WorkoutModel: WorkoutModelProtocol {
     let title: String
-    let countExercise: Int
-    let muscleGroup: [MuscleGroup]
+    let muscleGroups: [MuscleGroup]
     let system: Bool
-    let exercises: [Exercise]?
+    let exercises: [ExerciseModelProtocol]?
+    let id: UUID
 }
