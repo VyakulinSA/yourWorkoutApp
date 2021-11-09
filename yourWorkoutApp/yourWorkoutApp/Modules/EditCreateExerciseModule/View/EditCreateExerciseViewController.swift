@@ -73,7 +73,7 @@ extension EditCreateExerciseViewController {
             switch cell {
                 //images
             case let cell as ExerciseImagesCollectionViewCell:
-                cell.setupImagesData(startImageData: exercise.startImage, endImageData: exercise.endImage)
+//                cell.setupImagesData(startImageData: exercise.startImage, endImageData: exercise.endImage)
                 return cell
                 //muscle
             case let cell as ExerciseMuscleGroupCollectionViewCell:

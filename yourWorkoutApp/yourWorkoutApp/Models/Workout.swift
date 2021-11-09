@@ -8,17 +8,17 @@
 import Foundation
 
 protocol WorkoutModelProtocol {
-    var title: String { get }
-    var muscleGroups: [MuscleGroup] { get }
-    var system: Bool { get }
-    var exercises: [ExerciseModelProtocol]? { get }
-    var id: UUID { get }
+    var title: String { get set }
+    var muscleGroups: [MuscleGroup] { get set }
+    var system: Bool { get set }
+    var exercises: [ExerciseModelProtocol]? { get set }
+    var id: UUID { get set }
 }
 
 struct WorkoutModel: WorkoutModelProtocol {
-    let title: String
-    let muscleGroups: [MuscleGroup]
-    let system: Bool
-    let exercises: [ExerciseModelProtocol]?
-    let id: UUID
+    var title: String
+    var muscleGroups: [MuscleGroup]
+    var system: Bool
+    var exercises: [ExerciseModelProtocol]?
+    var id: UUID
 }

@@ -19,21 +19,19 @@ enum MuscleGroup: String, CaseIterable{
 }
 
 protocol ExerciseModelProtocol {
-    var title: String { get }
-    var muscleGroup: MuscleGroup { get }
-    var description: String { get }
-    var startImage: Data? { get }
-    var endImage: Data? { get }
-    var workout: WorkoutModelProtocol? { get }
-    var id: UUID { get }
+    var title: String { get set }
+    var muscleGroup: MuscleGroup { get set }
+    var description: String { get set }
+    var startImagePath: String? { get set }
+    var endImagePath: String? { get set }
+    var id: UUID { get set }
 }
 
 struct ExerciseModel: ExerciseModelProtocol {
-    let title: String
-    let muscleGroup: MuscleGroup
-    let description: String
-    let startImage: Data?
-    let endImage: Data?
-    let workout: WorkoutModelProtocol?
-    let id: UUID
+    var title: String
+    var muscleGroup: MuscleGroup
+    var description: String
+    var startImagePath: String?
+    var endImagePath: String?
+    var id: UUID
 }

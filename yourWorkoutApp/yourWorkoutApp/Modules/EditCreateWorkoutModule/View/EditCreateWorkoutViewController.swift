@@ -92,7 +92,7 @@ extension EditCreateWorkoutViewController {
         
         //setup cell items for exercise
         if let exercise = presenter.exercisesData?[indexPath.item] {
-            cell.setupCellItems(exerciseImage: exercise.startImage, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
+//            cell.setupCellItems(exerciseImage: exercise.startImage, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
         }
         
         return cell

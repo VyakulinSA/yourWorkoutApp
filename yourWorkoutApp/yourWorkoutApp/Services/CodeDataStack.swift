@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 protocol CoreDataStackProtocol: AnyObject {
+    var mainContext: NSManagedObjectContext {get}
     func saveContext()
     func saveContext(_ context: NSManagedObjectContext)
 }

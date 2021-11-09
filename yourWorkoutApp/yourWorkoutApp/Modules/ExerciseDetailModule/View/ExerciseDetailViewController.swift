@@ -81,9 +81,9 @@ extension ExerciseDetailViewController {
     }
     
     private func configureImages(cell: ExerciseImagesCollectionViewCell) -> UICollectionViewCell {
-        guard let startImage = presenter.exercise.startImage,
-              let endImage = presenter.exercise.endImage else { return cell }
-        cell.setupImagesData(startImageData: startImage, endImageData: endImage)
+//        guard let startImage = presenter.exercise.startImage,
+//              let endImage = presenter.exercise.endImage else { return cell }
+//        cell.setupImagesData(startImageData: startImage, endImageData: endImage)
         return cell
     }
     

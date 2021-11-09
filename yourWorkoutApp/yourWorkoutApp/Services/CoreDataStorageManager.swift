@@ -15,8 +15,8 @@ protocol DataStorageWorkoutManagerProtocol: AnyObject {
     func delete(workout: WorkoutModelProtocol)
     func deleteAllWorkouts()
     
-    func add(exercises: [ExerciseModelProtocol]?, for workout: WorkoutModelProtocol)
-    func getExercises(for workout: WorkoutModelProtocol) -> [ExerciseModelProtocol]?
+//    func add(exercises: [ExerciseModelProtocol]?, for workout: WorkoutModelProtocol)
+//    func getExercises(from workout: WorkoutModelProtocol) -> [ExerciseModelProtocol]?
 }
 
 protocol DataStorageExerciseManagerProtocol: AnyObject {
@@ -38,19 +38,32 @@ class CoreDataStorageManager {
 }
 
 extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
+   //MARK: Create Workout with Exercises
     func create(workout: WorkoutModelProtocol) {
-        guard let workoutEntity = NSEntityDescription.insertNewObject(forEntityName: "WorkoutCD", into: managedObjectContext) as? WorkoutCD else {return}
-        workoutEntity.id = workout.id
-        workoutEntity.title = workout.title
-        workoutEntity.system = workout.system
-        workoutEntity.muscleGroups = workout.muscleGroups.map{$0.rawValue}.joined(separator: "|")
-        workoutEntity.exercisesCount = Int16(workout.exercises?.count ?? 0)
+        guard let workoutCD = NSEntityDescription.insertNewObject(forEntityName: "WorkoutCD", into: managedObjectContext) as? WorkoutCD else {return}
+        
+        workoutCD.id = workout.id
+        workoutCD.title = workout.title
+        workoutCD.system = workout.system
+        workoutCD.muscleGroups = workout.muscleGroups.map{$0.rawValue}.joined(separator: "|")
+        workoutCD.exercisesCount = Int16(workout.exercises?.count ?? 0)
+        
+        var exercisesCD: [ExerciseCD] = [ExerciseCD]()
+        
+        workout.exercises?.forEach({ ex in
+            if let exСD = getCoreDataOneEntity(withType: ExerciseCD.self, and: ex.id){
+                exercisesCD.append(exСD)
+            }
+        })
+        
+        workoutCD.exerciseCD = NSSet(array: exercisesCD)
         
         coreDataStack.saveContext(managedObjectContext)
     }
     
+    //MARK: Read All Workouts with Exercises
     func readAllWorkouts() -> [WorkoutModelProtocol]? {
-        guard let workoutsCD = readWorkoutsCD() else {return nil}
+        guard let workoutsCD = getCoreDataAllEntities(withType: WorkoutCD.self) else {return nil}
         var result: [WorkoutModelProtocol] = [WorkoutModelProtocol]()
         
         for workout in workoutsCD {
@@ -58,86 +71,167 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
                 MuscleGroup(rawValue: String(sub)) ?? .wholeBody
             }
             
-//            let exerciseModels = workout.exerciseCD?.map({ exercise in
-//                let ex = exercise as? ExerciseCD
-//                ExerciseModel(
-//                    title: ex?.title,
-//                    muscleGroup: ex?.muscleGroup,
-//                    description: <#T##String#>,
-//                    startImage: <#T##Data?#>,
-//                    endImage: <#T##Data?#>,
-//                    workout: <#T##WorkoutModelProtocol?#>,
-//                    id: <#T##UUID#>)
-//            })
+            let exercises: [ExerciseModel]? = transform(exercisesCD: workout.exerciseCD)
             
             let workoutModel = WorkoutModel(
                 title: workout.title,
                 muscleGroups: muscleGroups,
                 system: workout.system,
-                exercises: nil,
-                id: workout.id)
+                exercises: exercises,
+                id: workout.id
+            )
+            
             result.append(workoutModel)
         }
         return result
     }
     
-    private func readWorkoutsCD() -> [WorkoutCD]? {
-        let workoutFetch: NSFetchRequest<WorkoutCD> = WorkoutCD.fetchRequest()
-        do {
-            let results = try managedObjectContext.fetch(workoutFetch)
-            return results
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-        return nil
-    }
-    
+    //MARK: Update workout with Exercises
     func update(workout: WorkoutModelProtocol) {
-        print(#function)
+        guard let workoutCD = getCoreDataOneEntity(withType: WorkoutCD.self, and: workout.id) else {return}
+        
+        workoutCD.id = workout.id
+        workoutCD.title = workout.title
+        workoutCD.system = workout.system
+        workoutCD.muscleGroups = workout.muscleGroups.map{$0.rawValue}.joined(separator: "|")
+        workoutCD.exercisesCount = Int16(workout.exercises?.count ?? 0)
+        
+        var exercisesCD: [ExerciseCD] = [ExerciseCD]()
+        
+        workout.exercises?.forEach({ ex in
+            if let exСD = getCoreDataOneEntity(withType: ExerciseCD.self, and: ex.id){
+                exercisesCD.append(exСD)
+            }
+        })
+        
+        workoutCD.exerciseCD = NSSet(array: exercisesCD)
+        coreDataStack.saveContext(managedObjectContext)
     }
     
+
+    //MARK: Delete workout
     func delete(workout: WorkoutModelProtocol) {
-        print(#function)
+        guard let workoutCD = getCoreDataOneEntity(withType: WorkoutCD.self, and: workout.id) else {return}
+        managedObjectContext.delete(workoutCD)
+        coreDataStack.saveContext()
     }
     
+    //MARK: Delete workout with Exercises
     func deleteAllWorkouts() {
-        guard let allWorkouts = readWorkoutsCD() else { return }
+        guard let allWorkouts = getCoreDataAllEntities(withType: WorkoutCD.self) else { return }
         for object in allWorkouts{
             managedObjectContext.delete(object)
         }
         
         coreDataStack.saveContext()
     }
-    
-    func add(exercises: [ExerciseModelProtocol]?, for workout: WorkoutModelProtocol) {
-        print(#function)
-    }
-    
-    func getExercises(for workout: WorkoutModelProtocol) -> [ExerciseModelProtocol]? {
-        print(#function)
-        return nil
-    }
-    
-
 }
 
 extension CoreDataStorageManager: DataStorageExerciseManagerProtocol {
+    //MARK: Create exercise
     func create(exercise: ExerciseModelProtocol) {
-        print(#function)
+        guard let exerciseCD = NSEntityDescription.insertNewObject(forEntityName: "ExerciseCD", into: managedObjectContext) as? ExerciseCD else {return}
+        
+        exerciseCD.id = exercise.id
+        exerciseCD.endImagePath = exercise.endImagePath
+        exerciseCD.startImagePath = exercise.startImagePath
+        exerciseCD.muscleGroup = exercise.muscleGroup.rawValue
+        exerciseCD.descriptionText = exercise.description
+        exerciseCD.title = exercise.title
+        
+        coreDataStack.saveContext(managedObjectContext)
     }
     
+    //MARK: Read exercises
     func readAllExercises() -> [ExerciseModelProtocol]? {
-        print(#function)
+        guard let exercisesCD = getCoreDataAllEntities(withType: ExerciseCD.self) else {return nil}
+        var result: [ExerciseModelProtocol] = [ExerciseModelProtocol]()
+        
+        for exercise in exercisesCD {
+            let muscleGroup = MuscleGroup(rawValue: exercise.muscleGroup) ?? .wholeBody
+            
+            let exerciseModel = ExerciseModel(
+                title: exercise.title,
+                muscleGroup: muscleGroup,
+                description: exercise.descriptionText,
+                startImagePath: exercise.startImagePath,
+                endImagePath: exercise.endImagePath,
+                id: exercise.id
+            )
+            
+            result.append(exerciseModel)
+        }
+        return result
+    }
+    
+    //MARK: Update exercise
+    func update(exercise: ExerciseModelProtocol) {
+        guard let exerciseCD = getCoreDataOneEntity(withType: ExerciseCD.self, and: exercise.id) else {return}
+        
+        exerciseCD.id = exercise.id
+        exerciseCD.endImagePath = exercise.endImagePath
+        exerciseCD.startImagePath = exercise.startImagePath
+        exerciseCD.muscleGroup = exercise.muscleGroup.rawValue
+        exerciseCD.descriptionText = exercise.description
+        exerciseCD.title = exercise.title
+        
+        coreDataStack.saveContext(managedObjectContext)
+    }
+    
+    //MARK: Delete exercise
+    func delete(exercise: ExerciseModelProtocol) {
+        guard let exerciseCD = getCoreDataOneEntity(withType: ExerciseCD.self, and: exercise.id) else {return}
+        managedObjectContext.delete(exerciseCD)
+        coreDataStack.saveContext()
+    }
+    
+    
+}
+
+//MARK: Helpers functions
+extension CoreDataStorageManager {
+    
+    private func getCoreDataAllEntities<T: NSManagedObject>(withType entityType: T.Type) -> [T]? {
+        let workoutFetch = T.fetchRequest()
+        do {
+            let results = try managedObjectContext.fetch(workoutFetch)
+            return results as? [T]
+        } catch let error as NSError {
+            print("Fetch error: \(error) description: \(error.userInfo)")
+        }
         return nil
     }
     
-    func update(exercise: ExerciseModelProtocol) {
-        print(#function)
+    private func getCoreDataOneEntity<T: NSManagedObject>(withType entityType: T.Type, and id: UUID) -> T? {
+        let fetchRequest = T.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+        do {
+            let results = try managedObjectContext.fetch(fetchRequest)
+            return results.first as? T
+        } catch let error as NSError {
+            print("Fetch error: \(error) description: \(error.userInfo)")
+        }
+        return nil
     }
     
-    func delete(exercise: ExerciseModelProtocol) {
-        print(#function)
+    private func transform(exercisesCD: NSSet?) -> [ExerciseModel]? {
+        guard let exercisesCD = exercisesCD else { return nil }
+        var exercises = [ExerciseModel]()
+        
+        for ex in exercisesCD {
+            guard let ex = ex as? ExerciseCD else {return nil}
+            exercises.append(
+                ExerciseModel(
+                    title: ex.title,
+                    muscleGroup: MuscleGroup(rawValue: ex.muscleGroup) ?? .wholeBody,
+                    description: ex.descriptionText,
+                    startImagePath: ex.startImagePath,
+                    endImagePath: ex.endImagePath,
+                    id: ex.id
+                )
+            )
+        }
+        return exercises
     }
-    
     
 }
