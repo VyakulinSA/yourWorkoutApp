@@ -27,6 +27,8 @@ private enum ImagesCellSettings: CaseIterable {
 
 class ExerciseImagesCollectionViewCell: UICollectionViewCell {
     
+    weak var remotePresenter: EditCreateExerciseViewOutput?
+    
     private var startImageData: Data?
     private var endImageData: Data?
     
@@ -57,6 +59,7 @@ extension ExerciseImagesCollectionViewCell {
     func setupImagesData(startImageData: Data?, endImageData: Data?) {
         self.startImageData = startImageData
         self.endImageData = endImageData
+        collectionView.reloadData()
     }
     
     private func configViews() {
@@ -87,12 +90,17 @@ extension ExerciseImagesCollectionViewCell: UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell
         
         guard let cell = cell else {return UICollectionViewCell()}
+        let imagesCellSettings = ImagesCellSettings.allCases[indexPath.item]
         
-        let imageData = ImagesCellSettings.allCases[indexPath.item] == .startImage ? startImageData : endImageData
+        let imageData =  imagesCellSettings == .startImage ? startImageData : endImageData
         
-        cell.setupCellItems(title: ImagesCellSettings.allCases[indexPath.item].title, imageData: imageData)
+        cell.setupCellItems(title: imagesCellSettings.title, imageData: imageData)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        remotePresenter?.addImageButtonTapped(item: indexPath.item)
     }
     
 }

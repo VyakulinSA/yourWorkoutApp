@@ -45,7 +45,8 @@ protocol RouterForWorkoutDetailModule: RouterConfiguratorProtocol {
 }
 
 protocol RouterForEditCreateExerciseModule: RouterConfiguratorProtocol {
-    
+    func showSelectExerciseImageActionsheet(output: SelectExerciseImageActionsheetOutput, selectedImageCell: SelectedImageCell)
+    func showSelectExerciseImagePickerController(output: SelectExerciseImagePickerOutput, selectedImageCell: SelectedImageCell, source: UIImagePickerController.SourceType)
 }
 
 protocol RouterForExerciseDetailModule: RouterConfiguratorProtocol {
@@ -88,6 +89,23 @@ class RouterConfigurator: RouterConfiguratorProtocol, RouterForEditCreateExercis
     func popVC() {
         if let navigationController = navigationController {
             navigationController.popViewController(animated: true)
+        }
+    }
+    
+    func showSelectExerciseImageActionsheet(output: SelectExerciseImageActionsheetOutput, selectedImageCell: SelectedImageCell){
+        let actionSheet = SelectExerciseImageActionsheet(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.configure(output: output, selectedImageCell: selectedImageCell)
+        navigationController?.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func showSelectExerciseImagePickerController(output: SelectExerciseImagePickerOutput, selectedImageCell: SelectedImageCell, source: UIImagePickerController.SourceType){
+        if UIImagePickerController.isSourceTypeAvailable(source){
+            let imagePicker = SelectExerciseImagePickerController()
+            imagePicker.delegate = imagePicker
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = source
+            imagePicker.configure(output: output, selectedImageCell: selectedImageCell)
+            navigationController?.present(imagePicker, animated: true, completion: nil)
         }
     }
 }

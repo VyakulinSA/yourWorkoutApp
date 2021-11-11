@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditCreateExerciseViewController: YWExerciseContainerViewController {
+class EditCreateExerciseViewController: YWExerciseContainerViewController, EditCreateExerciseViewInput {
     
     var presenter: EditCreateExerciseViewOutput
     
@@ -30,6 +30,8 @@ class EditCreateExerciseViewController: YWExerciseContainerViewController {
 extension EditCreateExerciseViewController {
     
     private func configViews() {
+        remotePresenter = presenter
+        
         let secondRightBarButtonName = presenter.editCreateType == .edit ? IconButtonNames.trash : nil
         let title = presenter.editCreateType == .edit ? "EDIT EXERCISE" : "CREATE EXERCISE"
         setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: secondRightBarButtonName, titleBarText: title)
@@ -40,7 +42,7 @@ extension EditCreateExerciseViewController {
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
         secondRightBarButton.addTarget(self, action: #selector(trashBarButtonTapped), for: .touchUpInside)
     }
-    
+
     @objc func backBarButtonTapped() {
         presenter.backBarButtonTapped()
     }
@@ -54,6 +56,10 @@ extension EditCreateExerciseViewController {
         presenter.trashBarButtonTapped()
     }
     
+    func reloadCollection() {
+        collectionView.reloadData()
+    }
+    
 }
 
 
@@ -62,38 +68,34 @@ extension EditCreateExerciseViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if presenter.editCreateType == .create {
-            return super.collectionView(collectionView, cellForItemAt: indexPath)
-        } else {
-            //edit type
             let identifier = CellSettings.allCases[indexPath.item].identifierCell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-            guard let exercise = presenter.exercise else {return cell}
-            
+        //FIXME: поправить отрисовку ячеек
             switch cell {
                 //images
             case let cell as ExerciseImagesCollectionViewCell:
-//                cell.setupImagesData(startImageData: exercise.startImage, endImageData: exercise.endImage)
+                cell.remotePresenter = presenter
+                
+                cell.setupImagesData(startImageData: presenter.startExerciseImage, endImageData: presenter.endExerciseImage)
                 return cell
                 //muscle
             case let cell as ExerciseMuscleGroupCollectionViewCell:
-                cell.titleTextField.text = exercise.muscleGroup.rawValue
+                cell.titleTextField.text = presenter.exercise?.muscleGroup.rawValue
                 return cell
                 //description
             case let cell as ExerciseDescriptionCollectionViewCell:
-                if exercise.description.count > 0 {
+                if let exercise = presenter.exercise, exercise.description.count > 0 {
                     cell.descriptionTextView.text = exercise.description
                     cell.descriptionTextView.textColor = .darkTextColor
                 }
                 return cell
                 //title
             case let cell as ExerciseTitleCollectionViewCell:
-                cell.titleTextField.text = exercise.title
+                cell.titleTextField.text = presenter.exercise?.title ?? ""
                 return cell
                 
             default:
                 return cell
             }
         }
-    }
 }

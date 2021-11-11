@@ -55,6 +55,8 @@ enum CellSettings: CaseIterable{
 }
 
 class YWExerciseContainerViewController: YWMainContainerViewController {
+    
+    weak var remotePresenter: EditCreateExerciseViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +94,6 @@ extension YWExerciseContainerViewController {
         
         switch cell {
         case let cell as ExerciseImagesCollectionViewCell:
-            //config cell
             return cell
         case let cell as ExerciseMuscleGroupCollectionViewCell:
             //config cell

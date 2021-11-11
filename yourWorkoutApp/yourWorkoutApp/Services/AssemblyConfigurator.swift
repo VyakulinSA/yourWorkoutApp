@@ -15,7 +15,7 @@ protocol AssembliConfiguratorProtocol: AnyObject {
     
     func createExercisesModule(router: RouterForExerciseModule) -> UIViewController
     
-    func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?) -> UIViewController
+    func createEditCreateWorkoutModule( router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?) -> UIViewController
     
     func createAddExerciseModule(router: RouterForAddExerciseModule) -> UIViewController
     
@@ -29,6 +29,13 @@ protocol AssembliConfiguratorProtocol: AnyObject {
 }
  
 class AssemblyConfigurator: AssembliConfiguratorProtocol {
+    let dataStack = CoreDataStack()
+    var storageManager: CoreDataStorageManager {
+        let storage = CoreDataStorageManager(managedObjectContext: dataStack.mainContext, coreDataStack: dataStack)
+        return storage
+    }
+    
+    
     func createWorkoutModule(router: RouterForWorkoutsModule) -> UIViewController{
         let presenter = WorkoutsPresenter(router: router)
         let view = WorkoutsViewController(presenter: presenter)
@@ -69,8 +76,9 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
     }
     
     func createEditCreateExerciseModule(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) -> UIViewController {
-        let presenter = EditCreateExercisePresenter(router: router, editCreateType: editCreateType, exercise: exercise)
+        let presenter = EditCreateExercisePresenter(exerciseStorageManager: storageManager, router: router, editCreateType: editCreateType, exercise: exercise)
         let view = EditCreateExerciseViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
     
