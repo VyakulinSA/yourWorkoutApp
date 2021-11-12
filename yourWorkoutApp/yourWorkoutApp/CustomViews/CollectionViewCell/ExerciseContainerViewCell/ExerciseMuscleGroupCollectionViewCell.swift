@@ -21,6 +21,7 @@ class ExerciseMuscleGroupCollectionViewCell: ExerciseTitleCollectionViewCell {
         return image
     }()
     
+    
     let detailMuscleGroupView = setupObject(YWMuscleGroupBageView()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isHidden = true
@@ -41,8 +42,6 @@ class ExerciseMuscleGroupCollectionViewCell: ExerciseTitleCollectionViewCell {
 extension ExerciseMuscleGroupCollectionViewCell {
     
     private func configViews() {
-        titleTextField.delegate = self
-        
         titleLabel.text = "Muscle group"
         titleTextField.placeholder = "Muscle group"
         
@@ -50,8 +49,8 @@ extension ExerciseMuscleGroupCollectionViewCell {
     }
     
     private func setupAppearance() {
-        addSubview(chevronImage)
-        addSubview(detailMuscleGroupView)
+        contentView.addSubview(chevronImage)
+        contentView.addSubview(detailMuscleGroupView)
         
         
         NSLayoutConstraint.activate([
@@ -65,7 +64,8 @@ extension ExerciseMuscleGroupCollectionViewCell {
             bottom: nil,
             trailing: nil,
             padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 0),
-            size: CGSize(width: 100, height: 30))
+            size: CGSize(width: 100, height: 30)
+        )
     }
 }
 
@@ -98,8 +98,13 @@ extension ExerciseMuscleGroupCollectionViewCell: UIPickerViewDelegate, UIPickerV
     }
 }
 
-extension ExerciseMuscleGroupCollectionViewCell: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+extension ExerciseMuscleGroupCollectionViewCell {
+    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return false
+    }
+    
+    override func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        remotePresenter?.exercise?.muscleGroup = MuscleGroup(rawValue: text) ?? .wholeBody
     }
 }

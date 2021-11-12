@@ -60,6 +60,7 @@ extension ExerciseImagesCollectionViewCell {
         self.startImageData = startImageData
         self.endImageData = endImageData
         collectionView.reloadData()
+        print("ExerciseImagesCollectionViewCell wilAppear reload")
     }
     
     private func configViews() {
@@ -69,7 +70,7 @@ extension ExerciseImagesCollectionViewCell {
     }
     
     private func setupAppearance() {
-        addSubview(collectionView)
+        contentView.addSubview(collectionView)
         
         collectionView.anchor(
             top: topAnchor,

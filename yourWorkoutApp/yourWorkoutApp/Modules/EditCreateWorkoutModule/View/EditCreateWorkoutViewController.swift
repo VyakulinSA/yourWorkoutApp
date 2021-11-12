@@ -68,6 +68,7 @@ extension EditCreateWorkoutViewController {
     
     func reloadCollection() {
         collectionView.reloadData()
+        print("EditCreateWorkoutViewController wilAppear reload")
     }
 }
 

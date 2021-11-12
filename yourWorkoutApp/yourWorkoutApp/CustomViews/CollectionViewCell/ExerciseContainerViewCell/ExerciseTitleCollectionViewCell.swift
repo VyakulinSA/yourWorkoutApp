@@ -9,6 +9,8 @@ import UIKit
 
 class ExerciseTitleCollectionViewCell: UICollectionViewCell {
     
+    weak var remotePresenter: EditCreateExerciseViewOutput?
+    
     let titleLabel = setupObject(UILabel()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont.myFont(.myFontSemiBold, size: 18)
@@ -40,6 +42,7 @@ class ExerciseTitleCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupAppearance()
+        configViews()
     }
     
     required init?(coder: NSCoder) {
@@ -51,11 +54,15 @@ class ExerciseTitleCollectionViewCell: UICollectionViewCell {
 
 extension ExerciseTitleCollectionViewCell {
     
+    private func configViews() {
+        titleTextField.delegate = self
+    }
+    
     private func setupAppearance() {
         
-        addSubview(titleLabel)
-        addSubview(titleTextField)
-        addSubview(detailTitleLabel)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(titleTextField)
+        contentView.addSubview(detailTitleLabel)
         
         titleTextField.setPaddingPoints(20)
         
@@ -82,5 +89,16 @@ extension ExerciseTitleCollectionViewCell {
             trailing: trailingAnchor,
             padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         )
+    }
+}
+
+extension ExerciseTitleCollectionViewCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        remotePresenter?.exercise?.title = text
     }
 }

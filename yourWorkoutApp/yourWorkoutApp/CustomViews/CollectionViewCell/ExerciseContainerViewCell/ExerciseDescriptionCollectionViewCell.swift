@@ -48,7 +48,7 @@ extension ExerciseDescriptionCollectionViewCell {
     
     private func setupAppearance() {
         
-        addSubview(descriptionTextView)
+        contentView.addSubview(descriptionTextView)
         
         descriptionTextView.anchor(
             top: topAnchor,
@@ -62,10 +62,6 @@ extension ExerciseDescriptionCollectionViewCell {
 }
 
 extension ExerciseDescriptionCollectionViewCell : UITextViewDelegate{
-//    func textViewDidChange(_ textView: UITextView) {
-//        presenter.settingsTransactionTouple.note = textView.text
-//    }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .lightGray || textView.text == "Start here..." {
             textView.text = nil
@@ -77,12 +73,20 @@ extension ExerciseDescriptionCollectionViewCell : UITextViewDelegate{
         if textView.text.isEmpty {
             textView.text = "Start here..."
             textView.textColor = .lightGray
+        } else {
+            remotePresenter?.exercise?.description = textView.text
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentCharacterCount = textField.text?.count ?? 0
-        let newLength = currentCharacterCount + string.count - range.length
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        remotePresenter?.exercise?.description = textView.text
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        let currentCharacterCount = textView.text?.count ?? 0
+        let newLength = currentCharacterCount + text.count - range.length
         return newLength <= 250
     }
 }

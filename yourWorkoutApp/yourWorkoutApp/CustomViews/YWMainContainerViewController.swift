@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SwiftUI
 
 class YWMainContainerViewController: UIViewController {
     
     var dataModel: [ExerciseModelProtocol]?
+    var tapScreen: UIGestureRecognizer?
     
     private var leftBarButtonName: IconButtonNames?
     private var firstRightBarButtonName: IconButtonNames?
@@ -65,10 +67,8 @@ class YWMainContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupAppearance()
     }
-
 }
 
 //MARK: - configViews
@@ -89,7 +89,6 @@ extension YWMainContainerViewController {
         secondRightBarButton.setupAppearance(systemNameImage: secondRightBarButtonName)
         titleView.text = titleBarText
     }
-    
 }
 
 //MARK: - setupAppearance

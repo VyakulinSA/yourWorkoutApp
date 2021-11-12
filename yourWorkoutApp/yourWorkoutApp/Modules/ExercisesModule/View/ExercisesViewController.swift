@@ -60,6 +60,7 @@ extension ExercisesViewController {
     func reloadCollection() {
         dataModel = presenter.exercisesData
         collectionView.reloadData()
+        print("ExercisesViewController wilAppear reload")
     }
 }
 

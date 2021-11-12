@@ -63,9 +63,9 @@ extension ImageCollectionViewCell {
         layer.borderColor = UIColor.outlineColor.withAlphaComponent(0.6).cgColor
         clipsToBounds = true
         
-        addSubview(titleLabel)
-        addSubview(addButton)
-        addSubview(exerciseImageView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(addButton)
+        contentView.addSubview(exerciseImageView)
         
         titleLabel.anchor(
             top: topAnchor,

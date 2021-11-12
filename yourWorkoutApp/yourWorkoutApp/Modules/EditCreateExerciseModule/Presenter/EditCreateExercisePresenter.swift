@@ -48,9 +48,15 @@ class EditCreateExercisePresenter: EditCreateExerciseViewOutput {
     
     init(exerciseStorageManager: DataStorageExerciseManagerProtocol, router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) {
         self.router = router
-        self.editCreateType = editCreateType
-        self.exercise = exercise
         self.exerciseStorageManager = exerciseStorageManager
+        self.editCreateType = editCreateType
+        switch editCreateType {
+        case .edit:
+            self.exercise = exercise
+        case .create:
+            self.exercise = ExerciseModel(title: "", muscleGroup: .wholeBody, description: "", startImagePath: nil, endImagePath: nil, id: UUID())
+        }
+        
         getImagesFromExercise()
     }
     
@@ -64,6 +70,7 @@ extension EditCreateExercisePresenter {
     
     func backBarButtonTapped() {
         //создаем упражнение
+        print(exercise)
         //вызываем мэнеджер рабоыт с базой и сохраняем
         router.popVC()
     }
