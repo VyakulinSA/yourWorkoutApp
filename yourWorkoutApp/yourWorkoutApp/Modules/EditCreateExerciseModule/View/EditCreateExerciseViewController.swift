@@ -10,6 +10,7 @@ import UIKit
 class EditCreateExerciseViewController: YWExerciseContainerViewController, EditCreateExerciseViewInput {
     
     var presenter: EditCreateExerciseViewOutput
+    var tapScreen: UIGestureRecognizer?
     
     init(presenter: EditCreateExerciseViewOutput){
         self.presenter = presenter

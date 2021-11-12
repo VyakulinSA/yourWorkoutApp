@@ -11,7 +11,6 @@ import SwiftUI
 class YWMainContainerViewController: UIViewController {
     
     var dataModel: [ExerciseModelProtocol]?
-    var tapScreen: UIGestureRecognizer?
     
     private var leftBarButtonName: IconButtonNames?
     private var firstRightBarButtonName: IconButtonNames?

@@ -101,4 +101,8 @@ extension ExerciseTitleCollectionViewCell: UITextFieldDelegate {
         guard let text = textField.text else {return}
         remotePresenter?.exercise?.title = text
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+    }
 }
