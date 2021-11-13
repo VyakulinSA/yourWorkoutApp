@@ -25,7 +25,6 @@ class AddExerciseViewController: YWMainContainerViewController, AddExerciseViewI
         
         configViews()
     }
-
 }
 
 extension AddExerciseViewController {
@@ -48,9 +47,34 @@ extension AddExerciseViewController {
         presenter.filterBarButtonTapped()
     }
     
+    @objc func detailButtonTapped(sender: UIButton) {
+        presenter.detailButtonTapped(item: sender.tag)
+    }
+    
     func reloadCollection() {
         dataModel = presenter.exercisesData
         collectionView.reloadData()
         print("AddExerciseViewController wilAppear reload")
+    }
+}
+
+//MARK: config collectionView
+extension AddExerciseViewController {
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell
+        guard let cell = cell else {return UICollectionViewCell()}
+        if let exercise = presenter.exercisesData?[indexPath.item] {
+            let image = presenter.getImagesFromExercise(imageName: exercise.startImageName)
+            cell.setupCellItems(exerciseImage: image, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
+            cell.detailButton.isHidden = false
+            cell.detailButton.tag = indexPath.item
+            cell.detailButton.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
+        }
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectCell(item: indexPath.item)
     }
 }
