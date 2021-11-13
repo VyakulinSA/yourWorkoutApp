@@ -99,7 +99,7 @@ extension ExerciseTitleCollectionViewCell: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else {return}
-        remotePresenter?.exercise?.title = text
+        remotePresenter?.exercise.title = text
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

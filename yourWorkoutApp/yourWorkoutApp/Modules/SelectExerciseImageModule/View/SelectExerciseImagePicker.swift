@@ -8,10 +8,10 @@
 import UIKit
 
 protocol SelectExerciseImagePickerOutput: AnyObject {
-    func writeExerciseImages(imageData: Data?, selectedCell: SelectedImageCell)
+    func writeExerciseImages(image: UIImage?, selectedCell: SelectedImageCell)
 }
 
-class SelectExerciseImagePickerController: UIImagePickerController {
+class SelectExerciseImagePicker: UIImagePickerController {
     
     private var source: UIImagePickerController.SourceType?
     private weak var output: SelectExerciseImagePickerOutput?
@@ -19,6 +19,7 @@ class SelectExerciseImagePickerController: UIImagePickerController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegate = self
     }
     
     func configure(output: SelectExerciseImagePickerOutput, selectedImageCell: SelectedImageCell){
@@ -28,13 +29,12 @@ class SelectExerciseImagePickerController: UIImagePickerController {
     
 }
 
-extension SelectExerciseImagePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension SelectExerciseImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[.editedImage] as? UIImage
-        let imageData = selectedImage?.jpegData(compressionQuality: 1.0) ?? selectedImage?.pngData()
         guard let output = output, let selectedImageCell = selectedImageCell else {return}
-        output.writeExerciseImages(imageData: imageData, selectedCell: selectedImageCell)
+        output.writeExerciseImages(image: selectedImage, selectedCell: selectedImageCell)
         dismiss(animated: true, completion: nil)
     }
 }

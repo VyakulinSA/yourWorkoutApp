@@ -22,8 +22,8 @@ protocol ExerciseModelProtocol {
     var title: String { get set }
     var muscleGroup: MuscleGroup { get set }
     var description: String { get set }
-    var startImagePath: String? { get set }
-    var endImagePath: String? { get set }
+    var startImageName: String? { get set }
+    var endImageName: String? { get set }
     var id: UUID { get set }
 }
 
@@ -31,7 +31,7 @@ struct ExerciseModel: ExerciseModelProtocol {
     var title: String
     var muscleGroup: MuscleGroup
     var description: String
-    var startImagePath: String?
-    var endImagePath: String?
+    var startImageName: String?
+    var endImageName: String?
     var id: UUID
 }

@@ -21,7 +21,7 @@ private enum ImagesCellSettings: CaseIterable {
     }
     
     var cellHeight: CGFloat {
-        return 200
+        return 250
     }
 }
 
@@ -29,8 +29,8 @@ class ExerciseImagesCollectionViewCell: UICollectionViewCell {
     
     weak var remotePresenter: EditCreateExerciseViewOutput?
     
-    private var startImageData: Data?
-    private var endImageData: Data?
+    private var startImage: UIImage?
+    private var endImage: UIImage?
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -56,9 +56,9 @@ class ExerciseImagesCollectionViewCell: UICollectionViewCell {
 
 extension ExerciseImagesCollectionViewCell {
     
-    func setupImagesData(startImageData: Data?, endImageData: Data?) {
-        self.startImageData = startImageData
-        self.endImageData = endImageData
+    func setupImagesData(startImage: UIImage?, endImage: UIImage?) {
+        self.startImage = startImage
+        self.endImage = endImage
         collectionView.reloadData()
         print("ExerciseImagesCollectionViewCell wilAppear reload")
     }
@@ -93,9 +93,9 @@ extension ExerciseImagesCollectionViewCell: UICollectionViewDelegate, UICollecti
         guard let cell = cell else {return UICollectionViewCell()}
         let imagesCellSettings = ImagesCellSettings.allCases[indexPath.item]
         
-        let imageData =  imagesCellSettings == .startImage ? startImageData : endImageData
+        let image =  imagesCellSettings == .startImage ? startImage : endImage
         
-        cell.setupCellItems(title: imagesCellSettings.title, imageData: imageData)
+        cell.setupCellItems(title: imagesCellSettings.title, image: image)
         
         return cell
     }

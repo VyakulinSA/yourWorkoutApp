@@ -105,6 +105,6 @@ extension ExerciseMuscleGroupCollectionViewCell {
     
     override func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else {return}
-        remotePresenter?.exercise?.muscleGroup = MuscleGroup(rawValue: text) ?? .wholeBody
+        remotePresenter?.exercise.muscleGroup = MuscleGroup(rawValue: text) ?? .wholeBody
     }
 }

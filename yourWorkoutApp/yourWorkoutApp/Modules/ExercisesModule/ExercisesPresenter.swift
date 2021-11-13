@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ExercisesViewInput: AnyObject {
     func reloadCollection()
@@ -13,14 +14,20 @@ protocol ExercisesViewInput: AnyObject {
 }
 
 protocol ExercisesViewOutput: FilterExerciseProtocol {
+    func getExercisesData()
+    
     func startMenuButtonTapped()
     func createBarButtonTapped()
     func didSelectCell(item: Int)
+    
+    func getImagesFromExercise(imageName: String?) -> UIImage?
 }
 
 class ExercisesPresenter: ExercisesViewOutput {
     private var router: RouterForExerciseModule
+    private var exerciseStorageManager: DataStorageExerciseManagerProtocol
     weak var view: ExercisesViewInput?
+    private var imagesStorageManager: ImagesStorageManagerProtocol
     
     var exercisesData: [ExerciseModelProtocol]? {
         didSet {
@@ -47,8 +54,10 @@ class ExercisesPresenter: ExercisesViewOutput {
         }
     }
     
-    init(router: RouterForExerciseModule){
+    init(exerciseStorageManager: DataStorageExerciseManagerProtocol, imagesStorageManager: ImagesStorageManagerProtocol, router: RouterForExerciseModule){
         self.router = router
+        self.exerciseStorageManager = exerciseStorageManager
+        self.imagesStorageManager = imagesStorageManager
         getExercisesData()
     }
     
@@ -72,16 +81,11 @@ extension ExercisesPresenter {
         router.showExerciseDetailViewController(exercise: exercise)
     }
     
-    private func getExercisesData() {
-//        exercisesData = [
-//            Exercise(title: "Whole Body ex", muscleGroup: .wholeBody, description: "Whole Body description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Back ex ", muscleGroup: .back, description: "", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Biceps ex", muscleGroup: .biceps, description: "Biceps description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Chest ex", muscleGroup: .chest, description: "Chest description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Triceps ex", muscleGroup: .triceps, description: "Triceps description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Shoulders ex", muscleGroup: .shoulders, description: "", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Abs ex", muscleGroup: .abs, description: "Abs description", startImage: nil, endImage: nil, workout: nil),
-//            Exercise(title: "Legs ex", muscleGroup: .legs, description: "Legs description", startImage: nil, endImage: nil, workout: nil),
-//        ]
+    func getExercisesData() {
+        exercisesData = exerciseStorageManager.readAllExercises()
+    }
+    
+    func getImagesFromExercise(imageName: String?) -> UIImage? {
+         return imagesStorageManager.load(imageName: imageName ?? "")
     }
 }

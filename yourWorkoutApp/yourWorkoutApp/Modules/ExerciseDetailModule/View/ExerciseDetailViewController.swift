@@ -24,6 +24,14 @@ class ExerciseDetailViewController: YWExerciseContainerViewController {
         super.viewDidLoad()
         configViews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.getActualExercise()
+        presenter.getImagesFromExercise()
+        collectionView.reloadData()
+        print("ExerciseDetailViewController reload collection will appear")
+    }
 }
 
 extension ExerciseDetailViewController {
@@ -81,9 +89,7 @@ extension ExerciseDetailViewController {
     }
     
     private func configureImages(cell: ExerciseImagesCollectionViewCell) -> UICollectionViewCell {
-//        guard let startImage = presenter.exercise.startImage,
-//              let endImage = presenter.exercise.endImage else { return cell }
-//        cell.setupImagesData(startImageData: startImage, endImageData: endImage)
+        cell.setupImagesData(startImage: presenter.startExerciseImage, endImage: presenter.endExerciseImage)
         return cell
     }
     

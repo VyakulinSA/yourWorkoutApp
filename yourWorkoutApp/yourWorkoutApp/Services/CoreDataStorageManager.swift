@@ -22,6 +22,7 @@ protocol DataStorageWorkoutManagerProtocol: AnyObject {
 protocol DataStorageExerciseManagerProtocol: AnyObject {
     func create(exercise: ExerciseModelProtocol)
     func readAllExercises() -> [ExerciseModelProtocol]?
+    func readExercise(id: UUID) -> ExerciseModelProtocol?
     func update(exercise: ExerciseModelProtocol)
     func delete(exercise: ExerciseModelProtocol)
 }
@@ -133,8 +134,8 @@ extension CoreDataStorageManager: DataStorageExerciseManagerProtocol {
         guard let exerciseCD = NSEntityDescription.insertNewObject(forEntityName: "ExerciseCD", into: managedObjectContext) as? ExerciseCD else {return}
         
         exerciseCD.id = exercise.id
-        exerciseCD.endImagePath = exercise.endImagePath
-        exerciseCD.startImagePath = exercise.startImagePath
+        exerciseCD.endImageName = exercise.endImageName
+        exerciseCD.startImageName = exercise.startImageName
         exerciseCD.muscleGroup = exercise.muscleGroup.rawValue
         exerciseCD.descriptionText = exercise.description
         exerciseCD.title = exercise.title
@@ -154,8 +155,8 @@ extension CoreDataStorageManager: DataStorageExerciseManagerProtocol {
                 title: exercise.title,
                 muscleGroup: muscleGroup,
                 description: exercise.descriptionText,
-                startImagePath: exercise.startImagePath,
-                endImagePath: exercise.endImagePath,
+                startImageName: exercise.startImageName,
+                endImageName: exercise.endImageName,
                 id: exercise.id
             )
             
@@ -164,13 +165,28 @@ extension CoreDataStorageManager: DataStorageExerciseManagerProtocol {
         return result
     }
     
+    func readExercise(id: UUID) -> ExerciseModelProtocol? {
+        guard let exerciseCD = getCoreDataOneEntity(withType: ExerciseCD.self, and: id) else {return nil}
+        let muscleGroup = MuscleGroup(rawValue: exerciseCD.muscleGroup) ?? .wholeBody
+        let exerciseModel = ExerciseModel(
+            title: exerciseCD.title,
+            muscleGroup: muscleGroup,
+            description: exerciseCD.descriptionText,
+            startImageName: exerciseCD.startImageName,
+            endImageName: exerciseCD.endImageName,
+            id: exerciseCD.id
+        )
+        return exerciseModel
+        
+    }
+    
     //MARK: Update exercise
     func update(exercise: ExerciseModelProtocol) {
         guard let exerciseCD = getCoreDataOneEntity(withType: ExerciseCD.self, and: exercise.id) else {return}
         
         exerciseCD.id = exercise.id
-        exerciseCD.endImagePath = exercise.endImagePath
-        exerciseCD.startImagePath = exercise.startImagePath
+        exerciseCD.endImageName = exercise.endImageName
+        exerciseCD.startImageName = exercise.startImageName
         exerciseCD.muscleGroup = exercise.muscleGroup.rawValue
         exerciseCD.descriptionText = exercise.description
         exerciseCD.title = exercise.title
@@ -225,8 +241,8 @@ extension CoreDataStorageManager {
                     title: ex.title,
                     muscleGroup: MuscleGroup(rawValue: ex.muscleGroup) ?? .wholeBody,
                     description: ex.descriptionText,
-                    startImagePath: ex.startImagePath,
-                    endImagePath: ex.endImagePath,
+                    startImageName: ex.startImageName,
+                    endImageName: ex.endImageName,
                     id: ex.id
                 )
             )

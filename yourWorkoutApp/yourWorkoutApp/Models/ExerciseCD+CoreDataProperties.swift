@@ -19,8 +19,8 @@ extension ExerciseCD {
     @NSManaged public var title: String
     @NSManaged public var muscleGroup: String
     @NSManaged public var descriptionText: String
-    @NSManaged public var startImagePath: String?
-    @NSManaged public var endImagePath: String?
+    @NSManaged public var startImageName: String?
+    @NSManaged public var endImageName: String?
     @NSManaged public var id: UUID
     @NSManaged public var workoutCD: NSSet?
 

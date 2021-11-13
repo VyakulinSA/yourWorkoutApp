@@ -26,6 +26,13 @@ class ExercisesViewController: YWMainContainerViewController, ExercisesViewInput
         configViews()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.getExercisesData()
+        collectionView.reloadData()
+        print("ExercisesViewController reload data will appear")
+    }
 
 
 }
@@ -34,6 +41,7 @@ extension ExercisesViewController {
     
     private func configViews() {
         dataModel = presenter.exercisesData
+        exerciseModulePresenter = presenter
         
         setupNavBarItems(leftBarButtonName: .burger, firstRightBarButtonName: .filter, secondRightBarButtonName: .plus, titleBarText: "EXERCISES")
         

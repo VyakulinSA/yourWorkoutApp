@@ -35,6 +35,8 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         return storage
     }
     
+    let imagesStorageManager: ImagesStorageManagerProtocol = ImagesStorageManager()
+    
     
     func createWorkoutModule(router: RouterForWorkoutsModule) -> UIViewController{
         let presenter = WorkoutsPresenter(router: router)
@@ -49,7 +51,7 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
     }
     
     func createExercisesModule(router: RouterForExerciseModule) -> UIViewController {
-        let presenter = ExercisesPresenter(router: router)
+        let presenter = ExercisesPresenter(exerciseStorageManager: storageManager, imagesStorageManager: imagesStorageManager, router: router)
         let view = ExercisesViewController(presenter: presenter)
         presenter.view = view
         return view
@@ -76,14 +78,14 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
     }
     
     func createEditCreateExerciseModule(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) -> UIViewController {
-        let presenter = EditCreateExercisePresenter(exerciseStorageManager: storageManager, router: router, editCreateType: editCreateType, exercise: exercise)
+        let presenter = EditCreateExercisePresenter(exerciseStorageManager: storageManager, imagesStorageManager: imagesStorageManager, router: router, editCreateType: editCreateType, exercise: exercise)
         let view = EditCreateExerciseViewController(presenter: presenter)
         presenter.view = view
         return view
     }
     
     func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) -> UIViewController {
-        let presenter = ExerciseDetailPresenter(router: router, exercise: exercise)
+        let presenter = ExerciseDetailPresenter(exerciseStorageManager: storageManager, imagesStorageManager: imagesStorageManager, router: router, exercise: exercise)
         let view = ExerciseDetailViewController(presenter: presenter)
         return view
     }

@@ -74,12 +74,12 @@ extension ExerciseDescriptionCollectionViewCell : UITextViewDelegate{
             textView.text = "Start here..."
             textView.textColor = .lightGray
         } else {
-            remotePresenter?.exercise?.description = textView.text
+            remotePresenter?.exercise.description = textView.text
         }
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        remotePresenter?.exercise?.description = textView.text
+        remotePresenter?.exercise.description = textView.text
         return true
     }
     

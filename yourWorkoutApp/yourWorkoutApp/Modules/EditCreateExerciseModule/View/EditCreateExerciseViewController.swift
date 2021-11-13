@@ -80,7 +80,7 @@ extension EditCreateExerciseViewController {
         //FIXME: удаление будет происходить из presentera, напрямую из базы, данный функционал для теста, если буду дальше использовать, то сделать проверку по всем полям, а не только по названию
         guard let rootVC = navigationController?.viewControllers[0] as? ExercisesViewController else {return}
         rootVC.presenter.exercisesData?.removeAll(where: { exercise in
-            exercise.title == presenter.exercise?.title
+            exercise.title == presenter.exercise.title
         })
         presenter.trashBarButtonTapped()
     }
@@ -127,25 +127,25 @@ extension EditCreateExerciseViewController {
                 //images
             case let cell as ExerciseImagesCollectionViewCell:
                 cell.remotePresenter = presenter
-                cell.setupImagesData(startImageData: presenter.startExerciseImage, endImageData: presenter.endExerciseImage)
+                cell.setupImagesData(startImage: presenter.startExerciseImage, endImage: presenter.endExerciseImage)
                 return cell
                 //muscle
             case let cell as ExerciseMuscleGroupCollectionViewCell:
                 cell.remotePresenter = presenter
-                cell.titleTextField.text = presenter.exercise?.muscleGroup.rawValue
+                cell.titleTextField.text = presenter.exercise.muscleGroup.rawValue
                 return cell
                 //description
             case let cell as ExerciseDescriptionCollectionViewCell:
                 cell.remotePresenter = presenter
-                if let exercise = presenter.exercise, exercise.description.count > 0 {
-                    cell.descriptionTextView.text = exercise.description
+                if presenter.exercise.description.count > 0 {
+                    cell.descriptionTextView.text = presenter.exercise.description
                     cell.descriptionTextView.textColor = .darkTextColor
                 }
                 return cell
                 //title
             case let cell as ExerciseTitleCollectionViewCell:
                 cell.remotePresenter = presenter
-                cell.titleTextField.text = presenter.exercise?.title ?? ""
+                cell.titleTextField.text = presenter.exercise.title
                 return cell
                 
             default:

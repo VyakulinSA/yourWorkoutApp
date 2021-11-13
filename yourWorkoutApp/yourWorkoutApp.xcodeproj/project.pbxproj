@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C7339E8273FA33800E759B8 /* ImagesStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339E7273FA33800E759B8 /* ImagesStorageManager.swift */; };
+		3C7339EC273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */; };
+		3C7339ED273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */; };
 		3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B342729D63300FA6C6C /* AppDelegate.swift */; };
 		3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B362729D63300FA6C6C /* SceneDelegate.swift */; };
 		3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B3D2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld */; };
@@ -63,7 +66,7 @@
 		3C876C022738604E00FA6C6C /* ExerciseCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876BFE2738604E00FA6C6C /* ExerciseCD+CoreDataProperties.swift */; };
 		3C876C17273AF1ED00FA6C6C /* CoreDataStorageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876C03273AAD1600FA6C6C /* CoreDataStorageManagerTests.swift */; };
 		3C876C1B273CF48F00FA6C6C /* SelectExerciseImageActionsheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876C1A273CF48E00FA6C6C /* SelectExerciseImageActionsheet.swift */; };
-		3C876C1F273D23FA00FA6C6C /* SelectExerciseImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876C1E273D23FA00FA6C6C /* SelectExerciseImagePickerController.swift */; };
+		3C876C1F273D23FA00FA6C6C /* SelectExerciseImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876C1E273D23FA00FA6C6C /* SelectExerciseImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C7339E7273FA33800E759B8 /* ImagesStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesStorageManager.swift; sourceTree = "<group>"; };
+		3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsForChangesAlert.swift; sourceTree = "<group>"; };
 		3C876B312729D63300FA6C6C /* yourWorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yourWorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C876B342729D63300FA6C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C876B362729D63300FA6C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,7 +141,7 @@
 		3C876C03273AAD1600FA6C6C /* CoreDataStorageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorageManagerTests.swift; sourceTree = "<group>"; };
 		3C876C0E273AF1E800FA6C6C /* yourWorkoutAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yourWorkoutAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C876C1A273CF48E00FA6C6C /* SelectExerciseImageActionsheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseImageActionsheet.swift; sourceTree = "<group>"; };
-		3C876C1E273D23FA00FA6C6C /* SelectExerciseImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseImagePickerController.swift; sourceTree = "<group>"; };
+		3C876C1E273D23FA00FA6C6C /* SelectExerciseImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +162,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C7339E9273FAD9F00E759B8 /* ActionsForChangesAlertModule */ = {
+			isa = PBXGroup;
+			children = (
+				3C7339EA273FAD9F00E759B8 /* View */,
+			);
+			path = ActionsForChangesAlertModule;
+			sourceTree = "<group>";
+		};
+		3C7339EA273FAD9F00E759B8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3C876B282729D63300FA6C6C = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +226,7 @@
 		3C876B68272AAB1000FA6C6C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3C7339E9273FAD9F00E759B8 /* ActionsForChangesAlertModule */,
 				3C876C18273CF3D800FA6C6C /* SelectExerciseImageModule */,
 				3C876BEE2734528C00FA6C6C /* FilterExerciseModule */,
 				3C876BDD273327CF00FA6C6C /* EditCreateExerciseModule */,
@@ -274,6 +296,7 @@
 				3C876B8B272AC14F00FA6C6C /* RouterConfigurator.swift */,
 				3C876BF72738441600FA6C6C /* CodeDataStack.swift */,
 				3C876BF92738450400FA6C6C /* CoreDataStorageManager.swift */,
+				3C7339E7273FA33800E759B8 /* ImagesStorageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -554,7 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				3C876C1A273CF48E00FA6C6C /* SelectExerciseImageActionsheet.swift */,
-				3C876C1E273D23FA00FA6C6C /* SelectExerciseImagePickerController.swift */,
+				3C876C1E273D23FA00FA6C6C /* SelectExerciseImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -668,7 +691,7 @@
 				3C876BA0272D655200FA6C6C /* WorkoutsCollectionViewCell.swift in Sources */,
 				3C876B83272AB99300FA6C6C /* UIFont + extension.swift in Sources */,
 				3C876BB22730009300FA6C6C /* Workout.swift in Sources */,
-				3C876C1F273D23FA00FA6C6C /* SelectExerciseImagePickerController.swift in Sources */,
+				3C876C1F273D23FA00FA6C6C /* SelectExerciseImagePicker.swift in Sources */,
 				3C876BD727330CD300FA6C6C /* ExerciseMuscleGroupCollectionViewCell.swift in Sources */,
 				3C876B91272ADBEF00FA6C6C /* YWMainContainerViewController.swift in Sources */,
 				3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */,
@@ -704,6 +727,7 @@
 				3C876BD5273309FF00FA6C6C /* UITextField + extension.swift in Sources */,
 				3C876BE12733280A00FA6C6C /* EditCreateExerciseViewController.swift in Sources */,
 				3C876BC72731666F00FA6C6C /* WorkoutDetailPresenter.swift in Sources */,
+				3C7339EC273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */,
 				3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */,
 				3C876B6D272AAE3C00FA6C6C /* StartMenuViewController.swift in Sources */,
 				3C876BCE2732BB9500FA6C6C /* ExerciseImagesCollectionViewCell.swift in Sources */,
@@ -713,6 +737,7 @@
 				3C876BF627346D6400FA6C6C /* FilterExerciseCollectionViewCell.swift in Sources */,
 				3C876BC227313ACC00FA6C6C /* AddExerciseViewController.swift in Sources */,
 				3C876B97272ADFB500FA6C6C /* UIColor + extension.swift in Sources */,
+				3C7339E8273FA33800E759B8 /* ImagesStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,6 +746,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C876C17273AF1ED00FA6C6C /* CoreDataStorageManagerTests.swift in Sources */,
+				3C7339ED273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

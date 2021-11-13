@@ -11,6 +11,7 @@ import SwiftUI
 class YWMainContainerViewController: UIViewController {
     
     var dataModel: [ExerciseModelProtocol]?
+    weak var exerciseModulePresenter: ExercisesViewOutput?
     
     private var leftBarButtonName: IconButtonNames?
     private var firstRightBarButtonName: IconButtonNames?
@@ -165,9 +166,10 @@ extension YWMainContainerViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell
         guard let cell = cell else {return UICollectionViewCell()}
-//        if let exercise = dataModel?[indexPath.item] {
-////            cell.setupCellItems(exerciseImage: exercise.startImage, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
-//        }
+        if let exercise = dataModel?[indexPath.item] {
+            let image = exerciseModulePresenter?.getImagesFromExercise(imageName: exercise.startImageName)
+            cell.setupCellItems(exerciseImage: image, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
+        }
         return cell
     }
 }

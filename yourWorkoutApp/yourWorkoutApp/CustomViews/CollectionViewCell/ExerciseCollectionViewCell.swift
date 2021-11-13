@@ -63,9 +63,9 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
 
 extension ExerciseCollectionViewCell {
     
-    func setupCellItems(exerciseImage: Data?, exerciseTitle: String, muscleGroup: String){
+    func setupCellItems(exerciseImage: UIImage?, exerciseTitle: String, muscleGroup: String){
         if let exerciseImage = exerciseImage {
-            self.exerciseImage.image = UIImage(data: exerciseImage)
+            self.exerciseImage.image = exerciseImage
         } else {
             self.exerciseImage.image = UIImage(named: "testExerciseImage")
         }

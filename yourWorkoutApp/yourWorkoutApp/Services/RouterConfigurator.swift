@@ -13,6 +13,8 @@ protocol RouterConfiguratorProtocol {
     func popToRoot()
     func popVC()
     func popVC(_ animated: Bool)
+    func showActionsForChangesAlert(output: ActionsForChangesAlertOutput, acceptTitle: String, deleteTitle: String?, titleString: String?)
+    func showMessageAlert(message: String)
 }
 
 protocol RouterForStartMenuModule: RouterConfiguratorProtocol {
@@ -100,13 +102,25 @@ class RouterConfigurator: RouterConfiguratorProtocol, RouterForEditCreateExercis
     
     func showSelectExerciseImagePickerController(output: SelectExerciseImagePickerOutput, selectedImageCell: SelectedImageCell, source: UIImagePickerController.SourceType){
         if UIImagePickerController.isSourceTypeAvailable(source){
-            let imagePicker = SelectExerciseImagePickerController()
-            imagePicker.delegate = imagePicker
+            let imagePicker = SelectExerciseImagePicker()
             imagePicker.allowsEditing = true
             imagePicker.sourceType = source
             imagePicker.configure(output: output, selectedImageCell: selectedImageCell)
             navigationController?.present(imagePicker, animated: true, completion: nil)
         }
+    }
+    
+    func showActionsForChangesAlert(output: ActionsForChangesAlertOutput, acceptTitle: String, deleteTitle: String?, titleString: String?){
+        let alert = ActionsForChangesAlert(title: nil, message: nil, preferredStyle: .alert)
+        alert.configure(output: output, acceptTitle: acceptTitle, deleteTitle: deleteTitle, titleString: titleString)
+        navigationController?.present(alert, animated: true, completion: nil)
+    }
+    
+    func showMessageAlert(message: String){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        navigationController?.present(alert, animated: true, completion: nil)
     }
 }
 

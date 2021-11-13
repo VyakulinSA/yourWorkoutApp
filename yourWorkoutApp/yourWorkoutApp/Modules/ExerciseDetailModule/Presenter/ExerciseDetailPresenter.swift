@@ -13,26 +13,37 @@ protocol ExerciseDetailViewInput: AnyObject {
 }
 
 protocol ExerciseDetailViewOutput: AnyObject {
+    var startExerciseImage: UIImage? {get set}
+    var endExerciseImage: UIImage? {get set}
+    
     var exercise: ExerciseModelProtocol {get set}
     
     func backBarButtonTapped()
     func editButtonTapped()
+    func getImagesFromExercise()
+    func getActualExercise()
     
 }
 
 class ExerciseDetailPresenter: ExerciseDetailViewOutput {
+    var startExerciseImage: UIImage?
+    var endExerciseImage: UIImage?
+    
     var exercise: ExerciseModelProtocol
     private var router: RouterForExerciseDetailModule
+    private var imagesStorageManager: ImagesStorageManagerProtocol
+    private var exerciseStorageManager: DataStorageExerciseManagerProtocol
     
-    init(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) {
+    init(exerciseStorageManager: DataStorageExerciseManagerProtocol,imagesStorageManager: ImagesStorageManagerProtocol, router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) {
         self.router = router
         self.exercise = exercise
-        
-        createExercise()
+        self.exerciseStorageManager = exerciseStorageManager
+        self.imagesStorageManager = imagesStorageManager
     }
     
 }
 
+//MARK: buttons actions
 extension ExerciseDetailPresenter {
     
     func backBarButtonTapped() {
@@ -43,7 +54,17 @@ extension ExerciseDetailPresenter {
         router.showEditCreateExerciseViewController(editCreateType: .edit, exercise: exercise)
     }
     
-    func createExercise() {
+}
 
+//MARK: helpers func
+extension ExerciseDetailPresenter {
+    func getImagesFromExercise() {
+        startExerciseImage = imagesStorageManager.load(imageName: exercise.startImageName ?? "")
+        endExerciseImage = imagesStorageManager.load(imageName: exercise.endImageName ?? "")
+    }
+    
+    func getActualExercise() {
+        guard let actualExercise = exerciseStorageManager.readExercise(id: exercise.id) else {return}
+        exercise = actualExercise
     }
 }

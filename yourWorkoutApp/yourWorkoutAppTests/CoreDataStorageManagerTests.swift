@@ -52,9 +52,9 @@ class CoreDataStorageManagerTests: XCTestCase {
     func testCreateAndReadWorkout() {
         let exercises = [
             ExerciseModel(title: "Ex1", muscleGroup: .chest, description: "ex1 description",
-                          startImagePath: "startPath ex1", endImagePath: "endPath ex1", id: UUID()),
+                          startImageName: "startPath ex1", endImageName: "endPath ex1", id: UUID()),
             ExerciseModel(title: "Ex2", muscleGroup: .chest, description: "ex2 description",
-                          startImagePath: "startPath ex2", endImagePath: "endPath ex2", id: UUID())
+                          startImageName: "startPath ex2", endImageName: "endPath ex2", id: UUID())
         ]
         
         exerciseStorageManager.create(exercise: exercises[0])
@@ -82,9 +82,9 @@ class CoreDataStorageManagerTests: XCTestCase {
     func testUpdateWorkout() {
         let exercises = [
             ExerciseModel(title: "Ex1", muscleGroup: .chest, description: "ex1 description",
-                          startImagePath: "startPath ex1", endImagePath: "endPath ex1", id: UUID()),
+                          startImageName: "startPath ex1", endImageName: "endPath ex1", id: UUID()),
             ExerciseModel(title: "Ex2", muscleGroup: .chest, description: "ex2 description",
-                          startImagePath: "startPath ex2", endImagePath: "endPath ex2", id: UUID())
+                          startImageName: "startPath ex2", endImageName: "endPath ex2", id: UUID())
         ]
         
         exerciseStorageManager.create(exercise: exercises[0])
@@ -125,9 +125,9 @@ class CoreDataStorageManagerTests: XCTestCase {
     func testDeleteWorkout() {
         let exercises = [
             ExerciseModel(title: "Ex1", muscleGroup: .chest, description: "ex1 description",
-                          startImagePath: "startPath ex1", endImagePath: "endPath ex1", id: UUID()),
+                          startImageName: "startPath ex1", endImageName: "endPath ex1", id: UUID()),
             ExerciseModel(title: "Ex2", muscleGroup: .chest, description: "ex2 description",
-                          startImagePath: "startPath ex2", endImagePath: "endPath ex2", id: UUID())
+                          startImageName: "startPath ex2", endImageName: "endPath ex2", id: UUID())
         ]
         
         exerciseStorageManager.create(exercise: exercises[0])
@@ -171,7 +171,7 @@ class CoreDataStorageManagerTests: XCTestCase {
         let id1 = UUID()
         
         let exercises = [
-            ExerciseModel(title: "Ex1", muscleGroup: .chest, description: "ex1 description", startImagePath: "startPath ex1", endImagePath: "endPath ex1", id: id1)
+            ExerciseModel(title: "Ex1", muscleGroup: .chest, description: "ex1 description", startImageName: "startPath ex1", endImageName: "endPath ex1", id: id1)
         ]
         
         exerciseStorageManager.create(exercise: exercises[0])
@@ -182,15 +182,15 @@ class CoreDataStorageManagerTests: XCTestCase {
         XCTAssertTrue(resultExercises[0].title == exercises[0].title)
         XCTAssertTrue(resultExercises[0].muscleGroup == exercises[0].muscleGroup)
         XCTAssertTrue(resultExercises[0].description == exercises[0].description)
-        XCTAssertTrue(resultExercises[0].startImagePath == exercises[0].startImagePath)
-        XCTAssertTrue(resultExercises[0].endImagePath == exercises[0].endImagePath)
+        XCTAssertTrue(resultExercises[0].startImageName == exercises[0].startImageName)
+        XCTAssertTrue(resultExercises[0].endImageName == exercises[0].endImageName)
         XCTAssertTrue(resultExercises[0].id == exercises[0].id)
     }
     
     func testUpdateExercise() {
         let exercises = [
             ExerciseModel(title: "Ex1", muscleGroup: .chest, description: "ex1 description",
-                          startImagePath: "startPath ex1", endImagePath: "endPath ex1", id: UUID())
+                          startImageName: "startPath ex1", endImageName: "endPath ex1", id: UUID())
         ]
         
         exerciseStorageManager.create(exercise: exercises[0])
@@ -203,8 +203,8 @@ class CoreDataStorageManagerTests: XCTestCase {
         XCTAssertTrue(exercise.title == "Ex1")
         XCTAssertTrue(exercise.muscleGroup == .chest)
         XCTAssertTrue(exercise.description == "ex1 description")
-        XCTAssertTrue(exercise.startImagePath == "startPath ex1")
-        XCTAssertTrue(exercise.endImagePath == "endPath ex1")
+        XCTAssertTrue(exercise.startImageName == "startPath ex1")
+        XCTAssertTrue(exercise.endImageName == "endPath ex1")
         XCTAssertTrue(exercise.id == exercises[0].id)
         
         exercise.title = "update Ex1"
@@ -221,17 +221,17 @@ class CoreDataStorageManagerTests: XCTestCase {
         XCTAssertTrue(updateExercise.title == "update Ex1")
         XCTAssertTrue(updateExercise.muscleGroup == .abs)
         XCTAssertTrue(updateExercise.description == "update description ex1")
-        XCTAssertTrue(updateExercise.startImagePath == exercises[0].startImagePath)
-        XCTAssertTrue(updateExercise.endImagePath == exercises[0].endImagePath)
+        XCTAssertTrue(updateExercise.startImageName == exercises[0].startImageName)
+        XCTAssertTrue(updateExercise.endImageName == exercises[0].endImageName)
         XCTAssertTrue(updateExercise.id == exercises[0].id)
     }
     
     func testDeleteExercise() {
         let exercises = [
             ExerciseModel(title: "Ex1", muscleGroup: .chest, description: "ex1 description",
-                          startImagePath: "startPath ex1", endImagePath: "endPath ex1", id: UUID()),
+                          startImageName: "startPath ex1", endImageName: "endPath ex1", id: UUID()),
             ExerciseModel(title: "Ex2", muscleGroup: .chest, description: "ex2 description",
-                          startImagePath: "startPath ex2", endImagePath: "endPath ex2", id: UUID())
+                          startImageName: "startPath ex2", endImageName: "endPath ex2", id: UUID())
         ]
         
         exerciseStorageManager.create(exercise: exercises[0])

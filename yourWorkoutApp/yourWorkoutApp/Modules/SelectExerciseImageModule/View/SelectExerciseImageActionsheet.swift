@@ -11,6 +11,7 @@ import UIKit
 protocol SelectExerciseImageActionsheetOutput: AnyObject {
     func cameraAction(source: UIImagePickerController.SourceType, selectedImageCell: SelectedImageCell?)
     func photoAction(source: UIImagePickerController.SourceType, selectedImageCell: SelectedImageCell?)
+    func deletePhotoAction(selectedImageCell: SelectedImageCell?)
 }
 
 final class SelectExerciseImageActionsheet: UIAlertController  {
@@ -20,6 +21,7 @@ final class SelectExerciseImageActionsheet: UIAlertController  {
     
     private let cameraIcon = UIImage(systemName: "camera")
     private let photoIcon = UIImage(systemName: "photo")
+    private let trashIcon = UIImage(systemName: "trash")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +43,17 @@ final class SelectExerciseImageActionsheet: UIAlertController  {
         photoAction.setValue(photoIcon, forKey: "image")
         photoAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
         
+        let deletePhotoAction = UIAlertAction(title: "Delete Image", style: .default) { [weak self] _ in
+            self?.output?.deletePhotoAction(selectedImageCell: self?.selectedImageCell)
+        }
+        deletePhotoAction.setValue(trashIcon, forKey: "image")
+        deletePhotoAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         addAction(cameraAction)
         addAction(photoAction)
+        addAction(deletePhotoAction)
         addAction(cancelAction)
     }
     
