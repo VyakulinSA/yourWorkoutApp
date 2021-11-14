@@ -94,7 +94,7 @@ extension EditCreateWorkoutViewController {
         //setup last cell with addButton
         if indexPath.item >= presenter.exercisesData.count {
             cell.setupAddButton()
-            cell.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+            cell.addButton?.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
             return cell
         }
         

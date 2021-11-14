@@ -36,6 +36,7 @@ class WebImageView: UIImageView {
         dataTask.resume()
     }
     
+    //проверяем и получаем изображение из кэша
     private func handleLoadedImage(data: Data, response: URLResponse){
         guard let responseURL = response.url else { return }
         let chachedResponse = CachedURLResponse(response: response, data: data)

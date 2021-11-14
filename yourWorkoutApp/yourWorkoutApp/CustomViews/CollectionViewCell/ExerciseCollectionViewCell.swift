@@ -42,13 +42,7 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
     }
     
     
-    lazy var addButton = setupObject(YWIconButton(systemNameImage: .circlePlus)) {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.contentMode = .center
-        let config = UIImage.SymbolConfiguration(pointSize: 50)
-        $0.setPreferredSymbolConfiguration(config, forImageIn: .normal)
-        $0.isHidden = true
-    }
+    lazy var addButton: YWIconButton?  = getAddButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,7 +55,8 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         exerciseImage.image = UIImage(named: "testExerciseImage")
-        addButton.isHidden = true
+        addButton?.isHidden = true
+        addButton = nil
         exerciseImage.isHidden = false
         exerciseTitleLabel.isHidden = false
         muscleGroupLabel.isHidden = false
@@ -98,9 +93,12 @@ extension ExerciseCollectionViewCell {
     }
     
     func setupAddButton(){
-        contentView.addSubview(addButton)
+        if addButton == nil {
+            addButton = getAddButton()
+        }
+        contentView.addSubview(addButton!)
         
-        addButton.anchor(
+        addButton!.anchor(
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
             bottom: contentView.bottomAnchor,
@@ -110,7 +108,17 @@ extension ExerciseCollectionViewCell {
         exerciseImage.isHidden = true
         exerciseTitleLabel.isHidden = true
         muscleGroupLabel.isHidden = true
-        addButton.isHidden = false
+        addButton!.isHidden = false
+    }
+    
+    private func getAddButton() -> YWIconButton {
+        return setupObject(YWIconButton(systemNameImage: .circlePlus)) {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.contentMode = .center
+            let config = UIImage.SymbolConfiguration(pointSize: 50)
+            $0.setPreferredSymbolConfiguration(config, forImageIn: .normal)
+            $0.isHidden = true
+        }
     }
     
     private func setupAppearance() {

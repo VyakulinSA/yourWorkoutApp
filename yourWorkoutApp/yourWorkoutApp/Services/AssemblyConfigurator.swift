@@ -70,7 +70,10 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
     }
     
     func createStandingsModule(router: RouterForLeaguesModule, leaguesId: String) -> UIViewController {
-        return UIViewController()
+        let presenter = StandingsPresenter(router: router, networkService: networkService, leagueId: leaguesId)
+        let view = StandingsViewController(presenter: presenter)
+        presenter.view = view
+        return view
     }
     
     func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?) -> UIViewController {

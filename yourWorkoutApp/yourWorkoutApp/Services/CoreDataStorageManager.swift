@@ -84,7 +84,9 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
             
             for id in exercisesIdString {
                 let ex = exercises.filter{$0.id == UUID(uuidString: String(id))}
-                resultExercises.append(ex[0])
+                if ex.count > 0 {
+                    resultExercises.append(ex[0])
+                }
             }
             
             let workoutModel = WorkoutModel(
@@ -114,7 +116,9 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
         
         for id in exercisesIdString {
             let ex = exercises.filter{$0.id == UUID(uuidString: String(id))}
-            resultExercises.append(ex[0])
+            if ex.count > 0 {
+                resultExercises.append(ex[0])
+            }
         }
         
         let workoutModel = WorkoutModel(

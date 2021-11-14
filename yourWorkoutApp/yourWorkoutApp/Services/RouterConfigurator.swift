@@ -51,6 +51,7 @@ protocol RouterForEditCreateWorkoutModule: RouterConfiguratorProtocol {
 
 protocol RouterForWorkoutDetailModule: RouterConfiguratorProtocol {
     func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?)
+    func showExerciseDetailViewController(exercise: ExerciseModelProtocol, editable: Bool)
 }
 
 protocol RouterForEditCreateExerciseModule: RouterConfiguratorProtocol {

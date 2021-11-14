@@ -80,4 +80,8 @@ extension WorkoutDetailViewController {
         }
         return cell
      }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectExercise(item: indexPath.item)
+    }
 }

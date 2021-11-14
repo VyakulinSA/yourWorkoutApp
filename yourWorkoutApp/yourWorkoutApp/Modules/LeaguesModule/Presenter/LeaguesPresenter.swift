@@ -59,6 +59,6 @@ extension LeaguesPresenter {
     
     func didSelectLeague(item: Int) {
         guard let id = leagues?[item].id else {return}
-//        router.showStandingsViewController(leagueId: id)
+        router.showStandingsViewController(leagueId: id)
     }
 }

@@ -23,6 +23,8 @@ protocol WorkoutDetailViewOutput: AnyObject {
     
     func getImagesFromExercise(imageName: String?) -> UIImage?
     func getActualExercise()
+    
+    func didSelectExercise(item: Int)
 }
 
 class WorkoutDetailPresenter: WorkoutDetailViewOutput {
@@ -41,7 +43,6 @@ class WorkoutDetailPresenter: WorkoutDetailViewOutput {
         self.imagesStorageManager = imagesStorageManager
         self.exercisesData = workout.exercises
         self.workout = workout
-        getExercisesData()
     }
     
 }
@@ -60,10 +61,7 @@ extension WorkoutDetailPresenter {
         deleteWorkout = true
         router.showActionsForChangesAlert(output: self, acceptTitle: nil, deleteTitle: "Delete", titleString: "Delete workout?")
     }
-    
-    private func getExercisesData() {
-    }
-    
+
     func getImagesFromExercise(imageName: String?) -> UIImage? {
          return imagesStorageManager.load(imageName: imageName ?? "")
     }
@@ -71,6 +69,11 @@ extension WorkoutDetailPresenter {
         guard let actualWorkout = workoutStorageManager.readWorkout(id: workout.id) else {return}
         workout = actualWorkout
         self.exercisesData = actualWorkout.exercises
+    }
+    
+    func didSelectExercise(item: Int) {
+        guard let exercise = exercisesData?[item] else {return}
+        router.showExerciseDetailViewController(exercise: exercise, editable: false)
     }
     
 }
