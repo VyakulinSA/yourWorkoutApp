@@ -15,15 +15,15 @@ protocol AssembliConfiguratorProtocol: AnyObject {
     
     func createExercisesModule(router: RouterForExerciseModule) -> UIViewController
     
-    func createEditCreateWorkoutModule( router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?) -> UIViewController
+    func createEditCreateWorkoutModule( router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?) -> UIViewController
     
-    func createAddExerciseModule(router: RouterForAddExerciseModule) -> UIViewController
+    func createAddExerciseModule(router: RouterForAddExerciseModule, delegate: EditCreateWorkoutViewOutput) -> UIViewController
     
     func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, workout: WorkoutModelProtocol) -> UIViewController
     
     func createEditCreateExerciseModule(router: RouterForEditCreateExerciseModule, editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) -> UIViewController
     
-    func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) -> UIViewController
+    func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol, editable: Bool) -> UIViewController
     
     func createFilterExerciseModule(router: RouterForFilterExerciseModule, delegate: FilterExerciseProtocol) -> UIViewController
 }
@@ -39,7 +39,7 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
     
     
     func createWorkoutModule(router: RouterForWorkoutsModule) -> UIViewController{
-        let presenter = WorkoutsPresenter(router: router)
+        let presenter = WorkoutsPresenter(workoutStorageManager: storageManager,router: router)
         let view = WorkoutsViewController(presenter: presenter)
         return view
     }
@@ -57,22 +57,22 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         return view
     }
     
-    func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?) -> UIViewController {
-        let presenter = EditCreateWorkoutPresenter(router: router, editCreateType: editCreateType, exercisesData: exercisesData)
+    func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?) -> UIViewController {
+        let presenter = EditCreateWorkoutPresenter(workoutStorageManager: storageManager, imagesStorageManager: imagesStorageManager ,router: router, editCreateType: editCreateType, workout: workout)
         let view = EditCreateWorkoutViewController(presenter: presenter)
         presenter.view = view
         return view
     }
     
-    func createAddExerciseModule(router: RouterForAddExerciseModule) -> UIViewController {
-        let presenter = AddExercisePresenter(router: router)
+    func createAddExerciseModule(router: RouterForAddExerciseModule, delegate: EditCreateWorkoutViewOutput) -> UIViewController {
+        let presenter = AddExercisePresenter(imagesStorageManager: imagesStorageManager, exerciseStorageManager: storageManager, router: router, delegate: delegate)
         let view = AddExerciseViewController(presenter: presenter)
         presenter.view = view
         return view
     }
     
     func createWorkoutDetailModule(router: RouterForWorkoutDetailModule, workout: WorkoutModelProtocol) -> UIViewController {
-        let presenter = WorkoutDetailPresenter(router: router, workout: workout)
+        let presenter = WorkoutDetailPresenter(workoutStorageManager: storageManager, imagesStorageManager: imagesStorageManager, router: router, workout: workout)
         let view = WorkoutDetailViewController(presenter: presenter)
         return view
     }
@@ -84,8 +84,8 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         return view
     }
     
-    func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) -> UIViewController {
-        let presenter = ExerciseDetailPresenter(exerciseStorageManager: storageManager, imagesStorageManager: imagesStorageManager, router: router, exercise: exercise)
+    func createExerciseDetailModule(router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol, editable: Bool) -> UIViewController {
+        let presenter = ExerciseDetailPresenter(exerciseStorageManager: storageManager, imagesStorageManager: imagesStorageManager, router: router, exercise: exercise, editable: editable)
         let view = ExerciseDetailViewController(presenter: presenter)
         return view
     }

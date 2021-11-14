@@ -32,6 +32,14 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
         $0.textColor = .darkTextColor
     }
     
+    lazy var detailButton = setupObject(UIButton(type: .system)) {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.contentMode = .center
+        $0.setTitle("Details", for: .normal)
+        $0.isHidden = true
+    }
+    
+    
     lazy var addButton = setupObject(YWIconButton(systemNameImage: .circlePlus)) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .center
@@ -54,6 +62,8 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
         exerciseImage.isHidden = false
         exerciseTitleLabel.isHidden = false
         muscleGroupLabel.isHidden = false
+        detailButton.isHidden = true
+        backgroundColor = .clear
         
         layer.borderWidth = 0
         layer.borderColor = UIColor.clear.cgColor
@@ -95,6 +105,7 @@ extension ExerciseCollectionViewCell {
         
         contentView.addSubview(exerciseImage)
         contentView.addSubview(exerciseTitleLabel)
+        contentView.addSubview(detailButton)
         contentView.addSubview(muscleGroupLabel)
         
         exerciseImage.anchor(
@@ -109,8 +120,8 @@ extension ExerciseCollectionViewCell {
             top: contentView.topAnchor,
             leading: exerciseImage.trailingAnchor,
             bottom: nil,
-            trailing: contentView.trailingAnchor,
-            padding: UIEdgeInsets(top: 15, left: 31, bottom: 0, right: 31)
+            trailing: detailButton.leadingAnchor,
+            padding: UIEdgeInsets(top: 15, left: 31, bottom: 0, right: 5)
         )
         
         muscleGroupLabel.anchor(
@@ -119,6 +130,14 @@ extension ExerciseCollectionViewCell {
             bottom: nil,
             trailing: exerciseTitleLabel.trailingAnchor,
             padding: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
+        )
+        
+        detailButton.anchor(
+            top: contentView.topAnchor,
+            leading: nil,
+            bottom: contentView.bottomAnchor,
+            trailing: contentView.trailingAnchor,
+            size: CGSize(width: 55, height: 0)
         )
         
     }

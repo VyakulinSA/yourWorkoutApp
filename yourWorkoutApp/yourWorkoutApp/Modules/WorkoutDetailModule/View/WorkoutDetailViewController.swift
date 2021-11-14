@@ -26,6 +26,14 @@ class WorkoutDetailViewController: YWMainContainerViewController, WorkoutDetailV
         configViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.getActualExercise()
+        collectionView.reloadData()
+        dataModel = presenter.exercisesData
+        titleView.text = presenter.workout.title.uppercased()
+    }
+    
 }
 
 extension WorkoutDetailViewController {
@@ -51,15 +59,25 @@ extension WorkoutDetailViewController {
     }
     
     @objc func trashBarButtonTapped(){
-        //FIXME: удаление будет происходить из presentera, напрямую из базы, данный функционал для теста, если буду дальше использовать, то сделать проверку по всем полям, а не только по названию
-        guard let rootVC = navigationController?.viewControllers[0] as? WorkoutsViewController else {return}
-        rootVC.presenter.workoutsData?.removeAll(where: { workout in
-                workout.title == presenter.workout.title
-        })
         presenter.trashBarButtonTapped()
     }
     
     @objc func gearBarButtonTapped() {
         presenter.gearBarButtonTapped()
     }
+}
+
+
+//MARK: config collectionView
+extension WorkoutDetailViewController {
+    
+     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell else {return UICollectionViewCell()}
+        
+         if let exercise = presenter.exercisesData?[indexPath.item] {
+            let image = presenter.getImagesFromExercise(imageName: exercise.startImageName)
+            cell.setupCellItems(exerciseImage: image, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
+        }
+        return cell
+     }
 }

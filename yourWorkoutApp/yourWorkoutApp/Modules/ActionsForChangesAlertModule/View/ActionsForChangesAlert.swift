@@ -39,11 +39,16 @@ final class ActionsForChangesAlert: UIAlertController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         self.addAction(cancelAction)
         
-        self.title = titleString
+        guard let titleString = titleString else {return}
+
+        let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat-Regular", size: 16)!]
+        let title = NSAttributedString(string: titleString, attributes: titleAttributes)
+        setValue(title, forKey: "attributedTitle")
+        
 
     }
     
-    func configure(output: ActionsForChangesAlertOutput, acceptTitle: String = "Accept change", deleteTitle: String? = "Delete change", titleString: String?){
+    func configure(output: ActionsForChangesAlertOutput, acceptTitle: String? = "Accept change", deleteTitle: String? = "Delete change", titleString: String?){
         self.output = output
         self.acceptTitle = acceptTitle
         self.deleteTitle = deleteTitle

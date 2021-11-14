@@ -15,6 +15,7 @@ protocol ExerciseDetailViewInput: AnyObject {
 protocol ExerciseDetailViewOutput: AnyObject {
     var startExerciseImage: UIImage? {get set}
     var endExerciseImage: UIImage? {get set}
+    var editable: Bool {get set}
     
     var exercise: ExerciseModelProtocol {get set}
     
@@ -28,15 +29,18 @@ protocol ExerciseDetailViewOutput: AnyObject {
 class ExerciseDetailPresenter: ExerciseDetailViewOutput {
     var startExerciseImage: UIImage?
     var endExerciseImage: UIImage?
+    var editable: Bool
     
     var exercise: ExerciseModelProtocol
     private var router: RouterForExerciseDetailModule
     private var imagesStorageManager: ImagesStorageManagerProtocol
     private var exerciseStorageManager: DataStorageExerciseManagerProtocol
     
-    init(exerciseStorageManager: DataStorageExerciseManagerProtocol,imagesStorageManager: ImagesStorageManagerProtocol, router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol) {
+    
+    init(exerciseStorageManager: DataStorageExerciseManagerProtocol,imagesStorageManager: ImagesStorageManagerProtocol, router: RouterForExerciseDetailModule, exercise: ExerciseModelProtocol, editable: Bool) {
         self.router = router
         self.exercise = exercise
+        self.editable = editable
         self.exerciseStorageManager = exerciseStorageManager
         self.imagesStorageManager = imagesStorageManager
     }

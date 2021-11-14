@@ -88,9 +88,8 @@ extension ExerciseImagesCollectionViewCell: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell
-        
-        guard let cell = cell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell else {return UICollectionViewCell()}
+
         let imagesCellSettings = ImagesCellSettings.allCases[indexPath.item]
         
         let image =  imagesCellSettings == .startImage ? startImage : endImage

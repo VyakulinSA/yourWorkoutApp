@@ -44,12 +44,25 @@ class YWMainContainerViewController: UIViewController {
         $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
-    private let titleView = setupObject(UILabel()) {
+    let titleView = setupObject(UILabel()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = .myFont(.myFontBold, size: 16)
         $0.textColor = .darkTextColor
         $0.contentMode = .center
         $0.textAlignment = .center
+    }
+    
+    lazy var titleTextField = setupObject(UITextField()) {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.font = UIFont.myFont(.myFontBold, size: 16)
+        $0.textAlignment = .center
+        $0.backgroundColor = .black.withAlphaComponent(0.05)
+        $0.layer.cornerRadius = 10
+        
+        let attributes = [NSAttributedString.Key.font: UIFont.myFont(.myFontRegular, size: 16)]
+        $0.attributedPlaceholder = NSAttributedString(string: "Workout Title", attributes: attributes as [NSAttributedString.Key : Any])
+        
+        $0.isHidden = true
     }
     
     lazy var collectionView: UICollectionView = {
@@ -105,6 +118,7 @@ extension YWMainContainerViewController {
         navBarView.addSubview(firstRightBarButton)
         navBarView.addSubview(secondRightBarButton)
         navBarView.addSubview(titleView)
+        navBarView.addSubview(titleTextField)
         
         navBarView.anchor(
             top: view.topAnchor,
@@ -139,11 +153,19 @@ extension YWMainContainerViewController {
         )
         
         titleView.anchor(
-            top: nil,
+            top: leftBarButton.topAnchor,
             leading: leftBarButton.trailingAnchor,
             bottom: navBarView.bottomAnchor,
             trailing: secondRightBarButton.leadingAnchor,
             padding: UIEdgeInsets(top: 0, left: 10, bottom: 11, right: 10)
+        )
+        
+        titleTextField.anchor(
+            top: leftBarButton.topAnchor,
+            leading: leftBarButton.trailingAnchor,
+            bottom: navBarView.bottomAnchor,
+            trailing: firstRightBarButton.leadingAnchor,
+            padding: UIEdgeInsets(top: 0, left: 40, bottom: 11, right: 2)
         )
         
         collectionView.anchor(
@@ -159,13 +181,14 @@ extension YWMainContainerViewController {
 }
 
 extension YWMainContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataModel?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell
-        guard let cell = cell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell else {return UICollectionViewCell()}
+        
         if let exercise = dataModel?[indexPath.item] {
             let image = exerciseModulePresenter?.getImagesFromExercise(imageName: exercise.startImageName)
             cell.setupCellItems(exerciseImage: image, exerciseTitle: exercise.title, muscleGroup: exercise.muscleGroup.rawValue)
@@ -192,4 +215,3 @@ extension YWMainContainerViewController: UICollectionViewDelegateFlowLayout{
         print(indexPath)
     }
 }
-

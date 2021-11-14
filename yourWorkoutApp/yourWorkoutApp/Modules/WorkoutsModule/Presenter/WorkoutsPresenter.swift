@@ -20,14 +20,18 @@ protocol WorkoutsViewOutput: AnyObject {
     func addBarButtonTapped()
     func didSelectItem(item: Int)
     
+    func getWorkoutsData()
+    
 }
 
 class WorkoutsPresenter: WorkoutsViewOutput {
     var workoutsData: [WorkoutModelProtocol]?
     private var router: RouterForWorkoutsModule
+    private var workoutStorageManager: DataStorageWorkoutManagerProtocol
     
-    init(router: RouterForWorkoutsModule){
+    init(workoutStorageManager: DataStorageWorkoutManagerProtocol,router: RouterForWorkoutsModule){
         self.router = router
+        self.workoutStorageManager = workoutStorageManager
         
         getWorkoutsData()
     }
@@ -40,7 +44,7 @@ extension WorkoutsPresenter {
     }
     
     func addBarButtonTapped() {
-        router.showEditCreateWorkoutViewController(editCreateType: .create, exercisesData: nil)
+        router.showEditCreateWorkoutViewController(editCreateType: .create, workout: nil)
     }
     
     func didSelectItem(item: Int) {
@@ -48,7 +52,7 @@ extension WorkoutsPresenter {
         router.showWorkoutDetailViewController(workout: workoutsData[item])
     }
     
-    private func getWorkoutsData() {
-
+    func getWorkoutsData() {
+        workoutsData = workoutStorageManager.readAllWorkouts()
     }
 }

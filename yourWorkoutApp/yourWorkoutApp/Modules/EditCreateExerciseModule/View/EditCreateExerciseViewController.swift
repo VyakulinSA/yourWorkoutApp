@@ -77,11 +77,6 @@ extension EditCreateExerciseViewController {
     }
     
     @objc func trashBarButtonTapped() {
-        //FIXME: удаление будет происходить из presentera, напрямую из базы, данный функционал для теста, если буду дальше использовать, то сделать проверку по всем полям, а не только по названию
-        guard let rootVC = navigationController?.viewControllers[0] as? ExercisesViewController else {return}
-        rootVC.presenter.exercisesData?.removeAll(where: { exercise in
-            exercise.title == presenter.exercise.title
-        })
         presenter.trashBarButtonTapped()
     }
     
@@ -122,7 +117,6 @@ extension EditCreateExerciseViewController {
         
             let identifier = CellSettings.allCases[indexPath.item].identifierCell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        //FIXME: поправить отрисовку ячеек
             switch cell {
                 //images
             case let cell as ExerciseImagesCollectionViewCell:

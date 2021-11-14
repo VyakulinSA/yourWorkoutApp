@@ -24,32 +24,12 @@ class WorkoutsViewController: YWMainContainerViewController, WorkoutsViewInput {
         super.viewDidLoad()
        
         configViews()
-        
-        
-//        let dataStack = CoreDataStack()
-//        var coreDataStorageManager: DataStorageWorkoutManagerProtocol {
-//            let storage = CoreDataStorageManager(managedObjectContext: dataStack.mainContext, coreDataStack: dataStack)
-//            return storage
-//        }
-//
-//        coreDataStorageManager.create(workout: WorkoutModel(title: "Test 1", muscleGroups: [.wholeBody,.abs], system: false, exercises: nil, id: UUID()))
-//        coreDataStorageManager.create(workout: WorkoutModel(title: "Test 2", muscleGroups: [.chest,], system: true, exercises: nil, id: UUID()))
-//
-//        var allWallets = coreDataStorageManager.readAllWorkouts()
-//
-//        print(allWallets)
-//
-//        coreDataStorageManager.deleteAllWorkouts()
-//
-//        allWallets = coreDataStorageManager.readAllWorkouts()
-//
-//        print("after delete \(allWallets)")
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        presenter.getWorkoutsData()
         collectionView.reloadData()
         print("WorkoutsViewController wilAppear reload")
     }
@@ -84,14 +64,12 @@ extension WorkoutsViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkoutsCollectionViewCell.reuseIdentifier, for: indexPath) as? WorkoutsCollectionViewCell
-        
-        guard let cell = cell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkoutsCollectionViewCell.reuseIdentifier, for: indexPath) as? WorkoutsCollectionViewCell else {return UICollectionViewCell()}
         
         if let workout = presenter.workoutsData?[indexPath.item] {
             cell.setupCellItems(
                 workoutTitle: workout.title,
-                exercisesCount: workout.exercises?.count ?? 0,
+                exercisesCount: workout.exercises.count,
                 muscleGroups: workout.muscleGroups,
                 systemTagIsHidden: !workout.system
             )

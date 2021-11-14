@@ -70,7 +70,7 @@ class CoreDataStorageManagerTests: XCTestCase {
         
         XCTAssertNotNil(workout, "Wallet should not be nil")
         XCTAssertTrue(workout.title == "Test 1")
-        XCTAssertTrue(workout.exercises?.count == 2)
+        XCTAssertTrue(workout.exercises.count == 2)
         XCTAssertTrue(workout.id == id)
         XCTAssertTrue(workout.muscleGroups == [.wholeBody,.abs])
         XCTAssertTrue(workout.system == false)
@@ -97,8 +97,8 @@ class CoreDataStorageManagerTests: XCTestCase {
         
         XCTAssertNotNil(workout, "Wallet should not be nil")
         XCTAssertTrue(workout.title == "Test 1")
-        XCTAssertTrue(workout.exercises?.count == 1)
-        XCTAssertTrue(workout.exercises?[0].title == "Ex1")
+        XCTAssertTrue(workout.exercises.count == 1)
+        XCTAssertTrue(workout.exercises[0].title == "Ex1")
         XCTAssertTrue(workout.id == id)
         XCTAssertTrue(workout.muscleGroups == [.wholeBody,.abs])
         XCTAssertTrue(workout.system == false)
@@ -115,8 +115,8 @@ class CoreDataStorageManagerTests: XCTestCase {
         
         XCTAssertNotNil(updateW, "Wallet should not be nil")
         XCTAssertTrue(updateW.title == "update Test 1")
-        XCTAssertTrue(updateW.exercises?.count == 1)
-        XCTAssertTrue(updateW.exercises?[0].title == "Ex2")
+        XCTAssertTrue(updateW.exercises.count == 1)
+        XCTAssertTrue(updateW.exercises[0].title == "Ex2")
         XCTAssertTrue(updateW.id == id && updateW.id == workout.id)
         XCTAssertTrue(updateW.muscleGroups == [.chest])
         XCTAssertTrue(updateW.system == true)
@@ -157,8 +157,8 @@ class CoreDataStorageManagerTests: XCTestCase {
     }
     
     func testDeleteAllWorkouts() {
-        workoutStorageManager.create(workout: WorkoutModel(title: "Test 1", muscleGroups: [.wholeBody,.abs], system: false, exercises: nil, id: UUID()))
-        workoutStorageManager.create(workout: WorkoutModel(title: "Test 2", muscleGroups: [.chest,], system: true, exercises: nil, id: UUID()))
+        workoutStorageManager.create(workout: WorkoutModel(title: "Test 1", muscleGroups: [.wholeBody,.abs], system: false, exercises: [ExerciseModelProtocol](), id: UUID()))
+        workoutStorageManager.create(workout: WorkoutModel(title: "Test 2", muscleGroups: [.chest,], system: true, exercises: [ExerciseModelProtocol](), id: UUID()))
         
         workoutStorageManager.deleteAllWorkouts()
         

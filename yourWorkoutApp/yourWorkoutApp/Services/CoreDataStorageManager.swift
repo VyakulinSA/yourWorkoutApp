@@ -11,6 +11,7 @@ import CoreData
 protocol DataStorageWorkoutManagerProtocol: AnyObject {
     func create(workout: WorkoutModelProtocol)
     func readAllWorkouts() -> [WorkoutModelProtocol]?
+    func readWorkout(id: UUID) -> WorkoutModelProtocol?
     func update(workout: WorkoutModelProtocol)
     func delete(workout: WorkoutModelProtocol)
     func deleteAllWorkouts()
@@ -47,11 +48,11 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
         workoutCD.title = workout.title
         workoutCD.system = workout.system
         workoutCD.muscleGroups = workout.muscleGroups.map{$0.rawValue}.joined(separator: "|")
-        workoutCD.exercisesCount = Int16(workout.exercises?.count ?? 0)
+        workoutCD.exercisesCount = Int16(workout.exercises.count)
         
         var exercisesCD: [ExerciseCD] = [ExerciseCD]()
         
-        workout.exercises?.forEach({ ex in
+        workout.exercises.forEach({ ex in
             if let exСD = getCoreDataOneEntity(withType: ExerciseCD.self, and: ex.id){
                 exercisesCD.append(exСD)
             }
@@ -72,7 +73,7 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
                 MuscleGroup(rawValue: String(sub)) ?? .wholeBody
             }
             
-            let exercises: [ExerciseModel]? = transform(exercisesCD: workout.exerciseCD)
+            let exercises: [ExerciseModel] = transform(exercisesCD: workout.exerciseCD) ?? [ExerciseModel]()
             
             let workoutModel = WorkoutModel(
                 title: workout.title,
@@ -87,6 +88,25 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
         return result
     }
     
+    func readWorkout(id: UUID) -> WorkoutModelProtocol? {
+        guard let exerciseCD = getCoreDataOneEntity(withType: WorkoutCD.self, and: id) else {return nil}
+        let muscleGroups = exerciseCD.muscleGroups.split(separator: "|").map { sub in
+            MuscleGroup(rawValue: String(sub)) ?? .wholeBody
+        }
+    
+        let exercises: [ExerciseModel] = transform(exercisesCD: exerciseCD.exerciseCD) ?? [ExerciseModel]()
+        
+        let workoutModel = WorkoutModel(
+            title: exerciseCD.title,
+            muscleGroups: muscleGroups,
+            system: exerciseCD.system,
+            exercises: exercises,
+            id: exerciseCD.id
+        )
+        
+        return workoutModel
+    }
+    
     //MARK: Update workout with Exercises
     func update(workout: WorkoutModelProtocol) {
         guard let workoutCD = getCoreDataOneEntity(withType: WorkoutCD.self, and: workout.id) else {return}
@@ -95,11 +115,11 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
         workoutCD.title = workout.title
         workoutCD.system = workout.system
         workoutCD.muscleGroups = workout.muscleGroups.map{$0.rawValue}.joined(separator: "|")
-        workoutCD.exercisesCount = Int16(workout.exercises?.count ?? 0)
+        workoutCD.exercisesCount = Int16(workout.exercises.count)
         
         var exercisesCD: [ExerciseCD] = [ExerciseCD]()
         
-        workout.exercises?.forEach({ ex in
+        workout.exercises.forEach({ ex in
             if let exСD = getCoreDataOneEntity(withType: ExerciseCD.self, and: ex.id){
                 exercisesCD.append(exСD)
             }

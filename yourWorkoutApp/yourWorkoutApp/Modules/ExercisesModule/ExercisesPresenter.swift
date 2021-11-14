@@ -37,7 +37,7 @@ class ExercisesPresenter: ExercisesViewOutput {
     
     var selectedFilterMuscleGroups: [MuscleGroup]? {
         didSet {
-            getExercisesData() //FIXME: Нужно ли каждый раз получать все упражнения? может хранить где то в константе, после первого получения, а тут просто восстанавливать.
+            getExercisesData()
             if selectedFilterMuscleGroups?.count ?? 0 > 0 {
                 exercisesData = exercisesData?.filter({ exercise in
                     var filterResult = false
@@ -78,7 +78,7 @@ extension ExercisesPresenter {
     
     func didSelectCell(item: Int) {
         guard let exercise = exercisesData?[item] else {return}
-        router.showExerciseDetailViewController(exercise: exercise)
+        router.showExerciseDetailViewController(exercise: exercise, editable: true)
     }
     
     func getExercisesData() {

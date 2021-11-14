@@ -36,9 +36,12 @@ class ExerciseDetailViewController: YWExerciseContainerViewController {
 
 extension ExerciseDetailViewController {
     private func configViews() {
-        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: .gear, titleBarText: "EXERCISE DETAIL")
+        let secondButton: IconButtonNames?  = presenter.editable ? .gear : nil
+        setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: secondButton, titleBarText: "EXERCISE DETAIL")
         
         leftBarButton.addTarget(self, action: #selector(backBarButtonTapped), for: .touchUpInside)
+        
+        guard presenter.editable else {return}
         secondRightBarButton.addTarget(self, action: #selector(editBarButtonTapped), for: .touchUpInside)
     }
     

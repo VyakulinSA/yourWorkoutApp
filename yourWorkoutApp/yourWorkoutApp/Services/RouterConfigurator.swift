@@ -13,7 +13,7 @@ protocol RouterConfiguratorProtocol {
     func popToRoot()
     func popVC()
     func popVC(_ animated: Bool)
-    func showActionsForChangesAlert(output: ActionsForChangesAlertOutput, acceptTitle: String, deleteTitle: String?, titleString: String?)
+    func showActionsForChangesAlert(output: ActionsForChangesAlertOutput, acceptTitle: String?, deleteTitle: String?, titleString: String?)
     func showMessageAlert(message: String)
 }
 
@@ -24,26 +24,28 @@ protocol RouterForStartMenuModule: RouterConfiguratorProtocol {
 
 protocol RouterForWorkoutsModule: RouterConfiguratorProtocol {
     
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?)
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?)
     func showWorkoutDetailViewController(workout: WorkoutModelProtocol)
 }
 
 protocol RouterForExerciseModule: RouterConfiguratorProtocol {
     func showFilterExerciseViewConteroller(delegate: FilterExerciseProtocol)
     func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?)
-    func showExerciseDetailViewController(exercise: ExerciseModelProtocol)
+    func showExerciseDetailViewController(exercise: ExerciseModelProtocol, editable: Bool)
 }
 
 protocol RouterForAddExerciseModule: RouterConfiguratorProtocol {
     func showFilterExerciseViewConteroller(delegate: FilterExerciseProtocol)
+    func showExerciseDetailViewController(exercise: ExerciseModelProtocol, editable: Bool)
 }
 
 protocol RouterForEditCreateWorkoutModule: RouterConfiguratorProtocol {
-    func showAddExerciseViewController()
+    func showAddExerciseViewController(delegate: EditCreateWorkoutViewOutput)
+    func showExerciseDetailViewController(exercise: ExerciseModelProtocol, editable: Bool)
 }
 
 protocol RouterForWorkoutDetailModule: RouterConfiguratorProtocol {
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?)
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?)
 }
 
 protocol RouterForEditCreateExerciseModule: RouterConfiguratorProtocol {
@@ -110,7 +112,7 @@ class RouterConfigurator: RouterConfiguratorProtocol, RouterForEditCreateExercis
         }
     }
     
-    func showActionsForChangesAlert(output: ActionsForChangesAlertOutput, acceptTitle: String, deleteTitle: String?, titleString: String?){
+    func showActionsForChangesAlert(output: ActionsForChangesAlertOutput, acceptTitle: String?, deleteTitle: String?, titleString: String?){
         let alert = ActionsForChangesAlert(title: nil, message: nil, preferredStyle: .alert)
         alert.configure(output: output, acceptTitle: acceptTitle, deleteTitle: deleteTitle, titleString: titleString)
         navigationController?.present(alert, animated: true, completion: nil)
@@ -141,9 +143,9 @@ extension RouterConfigurator: RouterForStartMenuModule {
 }
 
 extension RouterConfigurator: RouterForWorkoutsModule, RouterForWorkoutDetailModule {
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, exercisesData: [ExerciseModelProtocol]?) {
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?) {
         if let navigationController = navigationController {
-            guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType, exercisesData: exercisesData) else {return}
+            guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType, workout: workout) else {return}
             let animated = editCreateType == .create ? true : false
             navigationController.pushViewController(editCreateWorkoutViewController, animated: animated)
         }
@@ -158,6 +160,7 @@ extension RouterConfigurator: RouterForWorkoutsModule, RouterForWorkoutDetailMod
 }
 
 extension RouterConfigurator: RouterForExerciseModule, RouterForAddExerciseModule,RouterForExerciseDetailModule {
+    
     func showEditCreateExerciseViewController(editCreateType: EditCreateExerciseType, exercise: ExerciseModelProtocol?) {
         if let navigationController = navigationController {
             guard let editCreateExerciseViewController = assemblyConfigurator?.createEditCreateExerciseModule(router: self, editCreateType: editCreateType, exercise: exercise) else {return}
@@ -165,9 +168,9 @@ extension RouterConfigurator: RouterForExerciseModule, RouterForAddExerciseModul
         }
     }
     
-    func showExerciseDetailViewController(exercise: ExerciseModelProtocol) {
+    func showExerciseDetailViewController(exercise: ExerciseModelProtocol, editable: Bool) {
         if let navigationController = navigationController {
-            guard let exerciseDetailViewController = assemblyConfigurator?.createExerciseDetailModule(router: self, exercise: exercise) else {return}
+            guard let exerciseDetailViewController = assemblyConfigurator?.createExerciseDetailModule(router: self, exercise: exercise, editable: editable) else {return}
             navigationController.pushViewController(exerciseDetailViewController, animated: true)
         }
     }
@@ -181,9 +184,9 @@ extension RouterConfigurator: RouterForExerciseModule, RouterForAddExerciseModul
 }
 
 extension RouterConfigurator: RouterForEditCreateWorkoutModule {
-    func showAddExerciseViewController() {
+    func showAddExerciseViewController(delegate: EditCreateWorkoutViewOutput) {
         if let navigationController = navigationController {
-            guard let addExerciseViewController = assemblyConfigurator?.createAddExerciseModule(router: self) else {return}
+            guard let addExerciseViewController = assemblyConfigurator?.createAddExerciseModule(router: self, delegate: delegate) else {return}
             navigationController.pushViewController(addExerciseViewController, animated: true)
         }
     }
