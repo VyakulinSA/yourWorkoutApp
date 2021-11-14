@@ -24,6 +24,8 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont.myFont(.myFontSemiBold, size: 24)
         $0.textColor = .darkTextColor
+        $0.adjustsFontSizeToFitWidth = true
+        $0.minimumScaleFactor = 0.8
     }
     
     private let muscleGroupLabel = setupObject(UILabel()) {

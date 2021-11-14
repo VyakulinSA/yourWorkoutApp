@@ -295,22 +295,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "990F830D-27F5-4DEC-B093-0B94178D2544"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yourWorkoutApp/Modules/EditCreateExerciseModule/Presenter/EditCreateExercisePresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "cameraAction(source:selectedImageCell:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1DCCA112-9E90-42F3-82AF-EC6A7DB0E670"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -321,22 +305,6 @@
             startingLineNumber = "24"
             endingLineNumber = "24"
             landmarkName = "configure(output:selectedImageCell:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C925F6B0-B97B-4C2C-BE9B-3E946B54FF2F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yourWorkoutApp/Modules/EditCreateExerciseModule/Presenter/EditCreateExercisePresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "photoAction(source:selectedImageCell:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -510,8 +478,8 @@
             filePath = "yourWorkoutApp/Modules/EditCreateExerciseModule/Presenter/EditCreateExercisePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "backBarButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,10 +494,10 @@
             filePath = "yourWorkoutApp/Modules/EditCreateExerciseModule/Presenter/EditCreateExercisePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "accept()"
-            landmarkType = "7">
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "EditCreateExercisePresenter"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -542,8 +510,8 @@
             filePath = "yourWorkoutApp/Modules/EditCreateExerciseModule/Presenter/EditCreateExercisePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "getImagesFromExercise()"
             landmarkType = "7">
          </BreakpointContent>
@@ -561,14 +529,14 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "load(imageName:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "22F2A03D-685B-45B4-9C4A-8EF02FC3C8B9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yourWorkoutApp/Services/ImagesStorageManager.swift"
@@ -576,8 +544,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
-            landmarkName = "save(image:with:)"
-            landmarkType = "9">
+            landmarkName = "save(image:withName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -590,8 +558,8 @@
             filePath = "yourWorkoutApp/Modules/EditCreateExerciseModule/Presenter/EditCreateExercisePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "getImagesFromExercise()"
             landmarkType = "7">
          </BreakpointContent>
@@ -606,9 +574,9 @@
             filePath = "yourWorkoutApp/Modules/EditCreateExerciseModule/Presenter/EditCreateExercisePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "accept()"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "deletePhotoAction(selectedImageCell:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -657,22 +625,6 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "configureImages(cell:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EFD19F9F-FF57-40FA-96DA-C9421E8B4C7A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yourWorkoutApp/Modules/EditCreateExerciseModule/Presenter/EditCreateExercisePresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "writeExerciseImages(image:selectedCell:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

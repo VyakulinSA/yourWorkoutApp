@@ -102,4 +102,10 @@ extension ExerciseTitleCollectionViewCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentCharacterCount = textField.text?.count ?? 0
+        let newLength = currentCharacterCount + string.count - range.length
+        return newLength <= 30
+    }
 }

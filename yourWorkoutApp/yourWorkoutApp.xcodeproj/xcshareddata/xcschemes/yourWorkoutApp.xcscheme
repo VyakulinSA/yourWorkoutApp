@@ -28,7 +28,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C876B492729D63400FA6C6C"
+               BlueprintIdentifier = "3C876C0D273AF1E800FA6C6C"
                BuildableName = "yourWorkoutAppTests.xctest"
                BlueprintName = "yourWorkoutAppTests"
                ReferencedContainer = "container:yourWorkoutApp.xcodeproj">
@@ -40,13 +40,24 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3C876B302729D63300FA6C6C"
+            BuildableName = "yourWorkoutApp.app"
+            BlueprintName = "yourWorkoutApp"
+            ReferencedContainer = "container:yourWorkoutApp.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C876B492729D63400FA6C6C"
+               BlueprintIdentifier = "3C876C0D273AF1E800FA6C6C"
                BuildableName = "yourWorkoutAppTests.xctest"
                BlueprintName = "yourWorkoutAppTests"
                ReferencedContainer = "container:yourWorkoutApp.xcodeproj">

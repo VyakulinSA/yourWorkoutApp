@@ -107,10 +107,10 @@ extension EditCreateExercisePresenter {
     
     private func saveExerciseImagesWith(name: String) {
         if changeStartImage {
-            exercise.startImageName = imagesStorageManager.save(image: startExerciseImage, with: String("\(name)_startImage"))
+            exercise.startImageName = imagesStorageManager.save(image: startExerciseImage, withName: String("\(name)_startImage"))
         }
         if changeEndImage {
-            exercise.endImageName = imagesStorageManager.save(image: endExerciseImage, with: String("\(name)_endImage"))
+            exercise.endImageName = imagesStorageManager.save(image: endExerciseImage, withName: String("\(name)_endImage"))
         }
     }
     

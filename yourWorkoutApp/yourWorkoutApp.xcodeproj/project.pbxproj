@@ -10,6 +10,7 @@
 		3C7339E8273FA33800E759B8 /* ImagesStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339E7273FA33800E759B8 /* ImagesStorageManager.swift */; };
 		3C7339EC273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */; };
 		3C7339ED273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */; };
+		3C7339EF2741792400E759B8 /* ImagesStorageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339EE2741792400E759B8 /* ImagesStorageManagerTests.swift */; };
 		3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B342729D63300FA6C6C /* AppDelegate.swift */; };
 		3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B362729D63300FA6C6C /* SceneDelegate.swift */; };
 		3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B3D2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld */; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		3C7339E7273FA33800E759B8 /* ImagesStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesStorageManager.swift; sourceTree = "<group>"; };
 		3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsForChangesAlert.swift; sourceTree = "<group>"; };
+		3C7339EE2741792400E759B8 /* ImagesStorageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesStorageManagerTests.swift; sourceTree = "<group>"; };
 		3C876B312729D63300FA6C6C /* yourWorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yourWorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C876B342729D63300FA6C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C876B362729D63300FA6C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				3C876C03273AAD1600FA6C6C /* CoreDataStorageManagerTests.swift */,
+				3C7339EE2741792400E759B8 /* ImagesStorageManagerTests.swift */,
 			);
 			path = yourWorkoutAppTests;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7339EF2741792400E759B8 /* ImagesStorageManagerTests.swift in Sources */,
 				3C876C17273AF1ED00FA6C6C /* CoreDataStorageManagerTests.swift in Sources */,
 				3C7339ED273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */,
 			);

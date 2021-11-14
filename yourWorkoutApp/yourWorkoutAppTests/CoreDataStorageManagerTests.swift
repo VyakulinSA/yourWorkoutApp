@@ -77,6 +77,15 @@ class CoreDataStorageManagerTests: XCTestCase {
         
         XCTAssertNotNil(allExercises, "Wallet should not be nil")
         XCTAssertTrue(allExercises.count == 2)
+        
+        let oneWorkout = workoutStorageManager.readWorkout(id: id)
+        
+        XCTAssertTrue(oneWorkout?.title == "Test 1")
+        XCTAssertTrue(oneWorkout?.exercises.count == 2)
+        XCTAssertTrue(oneWorkout?.id == id)
+        XCTAssertTrue(oneWorkout?.muscleGroups == [.wholeBody,.abs])
+        XCTAssertTrue(oneWorkout?.system == false)
+        
     }
     
     func testUpdateWorkout() {
@@ -185,6 +194,18 @@ class CoreDataStorageManagerTests: XCTestCase {
         XCTAssertTrue(resultExercises[0].startImageName == exercises[0].startImageName)
         XCTAssertTrue(resultExercises[0].endImageName == exercises[0].endImageName)
         XCTAssertTrue(resultExercises[0].id == exercises[0].id)
+        
+        let oneExercise = exerciseStorageManager.readExercise(id: id1)
+        
+        XCTAssertNotNil(oneExercise, "Wallet should not be nil")
+        XCTAssertTrue(oneExercise?.title == exercises[0].title)
+        XCTAssertTrue(oneExercise?.muscleGroup == exercises[0].muscleGroup)
+        XCTAssertTrue(oneExercise?.description == exercises[0].description)
+        XCTAssertTrue(oneExercise?.startImageName == exercises[0].startImageName)
+        XCTAssertTrue(oneExercise?.endImageName == exercises[0].endImageName)
+        XCTAssertTrue(oneExercise?.id == exercises[0].id)
+        
+        
     }
     
     func testUpdateExercise() {

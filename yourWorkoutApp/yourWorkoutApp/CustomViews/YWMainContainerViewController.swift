@@ -156,8 +156,8 @@ extension YWMainContainerViewController {
             top: leftBarButton.topAnchor,
             leading: leftBarButton.trailingAnchor,
             bottom: navBarView.bottomAnchor,
-            trailing: secondRightBarButton.leadingAnchor,
-            padding: UIEdgeInsets(top: 0, left: 10, bottom: 11, right: 10)
+            trailing: firstRightBarButton.leadingAnchor,
+            padding: UIEdgeInsets(top: 0, left: 40, bottom: 11, right: 2)
         )
         
         titleTextField.anchor(

@@ -100,8 +100,8 @@ extension WorkoutsCollectionViewCell {
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
             bottom: nil,
-            trailing: nil,
-            padding: UIEdgeInsets(top: 15, left: 20, bottom: 0, right: 20)
+            trailing: chevronImage.leadingAnchor,
+            padding: UIEdgeInsets(top: 15, left: 20, bottom: 0, right: 5)
         )
         
         exercisesCountLabel.anchor(
@@ -124,8 +124,8 @@ extension WorkoutsCollectionViewCell {
             top: muscleGroupTitleLabel.bottomAnchor,
             leading: contentView.leadingAnchor,
             bottom: nil,
-            trailing: contentView.trailingAnchor,
-            padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            trailing: chevronImage.leadingAnchor,
+            padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 5)
         )
         
         systemTagLabel.anchor(

@@ -99,7 +99,7 @@ extension ExerciseMuscleGroupCollectionViewCell: UIPickerViewDelegate, UIPickerV
 }
 
 extension ExerciseMuscleGroupCollectionViewCell {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return false
     }
     

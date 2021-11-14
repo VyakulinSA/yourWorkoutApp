@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 protocol ImagesStorageManagerProtocol {
-    func save(image: UIImage?, with imageName: String) -> String?
+    func save(image: UIImage?, withName imageName: String) -> String?
     func load(imageName: String) -> UIImage?
 }
 
 class ImagesStorageManager: ImagesStorageManagerProtocol {
-    func save(image: UIImage?, with imageName: String) -> String? {
+    func save(image: UIImage?, withName imageName: String) -> String? {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         let fileName = imageName
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
