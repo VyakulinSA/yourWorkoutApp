@@ -20,6 +20,11 @@ protocol RouterConfiguratorProtocol {
 protocol RouterForStartMenuModule: RouterConfiguratorProtocol {
     func showWorkoutsViewController()
     func showExercisesViewController()
+    func showLeaguesViewController()
+}
+
+protocol RouterForLeaguesModule: RouterConfiguratorProtocol {
+    func showStandingsViewController(leagueId: String) 
 }
 
 protocol RouterForWorkoutsModule: RouterConfiguratorProtocol {
@@ -140,6 +145,13 @@ extension RouterConfigurator: RouterForStartMenuModule {
             navigationController.viewControllers = [exercisesViewController]
         }
     }
+    
+    func showLeaguesViewController() {
+        if let navigationController = navigationController {
+            guard let standingsViewController = assemblyConfigurator?.createLeaguesModule(router: self) else {return}
+            navigationController.viewControllers = [standingsViewController]
+        }
+    }
 }
 
 extension RouterConfigurator: RouterForWorkoutsModule, RouterForWorkoutDetailModule {
@@ -188,6 +200,15 @@ extension RouterConfigurator: RouterForEditCreateWorkoutModule {
         if let navigationController = navigationController {
             guard let addExerciseViewController = assemblyConfigurator?.createAddExerciseModule(router: self, delegate: delegate) else {return}
             navigationController.pushViewController(addExerciseViewController, animated: true)
+        }
+    }
+}
+
+extension RouterConfigurator: RouterForLeaguesModule {
+    func showStandingsViewController(leagueId: String) {
+        if let navigationController = navigationController {
+            guard let standingsViewController = assemblyConfigurator?.createStandingsModule(router: self, leaguesId: leagueId) else {return}
+            navigationController.pushViewController(standingsViewController, animated: true)
         }
     }
 }

@@ -16,6 +16,8 @@ protocol StartMenuViewOutput: AnyObject {
     func workoutsButtonTapped()
     
     func exercisesButtonTapped()
+    
+    func leaguesButtonTapped()
 }
 
 
@@ -36,5 +38,9 @@ extension StartMenuPresenter{
     
     func exercisesButtonTapped() {
         router.showExercisesViewController()
+    }
+    
+    func leaguesButtonTapped() {
+        router.showLeaguesViewController()
     }
 }

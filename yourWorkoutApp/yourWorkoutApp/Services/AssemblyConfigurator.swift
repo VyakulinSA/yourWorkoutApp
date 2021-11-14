@@ -15,6 +15,9 @@ protocol AssembliConfiguratorProtocol: AnyObject {
     
     func createExercisesModule(router: RouterForExerciseModule) -> UIViewController
     
+    func createLeaguesModule(router: RouterForLeaguesModule) -> UIViewController
+    func createStandingsModule(router: RouterForLeaguesModule, leaguesId: String) -> UIViewController
+    
     func createEditCreateWorkoutModule( router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?) -> UIViewController
     
     func createAddExerciseModule(router: RouterForAddExerciseModule, delegate: EditCreateWorkoutViewOutput) -> UIViewController
@@ -34,6 +37,8 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         let storage = CoreDataStorageManager(managedObjectContext: dataStack.mainContext, coreDataStack: dataStack)
         return storage
     }
+    
+    let networkService = NetworkService()
     
     let imagesStorageManager: ImagesStorageManagerProtocol = ImagesStorageManager()
     
@@ -55,6 +60,17 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         let view = ExercisesViewController(presenter: presenter)
         presenter.view = view
         return view
+    }
+    
+    func createLeaguesModule(router: RouterForLeaguesModule) -> UIViewController {
+        let presenter = LeaguesPresenter(router: router, networkService: networkService)
+        let view = LeaguesViewController(presenter: presenter)
+        presenter.view = view
+        return view
+    }
+    
+    func createStandingsModule(router: RouterForLeaguesModule, leaguesId: String) -> UIViewController {
+        return UIViewController()
     }
     
     func createEditCreateWorkoutModule(router: RouterForEditCreateWorkoutModule, editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?) -> UIViewController {

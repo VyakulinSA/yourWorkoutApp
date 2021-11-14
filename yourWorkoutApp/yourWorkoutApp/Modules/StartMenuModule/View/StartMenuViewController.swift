@@ -30,6 +30,15 @@ class StartMenuViewController: UIViewController, StartMenuViewInput {
         $0.titleLabel?.font = UIFont.myFont(.myFontBold, size: 28)
     }
     
+    private let standingsButton = setupObject(UIButton(type: .system)) {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setTitle("Footbal standings", for: .normal)
+        $0.setTitleColor(.lightTextColor, for: .normal)
+        $0.titleLabel?.font = UIFont.myFont(.myFontBold, size: 18)
+    }
+    
+    
+    
     private let stackView = setupObject(UIStackView()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.alignment = .fill
@@ -65,10 +74,13 @@ extension StartMenuViewController {
     private func setupAppearance() {
         view.addSubview(screenImageView)
         
+        
         stackView.addArrangedSubview(workoutButton)
         stackView.addArrangedSubview(exerciseButton)
         
         view.addSubview(stackView)
+        
+        view.addSubview(standingsButton)
         
         screenImageView.anchor(
             top: view.topAnchor,
@@ -81,11 +93,20 @@ extension StartMenuViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        
+        standingsButton.anchor(
+            top: nil,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        )
     }
     
     private func configViews(){
         workoutButton.addTarget(self, action: #selector(workoutButtonTapped), for: .touchUpInside)
         exerciseButton.addTarget(self, action: #selector(exerciseButtonTapped), for: .touchUpInside)
+        standingsButton.addTarget(self, action: #selector(leaguesButtonTapped), for: .touchUpInside)
     }
     
     @objc func workoutButtonTapped(){
@@ -94,5 +115,9 @@ extension StartMenuViewController {
     
     @objc func exerciseButtonTapped(){
         presenter.exercisesButtonTapped()
+    }
+    
+    @objc func leaguesButtonTapped(){
+        presenter.leaguesButtonTapped()
     }
 }
