@@ -15,9 +15,6 @@ protocol DataStorageWorkoutManagerProtocol: AnyObject {
     func update(workout: WorkoutModelProtocol)
     func delete(workout: WorkoutModelProtocol)
     func deleteAllWorkouts()
-    
-//    func add(exercises: [ExerciseModelProtocol]?, for workout: WorkoutModelProtocol)
-//    func getExercises(from workout: WorkoutModelProtocol) -> [ExerciseModelProtocol]?
 }
 
 protocol DataStorageExerciseManagerProtocol: AnyObject {
@@ -51,21 +48,29 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
         workoutCD.exercisesCount = Int16(workout.exercises.count)
         
         var exercisesCD: [ExerciseCD] = [ExerciseCD]()
+        var exercisesIdString: String = ""
         
         workout.exercises.forEach({ ex in
             if let exСD = getCoreDataOneEntity(withType: ExerciseCD.self, and: ex.id){
                 exercisesCD.append(exСD)
+                exercisesIdString += "|\(ex.id)"
             }
         })
         
         workoutCD.exerciseCD = NSSet(array: exercisesCD)
+        workoutCD.exercisesId = exercisesIdString
+        workoutCD.createdDate = Date()
         
         coreDataStack.saveContext(managedObjectContext)
     }
     
     //MARK: Read All Workouts with Exercises
     func readAllWorkouts() -> [WorkoutModelProtocol]? {
-        guard let workoutsCD = getCoreDataAllEntities(withType: WorkoutCD.self) else {return nil}
+        guard var workoutsCD = getCoreDataAllEntities(withType: WorkoutCD.self) else {return nil}
+        
+        workoutsCD.sort { w1, w2 in
+            w1.createdDate < w2.createdDate
+        }
         var result: [WorkoutModelProtocol] = [WorkoutModelProtocol]()
         
         for workout in workoutsCD {
@@ -73,35 +78,51 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
                 MuscleGroup(rawValue: String(sub)) ?? .wholeBody
             }
             
-            let exercises: [ExerciseModel] = transform(exercisesCD: workout.exerciseCD) ?? [ExerciseModel]()
+            let exercisesIdString = workout.exercisesId.split(separator: "|")
+            let exercises = transform(exercisesCD: workout.exerciseCD) ?? [ExerciseModel]()
+            var resultExercises = [ExerciseModel]()
+            
+            for id in exercisesIdString {
+                let ex = exercises.filter{$0.id == UUID(uuidString: String(id))}
+                resultExercises.append(ex[0])
+            }
             
             let workoutModel = WorkoutModel(
                 title: workout.title,
                 muscleGroups: muscleGroups,
                 system: workout.system,
-                exercises: exercises,
+                exercises: resultExercises,
                 id: workout.id
             )
             
             result.append(workoutModel)
         }
+        
         return result
     }
     
     func readWorkout(id: UUID) -> WorkoutModelProtocol? {
-        guard let exerciseCD = getCoreDataOneEntity(withType: WorkoutCD.self, and: id) else {return nil}
-        let muscleGroups = exerciseCD.muscleGroups.split(separator: "|").map { sub in
+        guard let workoutCD = getCoreDataOneEntity(withType: WorkoutCD.self, and: id) else {return nil}
+        let muscleGroups = workoutCD.muscleGroups.split(separator: "|").map { sub in
             MuscleGroup(rawValue: String(sub)) ?? .wholeBody
         }
     
-        let exercises: [ExerciseModel] = transform(exercisesCD: exerciseCD.exerciseCD) ?? [ExerciseModel]()
+        let exercisesIdString = workoutCD.exercisesId.split(separator: "|")
+        let exercises = transform(exercisesCD: workoutCD.exerciseCD) ?? [ExerciseModel]()
+        var resultExercises = [ExerciseModel]()
+        
+        
+        for id in exercisesIdString {
+            let ex = exercises.filter{$0.id == UUID(uuidString: String(id))}
+            resultExercises.append(ex[0])
+        }
         
         let workoutModel = WorkoutModel(
-            title: exerciseCD.title,
+            title: workoutCD.title,
             muscleGroups: muscleGroups,
-            system: exerciseCD.system,
-            exercises: exercises,
-            id: exerciseCD.id
+            system: workoutCD.system,
+            exercises: resultExercises,
+            id: workoutCD.id
         )
         
         return workoutModel
@@ -118,13 +139,16 @@ extension CoreDataStorageManager: DataStorageWorkoutManagerProtocol {
         workoutCD.exercisesCount = Int16(workout.exercises.count)
         
         var exercisesCD: [ExerciseCD] = [ExerciseCD]()
+        var exercisesIdString: String = ""
         
         workout.exercises.forEach({ ex in
             if let exСD = getCoreDataOneEntity(withType: ExerciseCD.self, and: ex.id){
                 exercisesCD.append(exСD)
+                exercisesIdString += "|\(ex.id)"
             }
         })
         
+        workoutCD.exercisesId = exercisesIdString
         workoutCD.exerciseCD = NSSet(array: exercisesCD)
         coreDataStack.saveContext(managedObjectContext)
     }
@@ -159,13 +183,19 @@ extension CoreDataStorageManager: DataStorageExerciseManagerProtocol {
         exerciseCD.muscleGroup = exercise.muscleGroup.rawValue
         exerciseCD.descriptionText = exercise.description
         exerciseCD.title = exercise.title
+        exerciseCD.createdDate = Date()
         
         coreDataStack.saveContext(managedObjectContext)
     }
     
     //MARK: Read exercises
     func readAllExercises() -> [ExerciseModelProtocol]? {
-        guard let exercisesCD = getCoreDataAllEntities(withType: ExerciseCD.self) else {return nil}
+        guard var exercisesCD = getCoreDataAllEntities(withType: ExerciseCD.self) else {return nil}
+        
+        exercisesCD.sort { ex1, ex2 in
+            ex1.createdDate < ex2.createdDate
+        }
+        
         var result: [ExerciseModelProtocol] = [ExerciseModelProtocol]()
         
         for exercise in exercisesCD {

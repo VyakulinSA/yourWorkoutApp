@@ -23,6 +23,7 @@ extension ExerciseCD {
     @NSManaged public var endImageName: String?
     @NSManaged public var id: UUID
     @NSManaged public var workoutCD: NSSet?
+    @NSManaged public var createdDate: Date
 
 }
 

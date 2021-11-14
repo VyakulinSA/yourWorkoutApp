@@ -29,8 +29,8 @@ class WorkoutDetailViewController: YWMainContainerViewController, WorkoutDetailV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.getActualExercise()
-        collectionView.reloadData()
         dataModel = presenter.exercisesData
+        collectionView.reloadData()
         titleView.text = presenter.workout.title.uppercased()
     }
     

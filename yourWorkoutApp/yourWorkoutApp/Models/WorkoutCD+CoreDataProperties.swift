@@ -22,6 +22,8 @@ extension WorkoutCD {
     @NSManaged public var system: Bool
     @NSManaged public var id: UUID
     @NSManaged public var exerciseCD: NSSet?
+    @NSManaged public var exercisesId: String
+    @NSManaged public var createdDate: Date
 
 }
 
