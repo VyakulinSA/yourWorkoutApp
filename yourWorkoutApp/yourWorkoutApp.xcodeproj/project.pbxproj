@@ -24,6 +24,8 @@
 		3C733A152741AA6600E759B8 /* StandingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A142741AA6600E759B8 /* StandingsPresenter.swift */; };
 		3C733A172741AAEF00E759B8 /* Standings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A162741AAEF00E759B8 /* Standings.swift */; };
 		3C733A1A2741AE6100E759B8 /* StandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A192741AE6100E759B8 /* StandingsViewController.swift */; };
+		3C733A1D27423E5700E759B8 /* YWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A1C27423E5700E759B8 /* YWNavigationController.swift */; };
+		3C733A1F274244F900E759B8 /* StartMenuPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A1E274244F900E759B8 /* StartMenuPresenterTests.swift */; };
 		3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B342729D63300FA6C6C /* AppDelegate.swift */; };
 		3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B362729D63300FA6C6C /* SceneDelegate.swift */; };
 		3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B3D2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld */; };
@@ -106,6 +108,8 @@
 		3C733A142741AA6600E759B8 /* StandingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsPresenter.swift; sourceTree = "<group>"; };
 		3C733A162741AAEF00E759B8 /* Standings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standings.swift; sourceTree = "<group>"; };
 		3C733A192741AE6100E759B8 /* StandingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsViewController.swift; sourceTree = "<group>"; };
+		3C733A1C27423E5700E759B8 /* YWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWNavigationController.swift; sourceTree = "<group>"; };
+		3C733A1E274244F900E759B8 /* StartMenuPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuPresenterTests.swift; sourceTree = "<group>"; };
 		3C876B312729D63300FA6C6C /* yourWorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yourWorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C876B342729D63300FA6C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C876B362729D63300FA6C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -270,6 +274,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		3C733A1B27423D6400E759B8 /* StartMenuModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C733A1E274244F900E759B8 /* StartMenuPresenterTests.swift */,
+			);
+			path = StartMenuModuleTests;
+			sourceTree = "<group>";
+		};
 		3C876B282729D63300FA6C6C = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +414,7 @@
 			children = (
 				3C876B90272ADBEF00FA6C6C /* YWMainContainerViewController.swift */,
 				3C876BCB2732A87C00FA6C6C /* YWExerciseContainerViewController.swift */,
+				3C733A1C27423E5700E759B8 /* YWNavigationController.swift */,
 				3C876B94272ADF7B00FA6C6C /* YWIconButton.swift */,
 				3C876BE8273405E700FA6C6C /* YWMuscleGroupBageView.swift */,
 				3C876BCA2732A81E00FA6C6C /* CollectionViewCell */,
@@ -659,6 +672,7 @@
 			children = (
 				3C876C03273AAD1600FA6C6C /* CoreDataStorageManagerTests.swift */,
 				3C7339EE2741792400E759B8 /* ImagesStorageManagerTests.swift */,
+				3C733A1B27423D6400E759B8 /* StartMenuModuleTests */,
 			);
 			path = yourWorkoutAppTests;
 			sourceTree = "<group>";
@@ -809,6 +823,7 @@
 				3C876BF4273454B900FA6C6C /* FilterExerciseViewController.swift in Sources */,
 				3C876B6F272AAEAE00FA6C6C /* StartMenuPresenter.swift in Sources */,
 				3C876BDB2733240200FA6C6C /* ExerciseDescriptionCollectionViewCell.swift in Sources */,
+				3C733A1D27423E5700E759B8 /* YWNavigationController.swift in Sources */,
 				3C876BC9273166D100FA6C6C /* WorkoutDetailViewController.swift in Sources */,
 				3C876C002738604E00FA6C6C /* WorkoutCD+CoreDataProperties.swift in Sources */,
 				3C876BA2272D665700FA6C6C /* UIView + extension.swift in Sources */,
@@ -858,6 +873,7 @@
 				3C876C17273AF1ED00FA6C6C /* CoreDataStorageManagerTests.swift in Sources */,
 				3C7339ED273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */,
 				3C7339F92741974C00E759B8 /* NetworkService.swift in Sources */,
+				3C733A1F274244F900E759B8 /* StartMenuPresenterTests.swift in Sources */,
 				3C7339F72741974C00E759B8 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

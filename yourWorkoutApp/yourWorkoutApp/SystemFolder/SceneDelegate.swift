@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
 
-        let navViewController = UINavigationController()
+        let navViewController = YWNavigationController()
         let assemblyConfigurator = AssemblyConfigurator()
 
         navViewController.navigationBar.isHidden = true
