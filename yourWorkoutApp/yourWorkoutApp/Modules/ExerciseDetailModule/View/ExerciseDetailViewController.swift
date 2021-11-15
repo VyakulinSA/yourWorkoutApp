@@ -30,7 +30,6 @@ class ExerciseDetailViewController: YWExerciseContainerViewController {
         presenter.getActualExercise()
         presenter.getImagesFromExercise()
         collectionView.reloadData()
-        print("ExerciseDetailViewController reload collection will appear")
     }
 }
 

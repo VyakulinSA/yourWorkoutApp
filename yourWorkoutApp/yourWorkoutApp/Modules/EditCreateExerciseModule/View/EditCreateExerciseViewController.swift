@@ -29,7 +29,6 @@ class EditCreateExerciseViewController: YWExerciseContainerViewController, EditC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
-        print("EditCreateExerciseViewController wilAppear reload")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -104,7 +103,6 @@ extension EditCreateExerciseViewController {
     
     func reloadCollection() {
         collectionView.reloadData()
-        print("EditCreateExerciseViewController wilAppear reload")
     }
     
 }

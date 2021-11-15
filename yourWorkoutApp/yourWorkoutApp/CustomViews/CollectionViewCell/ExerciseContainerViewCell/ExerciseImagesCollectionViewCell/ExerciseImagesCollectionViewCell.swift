@@ -60,7 +60,6 @@ extension ExerciseImagesCollectionViewCell {
         self.startImage = startImage
         self.endImage = endImage
         collectionView.reloadData()
-        print("ExerciseImagesCollectionViewCell wilAppear reload")
     }
     
     private func configViews() {

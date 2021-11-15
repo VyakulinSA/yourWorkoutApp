@@ -31,7 +31,6 @@ class WorkoutsViewController: YWMainContainerViewController, WorkoutsViewInput {
         
         presenter.getWorkoutsData()
         collectionView.reloadData()
-        print("WorkoutsViewController wilAppear reload")
     }
 
 }

@@ -94,7 +94,6 @@ extension EditCreateWorkoutPresenter {
     }
     
     func trashBarButtonTapped() {
-        //удаляем только из коллекции, потом при сохранении перебираем и корректируем тренировку
         exercisesData.removeAll(where: { exercise in
             var result = false
             for delEx in exercisesToDelete {

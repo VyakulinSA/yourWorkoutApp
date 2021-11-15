@@ -54,7 +54,7 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        exerciseImage.image = UIImage(named: "testExerciseImage")
+        exerciseImage.image = UIImage(named: "defaultExerciseImage")
         addButton?.isHidden = true
         addButton = nil
         exerciseImage.isHidden = false
@@ -75,7 +75,7 @@ extension ExerciseCollectionViewCell {
         if let exerciseImage = exerciseImage {
             self.exerciseImage.image = exerciseImage
         } else {
-            self.exerciseImage.image = UIImage(named: "testExerciseImage")
+            self.exerciseImage.image = UIImage(named: "defaultExerciseImage")
         }
         self.exerciseTitleLabel.text = exerciseTitle
         self.muscleGroupLabel.text = muscleGroup
@@ -86,7 +86,7 @@ extension ExerciseCollectionViewCell {
             self.exerciseImage.image = leagueImage
             self.exerciseImage.contentMode = .scaleAspectFit
         } else {
-            self.exerciseImage.image = UIImage(named: "testExerciseImage")
+            self.exerciseImage.image = UIImage(named: "defaultExerciseImage")
         }
         self.exerciseTitleLabel.text = leagueAbbr
         self.muscleGroupLabel.text = leagueName

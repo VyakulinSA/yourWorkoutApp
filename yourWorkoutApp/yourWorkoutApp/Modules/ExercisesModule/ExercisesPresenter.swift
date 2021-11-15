@@ -58,6 +58,7 @@ class ExercisesPresenter: ExercisesViewOutput {
         self.router = router
         self.exerciseStorageManager = exerciseStorageManager
         self.imagesStorageManager = imagesStorageManager
+        createDefaultExercises()
         getExercisesData()
     }
     
@@ -87,5 +88,43 @@ extension ExercisesPresenter {
     
     func getImagesFromExercise(imageName: String?) -> UIImage? {
          return imagesStorageManager.load(imageName: imageName ?? "")
+    }
+}
+
+//MARK: create default exercises
+extension ExercisesPresenter {
+    private func createDefaultExercises() {
+        guard !UserDefaults.standard.bool(forKey: "firstStart") else {return}
+        
+        let ex1Id = UUID()
+        let ex2Id = UUID()
+        let ex3Id = UUID()
+        
+        let startImage_ex1 = imagesStorageManager.save(image: UIImage(named: "startImage_ex1"), withName: "\(ex1Id)_startImage")
+        let endImage_ex1 = imagesStorageManager.save(image: UIImage(named: "endImage_ex1"), withName: "\(ex1Id)_endImage")
+        
+        let startImage_ex2 = imagesStorageManager.save(image: UIImage(named: "startImage_ex2"), withName: "\(ex2Id)_startImage")
+        let endImage_ex2 = imagesStorageManager.save(image: UIImage(named: "endImage_ex2"), withName: "\(ex2Id)_endImage")
+        
+        let startImage_ex3 = imagesStorageManager.save(image: UIImage(named: "startImage_ex3"), withName: "\(ex3Id)_startImage")
+        let endImage_ex3 = imagesStorageManager.save(image: UIImage(named: "endImage_ex3"), withName: "\(ex3Id)_endImage")
+        
+        let defaultExercises: [ExerciseModel] = [
+            ExerciseModel(title: "Exercise 1", muscleGroup: .biceps,
+                          description: "Biceps exercise", startImageName: startImage_ex1,
+                          endImageName: endImage_ex1, id: ex1Id),
+            ExerciseModel(title: "Exercise 2", muscleGroup: .chest,
+                          description: "Chest exercise", startImageName: startImage_ex2,
+                          endImageName: endImage_ex2, id: ex2Id),
+            ExerciseModel(title: "Exercise 3", muscleGroup: .shoulders,
+                          description: "Shoulders exercise", startImageName: startImage_ex3,
+                          endImageName: endImage_ex3, id: ex3Id),
+        ]
+        
+        exerciseStorageManager.create(exercise: defaultExercises[0])
+        exerciseStorageManager.create(exercise: defaultExercises[1])
+        exerciseStorageManager.create(exercise: defaultExercises[2])
+        
+        UserDefaults.standard.setValue(true, forKey: "firstStart")
     }
 }

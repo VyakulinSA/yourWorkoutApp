@@ -30,8 +30,8 @@ class ExercisesViewController: YWMainContainerViewController, ExercisesViewInput
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.getExercisesData()
+        dataModel = presenter.exercisesData
         collectionView.reloadData()
-        print("ExercisesViewController reload data will appear")
     }
 
 
@@ -68,7 +68,6 @@ extension ExercisesViewController {
     func reloadCollection() {
         dataModel = presenter.exercisesData
         collectionView.reloadData()
-        print("ExercisesViewController wilAppear reload")
     }
 }
 

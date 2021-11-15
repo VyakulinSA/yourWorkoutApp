@@ -51,7 +51,6 @@ extension StandingsPresenter {
             switch res {
             case .success(let data):
                 self.data = data.data
-                print(data.data)
                 self.standings = data.data.standings
             case .failure(let error):
                 print(error.localizedDescription)
