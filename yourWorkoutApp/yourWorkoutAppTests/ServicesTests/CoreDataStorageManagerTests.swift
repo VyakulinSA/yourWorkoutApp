@@ -18,7 +18,8 @@ class MockCoreDataStack: CoreDataStack {
         let persistentStoreDescription = NSPersistentStoreDescription()
         persistentStoreDescription.type = NSInMemoryStoreType
         //Creates an NSPersistentContainer instance, passing in the modelName and NSManageObjectModel stored in the CoreDataStack.
-        let container = NSPersistentContainer(name: CoreDataStack.modelName, managedObjectModel: CoreDataStack.model)
+        let container = NSPersistentContainer(name: CoreDataStack.modelName,
+                                              managedObjectModel: CoreDataStack.model)
         container.persistentStoreDescriptions = [persistentStoreDescription]
         //Assigns the in-memory persistent store to the container.
         container.loadPersistentStores { _, error in
@@ -39,8 +40,10 @@ class CoreDataStorageManagerTests: XCTestCase {
     
     override func setUpWithError() throws {
         coreDataStack = MockCoreDataStack()
-        workoutStorageManager = CoreDataStorageManager(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
-        exerciseStorageManager = CoreDataStorageManager(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
+        workoutStorageManager = CoreDataStorageManager(managedObjectContext: coreDataStack.mainContext,
+                                                       coreDataStack: coreDataStack)
+        exerciseStorageManager = CoreDataStorageManager(managedObjectContext: coreDataStack.mainContext,
+                                                        coreDataStack: coreDataStack)
     }
     
     override func tearDownWithError() throws {
@@ -61,7 +64,12 @@ class CoreDataStorageManagerTests: XCTestCase {
         exerciseStorageManager.create(exercise: exercises[1])
         
         let id = UUID()
-        workoutStorageManager.create(workout: WorkoutModel(title: "Test 1", muscleGroups: [.wholeBody,.abs], system: false, exercises: exercises, id: id))
+        workoutStorageManager.create(
+            workout: WorkoutModel(title: "Test 1",
+                                  muscleGroups: [.wholeBody,.abs],
+                                  system: false,
+                                  exercises: exercises,
+                                  id: id))
         
         guard let allWorkouts = workoutStorageManager.readAllWorkouts(),
               let allExercises = exerciseStorageManager.readAllExercises() else {return}
@@ -100,7 +108,12 @@ class CoreDataStorageManagerTests: XCTestCase {
         exerciseStorageManager.create(exercise: exercises[1])
         
         let id = UUID()
-        workoutStorageManager.create(workout: WorkoutModel(title: "Test 1", muscleGroups: [.wholeBody,.abs], system: false, exercises: [exercises[0]], id: id))
+        workoutStorageManager.create(workout: WorkoutModel(title: "Test 1",
+                                                           muscleGroups: [.wholeBody,.abs],
+                                                           system: false,
+                                                           exercises: [exercises[0]],
+                                                           id: id))
+        
         guard let allWorkouts = workoutStorageManager.readAllWorkouts() else {return}
         var workout = allWorkouts[0]
         

@@ -129,6 +129,14 @@ class RouterConfigurator: RouterConfiguratorProtocol, RouterForEditCreateExercis
         alert.addAction(cancelAction)
         navigationController?.present(alert, animated: true, completion: nil)
     }
+    
+    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?) {
+        if let navigationController = navigationController {
+            guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType, workout: workout) else {return}
+            let animated = editCreateType == .create ? true : false
+            navigationController.pushViewController(editCreateWorkoutViewController, animated: animated)
+        }
+    }
 }
 
 extension RouterConfigurator: RouterForStartMenuModule {
@@ -155,13 +163,7 @@ extension RouterConfigurator: RouterForStartMenuModule {
 }
 
 extension RouterConfigurator: RouterForWorkoutsModule, RouterForWorkoutDetailModule {
-    func showEditCreateWorkoutViewController(editCreateType: EditCreateWorkoutType, workout: WorkoutModelProtocol?) {
-        if let navigationController = navigationController {
-            guard let editCreateWorkoutViewController = assemblyConfigurator?.createEditCreateWorkoutModule(router: self, editCreateType: editCreateType, workout: workout) else {return}
-            let animated = editCreateType == .create ? true : false
-            navigationController.pushViewController(editCreateWorkoutViewController, animated: animated)
-        }
-    }
+
     
     func showWorkoutDetailViewController(workout: WorkoutModelProtocol) {
         if let navigationController = navigationController {

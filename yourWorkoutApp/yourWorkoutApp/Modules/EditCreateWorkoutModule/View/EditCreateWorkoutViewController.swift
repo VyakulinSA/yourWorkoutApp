@@ -10,7 +10,7 @@ import SwiftUI
 
 class EditCreateWorkoutViewController: YWMainContainerViewController, EditCreateWorkoutViewInput {
     
-    private var presenter: EditCreateWorkoutViewOutput
+    var presenter: EditCreateWorkoutViewOutput
     var tapScreen: UIGestureRecognizer?
     
     init(presenter: EditCreateWorkoutViewOutput){

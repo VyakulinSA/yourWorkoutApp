@@ -980,5 +980,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0422CB18-CBD9-4A32-8172-59C89AF97B9A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/WorkoutsModuleTests/WorkoutsPresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "testAddBarButtonTapped()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0422CB18-CBD9-4A32-8172-59C89AF97B9A - 9b8e1141a2aaf72b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.WorkoutsPresenterTests.testAddBarButtonTapped() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/WorkoutsModuleTests/WorkoutsPresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "78">
+               </Location>
+               <Location
+                  uuid = "0422CB18-CBD9-4A32-8172-59C89AF97B9A - 9b8e1141a2aaf432"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.WorkoutsPresenterTests.testAddBarButtonTapped() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/WorkoutsModuleTests/WorkoutsPresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "78">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8372740-65A9-43EA-900C-466277207302"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/WorkoutsModuleTests/WorkoutsPresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "testDidSelectItem()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
