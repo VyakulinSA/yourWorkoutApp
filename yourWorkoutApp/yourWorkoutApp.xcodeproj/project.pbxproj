@@ -29,6 +29,9 @@
 		3C733A2327428EFB00E759B8 /* WorkoutsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A2227428EFB00E759B8 /* WorkoutsPresenterTests.swift */; };
 		3C733A262742A56800E759B8 /* WorkoutDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A252742A56800E759B8 /* WorkoutDetailPresenterTests.swift */; };
 		3C733A292742E7F500E759B8 /* EditCreateWorkoutModulePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A282742E7F500E759B8 /* EditCreateWorkoutModulePresenterTests.swift */; };
+		3C733A2D2743B52500E759B8 /* AddExercisePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A2C2743B52500E759B8 /* AddExercisePresenterTests.swift */; };
+		3C733A2F2743B5CE00E759B8 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A2E2743B5CE00E759B8 /* MockNavigationController.swift */; };
+		3C733A312743B61300E759B8 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A302743B61300E759B8 /* MockCoreDataStack.swift */; };
 		3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B342729D63300FA6C6C /* AppDelegate.swift */; };
 		3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B362729D63300FA6C6C /* SceneDelegate.swift */; };
 		3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B3D2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld */; };
@@ -116,6 +119,9 @@
 		3C733A2227428EFB00E759B8 /* WorkoutsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsPresenterTests.swift; sourceTree = "<group>"; };
 		3C733A252742A56800E759B8 /* WorkoutDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailPresenterTests.swift; sourceTree = "<group>"; };
 		3C733A282742E7F500E759B8 /* EditCreateWorkoutModulePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateWorkoutModulePresenterTests.swift; sourceTree = "<group>"; };
+		3C733A2C2743B52500E759B8 /* AddExercisePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercisePresenterTests.swift; sourceTree = "<group>"; };
+		3C733A2E2743B5CE00E759B8 /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
+		3C733A302743B61300E759B8 /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
 		3C876B312729D63300FA6C6C /* yourWorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yourWorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C876B342729D63300FA6C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C876B362729D63300FA6C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -319,6 +325,14 @@
 				3C733A282742E7F500E759B8 /* EditCreateWorkoutModulePresenterTests.swift */,
 			);
 			path = EditCreateWorkoutModuleTests;
+			sourceTree = "<group>";
+		};
+		3C733A2B2743B50400E759B8 /* AddExerciseModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C733A2C2743B52500E759B8 /* AddExercisePresenterTests.swift */,
+			);
+			path = AddExerciseModuleTests;
 			sourceTree = "<group>";
 		};
 		3C876B282729D63300FA6C6C = {
@@ -709,11 +723,14 @@
 		3C876C0F273AF1E800FA6C6C /* yourWorkoutAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				3C733A2B2743B50400E759B8 /* AddExerciseModuleTests */,
 				3C733A272742E7C600E759B8 /* EditCreateWorkoutModuleTests */,
 				3C733A242742A53600E759B8 /* WorkoutDetailModuleTests */,
 				3C733A2127428EB900E759B8 /* WorkoutsModuleTests */,
 				3C733A1B27423D6400E759B8 /* StartMenuModuleTests */,
 				3C733A2027428E9E00E759B8 /* ServicesTests */,
+				3C733A2E2743B5CE00E759B8 /* MockNavigationController.swift */,
+				3C733A302743B61300E759B8 /* MockCoreDataStack.swift */,
 			);
 			path = yourWorkoutAppTests;
 			sourceTree = "<group>";
@@ -914,9 +931,12 @@
 				3C7339FD2741983800E759B8 /* Legues.swift in Sources */,
 				3C733A292742E7F500E759B8 /* EditCreateWorkoutModulePresenterTests.swift in Sources */,
 				3C876C17273AF1ED00FA6C6C /* CoreDataStorageManagerTests.swift in Sources */,
+				3C733A2F2743B5CE00E759B8 /* MockNavigationController.swift in Sources */,
+				3C733A2D2743B52500E759B8 /* AddExercisePresenterTests.swift in Sources */,
 				3C7339ED273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */,
 				3C7339F92741974C00E759B8 /* NetworkService.swift in Sources */,
 				3C733A2327428EFB00E759B8 /* WorkoutsPresenterTests.swift in Sources */,
+				3C733A312743B61300E759B8 /* MockCoreDataStack.swift in Sources */,
 				3C733A1F274244F900E759B8 /* StartMenuPresenterTests.swift in Sources */,
 				3C7339F72741974C00E759B8 /* API.swift in Sources */,
 			);

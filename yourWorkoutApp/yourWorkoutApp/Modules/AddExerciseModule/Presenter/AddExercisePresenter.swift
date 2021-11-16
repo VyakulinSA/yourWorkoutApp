@@ -92,9 +92,9 @@ extension AddExercisePresenter {
 extension AddExercisePresenter {
     func getExercisesData() {
         exercisesData = exerciseStorageManager.readAllExercises()
-        guard let exercisesData = exercisesData else {return}
+        guard let exercisesData = exercisesData,let delegate = delegate else {return}
         self.exercisesData = exercisesData.filter { exercise in
-            return !(self.delegate?.exercisesData.contains{$0.id == exercise.id} ?? false)
+            return !(delegate.exercisesData.contains{$0.id == exercise.id})
         }
     }
     
