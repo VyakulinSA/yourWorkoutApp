@@ -137,7 +137,7 @@ extension EditCreateWorkoutPresenter: ActionsForChangesAlertOutput {
     func accept() {
         switch editCreateType {
         case .edit:
-            print("edit type")
+            break
         case .create:
             createWorkout()
             workout.title = workout.title == "" ? "Unknown workout" : workout.title

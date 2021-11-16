@@ -67,17 +67,17 @@ protocol RouterForFilterExerciseModule: RouterConfiguratorProtocol {
     
 }
  
-class RouterConfigurator: RouterConfiguratorProtocol, RouterForEditCreateExerciseModule, RouterForFilterExerciseModule {
-    var navigationController: NavigationControllerProtocol?
+public class RouterConfigurator: RouterConfiguratorProtocol, RouterForEditCreateExerciseModule, RouterForFilterExerciseModule {
+    var navigationController: YWNavigationController?
     var assemblyConfigurator: AssembliConfiguratorProtocol?
     
-    init(navController: NavigationControllerProtocol, assemblyConfigurator: AssembliConfiguratorProtocol) {
+    init(navController: YWNavigationController, assemblyConfigurator: AssembliConfiguratorProtocol) {
         self.navigationController = navController
         self.assemblyConfigurator = assemblyConfigurator
     }
     
     func initialViewController() {
-        if var navigationController = navigationController {
+        if let navigationController = navigationController {
             guard let startMenuViewController = assemblyConfigurator?.createStartMenuModule(router: self) else {return}
             navigationController.viewControllers = [startMenuViewController]
         }
@@ -141,21 +141,21 @@ class RouterConfigurator: RouterConfiguratorProtocol, RouterForEditCreateExercis
 
 extension RouterConfigurator: RouterForStartMenuModule {
     func showWorkoutsViewController() {
-        if var navigationController = navigationController {
+        if let navigationController = navigationController {
             guard let workoutsViewController = assemblyConfigurator?.createWorkoutModule(router: self) else {return}
             navigationController.viewControllers = [workoutsViewController]
         }
     }
     
     func showExercisesViewController() {
-        if var navigationController = navigationController {
+        if let navigationController = navigationController {
             guard let exercisesViewController = assemblyConfigurator?.createExercisesModule(router: self) else {return}
             navigationController.viewControllers = [exercisesViewController]
         }
     }
     
     func showLeaguesViewController() {
-        if var navigationController = navigationController {
+        if let navigationController = navigationController {
             guard let standingsViewController = assemblyConfigurator?.createLeaguesModule(router: self) else {return}
             navigationController.viewControllers = [standingsViewController]
         }

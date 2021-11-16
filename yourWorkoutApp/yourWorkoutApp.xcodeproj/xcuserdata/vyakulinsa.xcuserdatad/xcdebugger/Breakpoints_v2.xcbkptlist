@@ -1044,5 +1044,260 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "486F1AED-9505-49F4-BE72-4FF1A7583D89"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/WorkoutDetailModuleTests/WorkoutDetailPresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "testGetActualExercise()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "486F1AED-9505-49F4-BE72-4FF1A7583D89 - cf7a966bb8fd3970"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.WorkoutDetailPresenterTests.testGetActualExercise() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/WorkoutDetailModuleTests/WorkoutDetailPresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "1480">
+               </Location>
+               <Location
+                  uuid = "486F1AED-9505-49F4-BE72-4FF1A7583D89 - cf7a966bb8fd3970"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.WorkoutDetailPresenterTests.testGetActualExercise() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/WorkoutDetailModuleTests/WorkoutDetailPresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "1451">
+               </Location>
+               <Location
+                  uuid = "486F1AED-9505-49F4-BE72-4FF1A7583D89 - cf7a966bb8fd3970"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.WorkoutDetailPresenterTests.testGetActualExercise() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/WorkoutDetailModuleTests/WorkoutDetailPresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "1435">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09D544B4-97DE-4A76-80B7-2C382722209E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "testBackBarButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02C10A9E-E11A-40AC-A506-D7CA2F65A273"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutApp/Modules/EditCreateWorkoutModule/Presenter/EditCreateWorkoutPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "backBarButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EE976D7-92E2-43CE-9347-5D8197919036"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "testBackBarButtonTapped()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9EE976D7-92E2-43CE-9347-5D8197919036 - b86011729b1f4dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.EditCreateWorkoutModulePresenterTests.testBackBarButtonTapped() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "9EE976D7-92E2-43CE-9347-5D8197919036 - b86011729b1f412"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.EditCreateWorkoutModulePresenterTests.testBackBarButtonTapped() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2590F4E-C8B6-4691-9F7B-FDB45EB81AC3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "testBackBarButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "182245FC-4D58-40B7-9839-1398A0AB926D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "testBackBarButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32A3E596-7F18-46C2-B973-FF3642B2EE7D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "testSaveBarButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "645F0087-D93F-4E65-B34C-FE8ED29D60E0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "testTrashBarButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "775E12E4-350E-4540-9161-E6051FB28BC4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "testAccept()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "775E12E4-350E-4540-9161-E6051FB28BC4 - 8e4092ce3475aa32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.EditCreateWorkoutModulePresenterTests.testAccept() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "37">
+               </Location>
+               <Location
+                  uuid = "775E12E4-350E-4540-9161-E6051FB28BC4 - 8e4092ce3475aa32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "yourWorkoutAppTests.EditCreateWorkoutModulePresenterTests.testAccept() -&gt; ()"
+                  moduleName = "yourWorkoutAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vyakulinsa/Desktop/yourWorkoutApp%20MyRep/yourWorkoutApp/yourWorkoutApp/yourWorkoutAppTests/EditCreateWorkoutModuleTests/EditCreateWorkoutModulePresenterTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "199">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

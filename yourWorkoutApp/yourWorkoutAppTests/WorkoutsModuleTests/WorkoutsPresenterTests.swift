@@ -12,7 +12,7 @@ class WorkoutsPresenterTests: XCTestCase {
     var coreDataStack: CoreDataStackProtocol!
     var workoutStorageManager: DataStorageWorkoutManagerProtocol!
     
-    var navController: NavigationControllerProtocol!
+    var navController: YWNavigationController!
     var assemblyConfigurator: AssembliConfiguratorProtocol!
     var router: RouterConfigurator!
     var presenter: WorkoutsPresenter!

@@ -9,7 +9,7 @@ import XCTest
 @testable import yourWorkoutApp
 
 class StartMenuPresenterTests: XCTestCase {
-    var navController: NavigationControllerProtocol!
+    var navController: YWNavigationController!
     var assemblyConfigurator: AssemblyConfigurator!
     var router: RouterConfigurator!
     var presenter: StartMenuPresenter!
