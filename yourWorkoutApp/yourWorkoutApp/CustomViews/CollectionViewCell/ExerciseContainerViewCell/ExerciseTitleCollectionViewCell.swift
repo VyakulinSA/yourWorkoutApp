@@ -26,6 +26,7 @@ class ExerciseTitleCollectionViewCell: UICollectionViewCell {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.outlineColor.withAlphaComponent(0.6).cgColor
         $0.clipsToBounds = true
+        $0.textColor = .darkTextColor
         
         let attributes = [NSAttributedString.Key.font: UIFont.myFont(.myFontRegular, size: 18)]
         $0.attributedPlaceholder = NSAttributedString(string: "Title", attributes: attributes as [NSAttributedString.Key : Any])

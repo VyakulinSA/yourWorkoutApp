@@ -22,5 +22,9 @@ class YWNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
 
 }

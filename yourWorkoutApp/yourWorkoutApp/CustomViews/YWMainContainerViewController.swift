@@ -58,6 +58,7 @@ class YWMainContainerViewController: UIViewController {
         $0.textAlignment = .center
         $0.backgroundColor = .black.withAlphaComponent(0.05)
         $0.layer.cornerRadius = 10
+        $0.textColor = .darkTextColor
         
         let attributes = [NSAttributedString.Key.font: UIFont.myFont(.myFontRegular, size: 16)]
         $0.attributedPlaceholder = NSAttributedString(string: "Workout Title", attributes: attributes as [NSAttributedString.Key : Any])
