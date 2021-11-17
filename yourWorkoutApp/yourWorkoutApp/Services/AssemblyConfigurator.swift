@@ -38,7 +38,7 @@ class AssemblyConfigurator: AssembliConfiguratorProtocol {
         return storage
     }
     
-    let networkService = NetworkService()
+    let networkService: NetworkServiceProtocol = NetworkService()
     
     let imagesStorageManager: ImagesStorageManagerProtocol = ImagesStorageManager()
     

@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum Stats: String {
+    case rank
+    case wins
+    case losses
+}
+
 protocol StandingsViewInput: AnyObject {
         func reloadCollection()
 }
@@ -16,6 +22,7 @@ protocol StandingsViewOutput: AnyObject {
     var standings: [Standing]? {get set}
     
     func backButtonTapped()
+    func getStat(from statArray: [Stat], needStat: Stats) -> Int? 
 }
 
 class StandingsPresenter: StandingsViewOutput {
@@ -27,11 +34,11 @@ class StandingsPresenter: StandingsViewOutput {
     }
     
     private var leagueId: String
-    private var networkService: NetworkService
+    private var networkService: NetworkServiceProtocol
     private var router: RouterForLeaguesModule
     weak var view: StandingsViewInput?
     
-    init(router: RouterForLeaguesModule, networkService: NetworkService, leagueId: String) {
+    init(router: RouterForLeaguesModule, networkService: NetworkServiceProtocol, leagueId: String) {
         self.router = router
         self.networkService = networkService
         self.leagueId = leagueId
@@ -40,6 +47,23 @@ class StandingsPresenter: StandingsViewOutput {
     
     func backButtonTapped() {
         router.popVC()
+    }
+    
+    func getStat(from statArray: [Stat], needStat: Stats) -> Int? {
+        let tuples = createStats(stat: statArray)
+        let filtered = tuples.filter { (st, val) in
+            st == needStat
+        }
+        return filtered.first?.1
+        
+    }
+    
+    private func createStats(stat: [Stat]) -> [(Stats?, Int?)] {
+        let stats = stat.filter { st in
+            st.name == "rank" || st.name == "wins" || st.name == "losses"
+        }
+        let mapStats = stats.map{(Stats(rawValue: $0.name), $0.value)}
+        return mapStats
     }
     
 }

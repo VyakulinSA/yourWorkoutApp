@@ -24,18 +24,12 @@ struct DataClass: Codable {
 struct Standing: Codable {
     let team: Team
     let note: Note?
+    let stats: [Stat]
 }
 
 // MARK: - Note
 struct Note: Codable {
-    let color, noteDescription: String
     let rank: Int
-
-    enum CodingKeys: String, CodingKey {
-        case color
-        case noteDescription = "description"
-        case rank
-    }
 }
 
 // MARK: - Team
@@ -49,5 +43,10 @@ struct Team: Codable {
 // MARK: - Logo
 struct Logo: Codable {
     let href: String
+}
+
+struct Stat: Codable {
+    let name: String
+    let value: Int?
 }
 

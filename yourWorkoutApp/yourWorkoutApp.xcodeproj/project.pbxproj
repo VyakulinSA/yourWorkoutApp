@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3C7339E8273FA33800E759B8 /* ImagesStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339E7273FA33800E759B8 /* ImagesStorageManager.swift */; };
 		3C7339EC273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */; };
-		3C7339ED273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339EB273FAD9F00E759B8 /* ActionsForChangesAlert.swift */; };
 		3C7339EF2741792400E759B8 /* ImagesStorageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339EE2741792400E759B8 /* ImagesStorageManagerTests.swift */; };
 		3C7339F12741972C00E759B8 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339F02741972C00E759B8 /* WebImageView.swift */; };
 		3C7339F22741972C00E759B8 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7339F02741972C00E759B8 /* WebImageView.swift */; };
@@ -32,6 +31,10 @@
 		3C733A2D2743B52500E759B8 /* AddExercisePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A2C2743B52500E759B8 /* AddExercisePresenterTests.swift */; };
 		3C733A2F2743B5CE00E759B8 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A2E2743B5CE00E759B8 /* MockNavigationController.swift */; };
 		3C733A312743B61300E759B8 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A302743B61300E759B8 /* MockCoreDataStack.swift */; };
+		3C733A342743E1C900E759B8 /* ExercisesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A332743E1C900E759B8 /* ExercisesPresenterTests.swift */; };
+		3C733A372743E5D600E759B8 /* ExerciseDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A362743E5D600E759B8 /* ExerciseDetailPresenterTests.swift */; };
+		3C733A3A2743E89000E759B8 /* EditCreateExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A392743E89000E759B8 /* EditCreateExerciseTests.swift */; };
+		3C733A3D2745385700E759B8 /* StandingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C733A3C2745385700E759B8 /* StandingsCollectionViewCell.swift */; };
 		3C876B352729D63300FA6C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B342729D63300FA6C6C /* AppDelegate.swift */; };
 		3C876B372729D63300FA6C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B362729D63300FA6C6C /* SceneDelegate.swift */; };
 		3C876B3F2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C876B3D2729D63300FA6C6C /* yourWorkoutApp.xcdatamodeld */; };
@@ -122,6 +125,10 @@
 		3C733A2C2743B52500E759B8 /* AddExercisePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercisePresenterTests.swift; sourceTree = "<group>"; };
 		3C733A2E2743B5CE00E759B8 /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
 		3C733A302743B61300E759B8 /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
+		3C733A332743E1C900E759B8 /* ExercisesPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesPresenterTests.swift; sourceTree = "<group>"; };
+		3C733A362743E5D600E759B8 /* ExerciseDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailPresenterTests.swift; sourceTree = "<group>"; };
+		3C733A392743E89000E759B8 /* EditCreateExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreateExerciseTests.swift; sourceTree = "<group>"; };
+		3C733A3C2745385700E759B8 /* StandingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C876B312729D63300FA6C6C /* yourWorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yourWorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C876B342729D63300FA6C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C876B362729D63300FA6C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -274,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				3C733A192741AE6100E759B8 /* StandingsViewController.swift */,
+				3C733A3C2745385700E759B8 /* StandingsCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -333,6 +341,37 @@
 				3C733A2C2743B52500E759B8 /* AddExercisePresenterTests.swift */,
 			);
 			path = AddExerciseModuleTests;
+			sourceTree = "<group>";
+		};
+		3C733A322743E1A500E759B8 /* ExercisesModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C733A332743E1C900E759B8 /* ExercisesPresenterTests.swift */,
+			);
+			path = ExercisesModuleTests;
+			sourceTree = "<group>";
+		};
+		3C733A352743E5AB00E759B8 /* ExercisesDetailModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C733A362743E5D600E759B8 /* ExerciseDetailPresenterTests.swift */,
+			);
+			path = ExercisesDetailModuleTests;
+			sourceTree = "<group>";
+		};
+		3C733A382743E87000E759B8 /* EditCreateExerciseTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C733A392743E89000E759B8 /* EditCreateExerciseTests.swift */,
+			);
+			path = EditCreateExerciseTests;
+			sourceTree = "<group>";
+		};
+		3C733A3B274534CE00E759B8 /* FilterExerciseModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FilterExerciseModuleTests;
 			sourceTree = "<group>";
 		};
 		3C876B282729D63300FA6C6C = {
@@ -723,6 +762,10 @@
 		3C876C0F273AF1E800FA6C6C /* yourWorkoutAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				3C733A3B274534CE00E759B8 /* FilterExerciseModuleTests */,
+				3C733A382743E87000E759B8 /* EditCreateExerciseTests */,
+				3C733A352743E5AB00E759B8 /* ExercisesDetailModuleTests */,
+				3C733A322743E1A500E759B8 /* ExercisesModuleTests */,
 				3C733A2B2743B50400E759B8 /* AddExerciseModuleTests */,
 				3C733A272742E7C600E759B8 /* EditCreateWorkoutModuleTests */,
 				3C733A242742A53600E759B8 /* WorkoutDetailModuleTests */,
@@ -897,6 +940,7 @@
 				3C876BED27340A4E00FA6C6C /* ExerciseDetailPresenter.swift in Sources */,
 				3C733A152741AA6600E759B8 /* StandingsPresenter.swift in Sources */,
 				3C876BFA2738450400FA6C6C /* CoreDataStorageManager.swift in Sources */,
+				3C733A3D2745385700E759B8 /* StandingsCollectionViewCell.swift in Sources */,
 				3C876BFF2738604E00FA6C6C /* WorkoutCD+CoreDataClass.swift in Sources */,
 				3C876BAB272FC51600FA6C6C /* ExerciseCollectionViewCell.swift in Sources */,
 				3C876BD5273309FF00FA6C6C /* UITextField + extension.swift in Sources */,
@@ -929,16 +973,18 @@
 				3C7339EF2741792400E759B8 /* ImagesStorageManagerTests.swift in Sources */,
 				3C7339F22741972C00E759B8 /* WebImageView.swift in Sources */,
 				3C7339FD2741983800E759B8 /* Legues.swift in Sources */,
+				3C733A342743E1C900E759B8 /* ExercisesPresenterTests.swift in Sources */,
 				3C733A292742E7F500E759B8 /* EditCreateWorkoutModulePresenterTests.swift in Sources */,
 				3C876C17273AF1ED00FA6C6C /* CoreDataStorageManagerTests.swift in Sources */,
 				3C733A2F2743B5CE00E759B8 /* MockNavigationController.swift in Sources */,
 				3C733A2D2743B52500E759B8 /* AddExercisePresenterTests.swift in Sources */,
-				3C7339ED273FAD9F00E759B8 /* ActionsForChangesAlert.swift in Sources */,
 				3C7339F92741974C00E759B8 /* NetworkService.swift in Sources */,
 				3C733A2327428EFB00E759B8 /* WorkoutsPresenterTests.swift in Sources */,
 				3C733A312743B61300E759B8 /* MockCoreDataStack.swift in Sources */,
 				3C733A1F274244F900E759B8 /* StartMenuPresenterTests.swift in Sources */,
+				3C733A3A2743E89000E759B8 /* EditCreateExerciseTests.swift in Sources */,
 				3C7339F72741974C00E759B8 /* API.swift in Sources */,
+				3C733A372743E5D600E759B8 /* ExerciseDetailPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

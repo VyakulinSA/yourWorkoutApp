@@ -21,7 +21,7 @@ protocol LeaguesViewOutput: AnyObject {
 }
 
 class LeaguesPresenter: LeaguesViewOutput {
-    private var networkService: NetworkService
+    private var networkService: NetworkServiceProtocol
     private var router: RouterForLeaguesModule
     weak var view: LeaguesViewInput?
     
@@ -31,7 +31,7 @@ class LeaguesPresenter: LeaguesViewOutput {
         }
     }
     
-    init(router: RouterForLeaguesModule, networkService: NetworkService) {
+    init(router: RouterForLeaguesModule, networkService: NetworkServiceProtocol) {
         self.router = router
         self.networkService = networkService
         loadLeagues()

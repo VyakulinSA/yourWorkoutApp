@@ -32,7 +32,7 @@ class StartMenuViewController: UIViewController, StartMenuViewInput {
     
     private let standingsButton = setupObject(UIButton(type: .system)) {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setTitle("Footbal standings", for: .normal)
+        $0.setTitle("Football standings", for: .normal)
         $0.setTitleColor(.lightTextColor, for: .normal)
         $0.titleLabel?.font = UIFont.myFont(.myFontBold, size: 18)
     }

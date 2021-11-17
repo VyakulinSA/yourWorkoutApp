@@ -7,7 +7,11 @@
 
 import Foundation
 
-class NetworkService {
+protocol NetworkServiceProtocol {
+    func getRequest<T: Codable>(type: T.Type, urlString: String, param: String, completion: @escaping (Result<T, Error>) -> Void)
+}
+
+class NetworkService: NetworkServiceProtocol {
     
     private func sendGetRequest(urlString: String, param: String, completion: @escaping (Data?, Error?) -> Void) {
         guard let url = URL(string: "\(urlString)\(param)") else {return}

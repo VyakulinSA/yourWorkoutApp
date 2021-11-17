@@ -1,5 +1,5 @@
 //
-//  AddExercisePresenterTests.swift
+//  ExercisesPresenterTests.swift
 //  yourWorkoutAppTests
 //
 //  Created by Вякулин Сергей on 16.11.2021.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import yourWorkoutApp
 
-class AddExercisePresenterTests: XCTestCase {
+class ExercisesPresenterTests: XCTestCase {
     var coreDataStack: CoreDataStackProtocol!
     var dataStorageManager: CoreDataStorageManager!
     var imagesStorageManager: ImagesStorageManagerProtocol!
@@ -16,8 +16,7 @@ class AddExercisePresenterTests: XCTestCase {
     var assemblyConfigurator: AssembliConfiguratorProtocol!
     
     var router: RouterConfigurator!
-    var delegate: EditCreateWorkoutPresenter!
-    var presenter: AddExercisePresenter!
+    var presenter: ExercisesPresenter!
     
     var exercisesData: [ExerciseModelProtocol]!
 
@@ -51,16 +50,9 @@ class AddExercisePresenterTests: XCTestCase {
         dataStorageManager.create(exercise: exercisesData[0])
         dataStorageManager.create(exercise: exercisesData[1])
         
-        delegate = EditCreateWorkoutPresenter(workoutStorageManager: dataStorageManager,
-                                              imagesStorageManager: imagesStorageManager,
-                                              router: router,
-                                              editCreateType: .create,
-                                              workout: nil)
-        
-        presenter = AddExercisePresenter(imagesStorageManager: imagesStorageManager,
-                                         exerciseStorageManager: dataStorageManager,
-                                         router: router,
-                                         delegate: delegate)
+        presenter = ExercisesPresenter(exerciseStorageManager: dataStorageManager,
+                                       imagesStorageManager: imagesStorageManager,
+                                       router: router)
         
     }
     
@@ -71,7 +63,6 @@ class AddExercisePresenterTests: XCTestCase {
         navController = nil
         assemblyConfigurator = nil
         router = nil
-        delegate = nil
         presenter = nil
         exercisesData = nil
     }
@@ -87,9 +78,12 @@ class AddExercisePresenterTests: XCTestCase {
         XCTAssertTrue(presenter.exercisesData?[0].id == exercisesData[1].id)
     }
     
-    func testBackBarButtonTapped() {
-        presenter.backBarButtonTapped()
-        XCTAssertTrue(navController.popCount == 1)
+    func testStartMenuButtonTapped() {
+        XCTAssertTrue(navController.viewControllers.count == 0)
+        presenter.startMenuButtonTapped()
+        XCTAssertTrue(navController.viewControllers.count == 1)
+        XCTAssertTrue(navController.viewControllers[0] is StartMenuViewController)
+        
     }
     
     func testFilterBarButtonTapped() {
@@ -100,47 +94,27 @@ class AddExercisePresenterTests: XCTestCase {
         XCTAssertNotNil(presentVC)
     }
     
-    func testDetailButtonTapped() {
+    func testCreateBarButtonTapped() {
         XCTAssertTrue(navController.pushCount == 0)
-        
-        presenter.detailButtonTapped(item: 1)
+        presenter.createBarButtonTapped()
         XCTAssertTrue(navController.pushCount == 1)
-        let presentVC = navController.controllerOnScreen as? ExerciseDetailViewController
+        let presentVC = navController.controllerOnScreen as? EditCreateExerciseViewController
         XCTAssertNotNil(presentVC)
-        XCTAssertFalse(presentVC!.presenter.editable)
-        XCTAssertTrue(presentVC?.presenter.exercise.id == exercisesData[1].id)
-        
-        presenter.exercisesData = nil
-        presenter.detailButtonTapped(item: 1)
-        XCTAssertTrue(navController.pushCount == 1)
+        XCTAssertTrue(presentVC?.presenter.editCreateType == .create)
+        XCTAssertTrue(presentVC?.presenter.exercise.title == "")
     }
     
     func testDidSelectCell() {
-        XCTAssertNotNil(delegate.exercisesData)
-        XCTAssertTrue(delegate.exercisesData.count == 0)
-        
         presenter.exercisesData = nil
-        presenter.didSelectCell(item: 1)
-        
-        XCTAssertNotNil(delegate.exercisesData)
-        XCTAssertTrue(delegate.exercisesData.count == 0)
+        XCTAssertTrue(navController.pushCount == 0)
         
         presenter.exercisesData = exercisesData
         presenter.didSelectCell(item: 0)
+        XCTAssertTrue(navController.pushCount == 1)
         
-        XCTAssertNotNil(delegate.exercisesData)
-        XCTAssertTrue(delegate.exercisesData.count == 1)
-        XCTAssertTrue(delegate.exercisesData[0].id == exercisesData[0].id)
-        XCTAssertTrue(navController.popCount == 1)
-        
-    }
-    
-    func testGetExercisesData() {
-        XCTAssertTrue(presenter.exercisesData?.count == 2)
-        delegate.exercisesData = [exercisesData[0]]
-        presenter.getExercisesData()
-        XCTAssertTrue(presenter.exercisesData?.count == 1)
-        XCTAssertTrue(presenter.exercisesData?[0].id == exercisesData[1].id)
-        XCTAssertTrue(presenter.exercisesData?[0].id != delegate.exercisesData[0].id)
+        let presentVC = navController.controllerOnScreen as? ExerciseDetailViewController
+        XCTAssertNotNil(presentVC)
+        XCTAssertTrue(presentVC!.presenter.editable)
+        XCTAssertTrue(presentVC?.presenter.exercise.id == exercisesData[0].id)
     }
 }

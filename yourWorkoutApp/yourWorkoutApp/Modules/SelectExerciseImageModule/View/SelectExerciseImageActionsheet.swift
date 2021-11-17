@@ -14,7 +14,7 @@ protocol SelectExerciseImageActionsheetOutput: AnyObject {
     func deletePhotoAction(selectedImageCell: SelectedImageCell?)
 }
 
-final class SelectExerciseImageActionsheet: UIAlertController  {
+class SelectExerciseImageActionsheet: UIAlertController  {
     
     private var output: SelectExerciseImageActionsheetOutput?
     private var selectedImageCell: SelectedImageCell?

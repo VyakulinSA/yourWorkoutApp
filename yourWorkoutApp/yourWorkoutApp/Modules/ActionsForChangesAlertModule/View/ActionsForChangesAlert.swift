@@ -12,7 +12,7 @@ protocol ActionsForChangesAlertOutput {
     func deleteChanges()
 }
 
-final class ActionsForChangesAlert: UIAlertController {
+class ActionsForChangesAlert: UIAlertController {
     
     private var output: ActionsForChangesAlertOutput!
     private var acceptTitle: String?

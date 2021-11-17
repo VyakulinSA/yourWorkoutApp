@@ -31,7 +31,7 @@ class StandingsViewController: YWMainContainerViewController, StandingsViewInput
 extension StandingsViewController {
     
     private func configViews() {
-        collectionView.register(ExerciseCollectionViewCell.self, forCellWithReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier)
+        collectionView.register(StandingsCollectionViewCell.self, forCellWithReuseIdentifier: StandingsCollectionViewCell.reuseIdentifier)
         
         setupNavBarItems(leftBarButtonName: .backArrow, firstRightBarButtonName: nil, secondRightBarButtonName: nil, titleBarText: "STANDINGS")
         
@@ -56,13 +56,24 @@ extension StandingsViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCollectionViewCell.reuseIdentifier, for: indexPath) as? ExerciseCollectionViewCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandingsCollectionViewCell.reuseIdentifier, for: indexPath) as? StandingsCollectionViewCell else {return UICollectionViewCell()}
         
         if let standing = presenter.standings?[indexPath.item] {
             let image = WebImageView()
             image.set(imgeURL: standing.team.logos[0].href)
-            cell.setupCellItems(leagueImage: image.image, leagueAbbr: standing.team.abbreviation, leagueName: standing.team.name)
+            cell.setupCellItems(
+                teamImage: image.image,
+                teamAbbr: standing.team.abbreviation,
+                teamName: standing.team.name,
+                teamRank: presenter.getStat(from: standing.stats, needStat: .rank),
+                teamWins: presenter.getStat(from: standing.stats, needStat: .wins),
+                teamLosses: presenter.getStat(from: standing.stats, needStat: .losses)
+            )
         }
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width - 40, height: 150)
     }
 }
