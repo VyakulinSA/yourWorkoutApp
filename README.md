@@ -32,7 +32,7 @@ yourWorkoutApp - Приложение для создания собственн
 
 - Exercise detail  
 
-    ![Alt Text](https://media.giphy.com/media/RBOGQAJtvR8516KOaU/giphy.gif)  
+    ![Alt Text](https://media.giphy.com/media/uZqh7W2tsrcTFn2eL0/giphy.gif)  
 
 - Editing exercise  
 
