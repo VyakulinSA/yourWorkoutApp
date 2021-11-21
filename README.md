@@ -38,21 +38,25 @@ yourWorkoutApp - Приложение для создания собственн
 
     ![Alt Text](https://media.giphy.com/media/FcSV0fdPNMcQkjHS21/giphy.gif)  
 </br>
+
 - Exercise detail  
 *При выборе упражнения открывается детальная информация.*  
 
     ![Alt Text](https://media.giphy.com/media/uZqh7W2tsrcTFn2eL0/giphy.gif)  
  </br>
+ 
 - Editing exercise  
 *Нажав "шестеренку" на странице детальной информации, переходим в режим редактирования всех элементов.*  
 
     ![Alt Text](https://media.giphy.com/media/bQOf768PdXZp6InJS4/giphy.gif)  
 </br>
+
 - Delete exercise  
 *Удаление можно осуществить находясь в редактировании упражнения.*  
 
     ![Alt Text](https://media.giphy.com/media/LMJXNERx692Pw4Idbf/giphy.gif)  
  </br>
+
 - Create workout  
 *Создание тренировки осуществляется на странице Workout.*  
 *При создании указывается название тренировки, а также добавляются упражнения из списка добавленных на странице Exercises.*  
@@ -77,6 +81,7 @@ yourWorkoutApp - Приложение для создания собственн
 
     ![Alt Text](https://media.giphy.com/media/bS6M0k3Xoe89WBCHfj/giphy.gif)   
 </br>
+
 - Delete workout  
 *Удаление можно осуществить находясь на странице детальной информации о тренировке.*  
 
