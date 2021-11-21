@@ -88,7 +88,7 @@ extension EditCreateExercisePresenter {
     
     func trashBarButtonTapped() {
         deletExercise = true
-        router.showActionsForChangesAlert(output: self, acceptTitle: "Delete", deleteTitle: nil, titleString: "Delete exercisw?")
+        router.showActionsForChangesAlert(output: self, acceptTitle: "Delete", deleteTitle: nil, titleString: "Delete exercise?")
     }
     
     func addImageButtonTapped(item: Int) {
