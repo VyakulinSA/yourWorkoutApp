@@ -17,7 +17,7 @@ class NetworkService: NetworkServiceProtocol {
         guard let url = URL(string: "\(urlString)\(param)") else {return}
         let session = URLSession.shared
         session.dataTask(with: url) { data, response, error in
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async{
                 completion(data,error)
             }
         }.resume()

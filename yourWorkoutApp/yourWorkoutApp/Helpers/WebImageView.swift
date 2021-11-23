@@ -29,7 +29,6 @@ class WebImageView: UIImageView {
             DispatchQueue.main.async {
                 if let data = data, let response = response {
                     self?.handleLoadedImage(data: data, response: response)
-                    
                 }
             }
         }
