@@ -31,8 +31,13 @@ class NetworkService: NetworkServiceProtocol {
             
             guard let data = data else {return}
             let decoder = JSONDecoder()
-            let results: T = try! decoder.decode(T.self, from: data)
-            completion(Result.success(results))
+            do {
+                let results: T = try decoder.decode(T.self, from: data)
+                completion(Result.success(results))
+            } catch let error as NSError  {
+                completion(Result.failure(error))
+            }
+
         }
     }
     

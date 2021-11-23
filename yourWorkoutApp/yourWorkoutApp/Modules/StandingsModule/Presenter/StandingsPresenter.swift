@@ -77,7 +77,7 @@ extension StandingsPresenter {
                 self.data = data.data
                 self.standings = data.data.standings
             case .failure(let error):
-                print(error.localizedDescription)
+                self.router.showMessageAlert(message: error.localizedDescription)
             }
         }
     }
